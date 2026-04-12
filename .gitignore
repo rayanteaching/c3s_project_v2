@@ -1,0 +1,33 @@
+# Large data
+data/raw/
+data/processed/
+*.grib
+*.grib2
+*.nc
+*.netcdf
+*.zarr
+*.tar
+*.gz
+*.zip
+
+# Logs
+logs/
+nohup.out
+*.log
+*.out
+*.pid
+
+# Temp/cache
+*.tmp
+*.part
+__pycache__/
+*.pyc
+*.pyo
+
+# Secrets
+.cdsapirc
+.env
+
+# OS/editor
+.DS_Store
+*.swp

@@ -1,0 +1,12 @@
+project_root: /home/fibi/projects/c3s_project_v2
+
+wsl:
+  raw_data_root: /mnt/e/last-aticol/data/raw
+  processed_data_root: /mnt/e/last-aticol/data/processed
+  inventory_root: /home/fibi/projects/c3s_project_v2/data/inventory
+  logs_root: /home/fibi/projects/c3s_project_v2/logs
+
+server:
+  project_root: /mnt/Bahmanzade/c3s_project
+  raw_data_root: /mnt/Bahmanzade/c3s_project/data/raw
+  inventory_root: /mnt/Bahmanzade/c3s_project/data/inventory
