@@ -1,0 +1,6 @@
+{
+  "run": "2026-04-13_era5_tp_monthly_2000_2025",
+  "result": "running",
+  "reason": "First official ERA5 monthly total precipitation production run started on WSL.",
+  "next_action": "Monitor log and verify yearly completion."
+}
