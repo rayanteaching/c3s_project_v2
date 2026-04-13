@@ -1,0 +1,6 @@
+{
+  "run": "wsl_cds_netcheck_era5_small",
+  "result": "success",
+  "reason": "Small ERA5 request completed successfully",
+  "next_action": "Proceed to the first official ERA5 downloader"
+}
