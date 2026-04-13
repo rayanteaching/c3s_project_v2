@@ -26,3 +26,13 @@ Do not track:
 ## Storage policy
 - The Git repository stays inside the WSL Linux filesystem.
 - Large raw and processed datasets are stored on /mnt/e/last-aticol due to limited space on the system drive.
+
+## Milestone closure rule
+- Every meaningful milestone must be formally closed in Git before moving on.
+- Closure includes, when applicable:
+  - run metadata under runs/
+  - updated docs/STATUS.md
+  - updated docs/HANDOFF.md
+  - a precise commit message
+- Continuation must rely on repository state, not chat memory.
+
