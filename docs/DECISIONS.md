@@ -36,3 +36,8 @@ Do not track:
   - a precise commit message
 - Continuation must rely on repository state, not chat memory.
 
+## ERA5 monthly total precipitation semantics
+- The current ERA5 monthly total precipitation workflow downloads the official raw monthly product as delivered by CDS.
+- For this monthly product, total_precipitation must be interpreted carefully during analysis.
+- A dedicated conversion rule may be required later when deriving analysis-ready monthly precipitation quantities.
+- The downloader itself is responsible only for retrieving and verifying the official raw files, not for scientific conversion.
