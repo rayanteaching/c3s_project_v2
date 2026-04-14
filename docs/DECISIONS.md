@@ -1,18 +1,31 @@
 # Decisions
 
-## Repository rules
-Track:
-- docs/
-- configs/
-- scripts/
-- runs/
-- data/inventory/
+## Repository tracking policy
+Track all lightweight, text-based, workflow-critical files that are needed to understand, reproduce, verify, continue, or audit the project.
+
+This includes:
+- README.md
+- all files under docs/
+- all files under configs/
+- all files under scripts/
+- all run metadata under runs/
+- all inventory snapshots under data/inventory/
+- all environment definition files under env/
+- other lightweight workflow files inside the repository, including:
+  - *.md
+  - *.txt
+  - *.json
+  - *.yml
+  - *.yaml
+  - *.csv
+when they are part of the official workflow.
 
 Do not track:
 - data/raw/
 - data/processed/
 - logs/
 - large binary datasets
+- secrets and credentials
 
 ## Platform
 - Primary download environment: WSL Ubuntu
@@ -33,6 +46,7 @@ Do not track:
   - run metadata under runs/
   - updated docs/STATUS.md
   - updated docs/HANDOFF.md
+  - updated docs/RUNBOOK.md if reusable commands or checks were added
   - a precise commit message
 - Continuation must rely on repository state, not chat memory.
 
