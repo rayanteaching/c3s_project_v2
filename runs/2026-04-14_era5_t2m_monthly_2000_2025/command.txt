@@ -1,0 +1,1 @@
+nohup /home/fibi/projects/c3s_project_v2/scripts/download/11_download_era5_t2m_monthly_grib_cli.py --start-year 2000 --end-year 2025 > /home/fibi/projects/c3s_project_v2/logs/era5_t2m_monthly_2000_2025.log 2>&1 &
