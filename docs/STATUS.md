@@ -1,3 +1,49 @@
+# Status 2
+
+## Current platform
+- WSL Ubuntu 24.04.1 LTS
+
+## Current phase
+- Repository bootstrap completed
+- Environment setup completed
+- CDS netcheck completed successfully
+- First official ERA5 production download completed successfully
+
+## Confirmed facts
+- Repository root: /home/fibi/projects/c3s_project_v2
+- Raw data root: /mnt/e/last-aticol/data/raw
+- Processed data root: /mnt/e/last-aticol/data/processed
+- Git branches main and dev exist
+- Miniforge is installed at /home/fibi/miniforge3
+- Conda environment cds_env exists and works
+- Core workflow packages are installed
+- Official WSL CDS ERA5 netcheck succeeded
+- Official ERA5 monthly total precipitation download succeeded for 2000-2025
+- Raw GRIB files, request sidecars, and sha256 sidecars were written under the WSL data root on drive E
+- An inventory snapshot for the ERA5 monthly tp dataset has been created
+
+## Current blockers
+- No current WSL CDS connectivity blocker
+- The next official ERA5 variable downloader has not been started yet
+
+## Next action
+1. Formally close the completed ERA5 tp milestone in Git
+2. Start the next official ERA5 downloader
+3. Continue building the ERA5 baseline dataset family
+
+## Last verified commit
+- 81db45e
+
+
+
+
+
+
+
+
+
+
+
 # Status 1
 
 ## Current platform
