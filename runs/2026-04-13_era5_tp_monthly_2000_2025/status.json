@@ -2,5 +2,5 @@
   "run": "2026-04-13_era5_tp_monthly_2000_2025",
   "result": "success",
   "reason": "Official ERA5 monthly total precipitation download completed successfully on WSL for 2000-2025 and the final year verification passed.",
-  "next_action": "Build an inventory snapshot, update project status, and proceed to the next official ERA5 variable downloader."
+  "next_action": "Proceed to the next official ERA5 variable downloader."
 }
