@@ -62,3 +62,12 @@ Do not track:
 - The workflow label z500 refers to ERA5 monthly geopotential at the 500 hPa pressure level.
 - The downloader retrieves the official raw geopotential field from the ERA5 monthly pressure-level dataset.
 - If geopotential height is needed later, that conversion belongs to the analysis stage, not to the downloader.
+
+
+## ERA5 monthly pressure-level workflow semantics
+- The workflow labels t850, z500, and z950 refer to official ERA5 monthly pressure-level products.
+- The downloader retrieves the official raw ERA5 pressure-level fields exactly as delivered by CDS.
+- t850 refers to temperature at the 850 hPa pressure level.
+- z500 refers to geopotential at the 500 hPa pressure level.
+- z950 refers to geopotential at the 950 hPa pressure level.
+- If any later scientific conversion is needed, that conversion belongs to the analysis stage, not to the downloader.
