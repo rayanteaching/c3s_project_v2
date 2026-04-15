@@ -55,3 +55,10 @@ Do not track:
 - For this monthly product, total_precipitation must be interpreted carefully during analysis.
 - A dedicated conversion rule may be required later when deriving analysis-ready monthly precipitation quantities.
 - The downloader itself is responsible only for retrieving and verifying the official raw files, not for scientific conversion.
+
+
+
+## ERA5 monthly z500 semantics
+- The workflow label z500 refers to ERA5 monthly geopotential at the 500 hPa pressure level.
+- The downloader retrieves the official raw geopotential field from the ERA5 monthly pressure-level dataset.
+- If geopotential height is needed later, that conversion belongs to the analysis stage, not to the downloader.
