@@ -40,16 +40,16 @@ Do not track:
 - Official WSL CDS ERA5 netcheck script has been committed and succeeded.
 - Official ERA5 monthly total precipitation download completed successfully for 2000-2025.
 - Official ERA5 monthly 2m temperature download completed successfully for 2000-2025.
-- Inventory snapshots exist for ERA5 monthly tp and ERA5 monthly t2m.
-- Official ERA5 monthly ws10m production run is currently running.
+- Official ERA5 monthly 10m wind speed download completed successfully for 2000-2025.
+- Inventory snapshots exist for ERA5 monthly tp, t2m, and ws10m.
 - Prepared but not yet executed production runs exist for ERA5 monthly z500, t850, and z950.
 
+
 ## Immediate next step
-1. Monitor the running ERA5 monthly ws10m download until completion.
-2. Formally close the ws10m milestone in Git.
-3. Start the prepared ERA5 monthly z500 production run.
-4. After z500, continue with the prepared ERA5 monthly t850 run.
-5. After t850, continue with the prepared ERA5 monthly z950 run.
+
+1. Start the prepared ERA5 monthly z500 production run.
+2. After z500 is complete and formally closed, continue with the prepared ERA5 monthly t850 run.
+3. After t850 is complete and formally closed, continue with the prepared ERA5 monthly z950 run.
 
 ## Standard session report
 Always provide the following before continuing work:

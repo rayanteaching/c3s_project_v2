@@ -1,6 +1,6 @@
 {
   "run": "2026-04-14_era5_ws10m_monthly_2000_2025",
-  "result": "running",
-  "reason": "Official ERA5 monthly 10m wind speed production run has started on WSL.",
-  "next_action": "Monitor log output, verify completion, build inventory snapshot, and formally close the milestone in Git."
+  "result": "success",
+  "reason": "Official ERA5 monthly 10m wind speed download completed successfully on WSL for 2000-2025 and the final year verification passed.",
+  "next_action": "Build an inventory snapshot, update project status, and start the prepared z500 production run."
 }
