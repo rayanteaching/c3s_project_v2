@@ -2,5 +2,6 @@
   "run": "2026-04-14_era5_t2m_monthly_2000_2025",
   "result": "success",
   "reason": "Official ERA5 monthly 2m temperature download completed successfully on WSL for 2000-2025 and the final year verification passed.",
-  "next_action": "Build an inventory snapshot, update project status, and start the prepared ws10m production run."
+  "next_action": "Continue monitoring the running ws10m production run and keep the prepared pressure-level downloaders ready for later execution."
 }
+
