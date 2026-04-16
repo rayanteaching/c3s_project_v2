@@ -1,6 +1,6 @@
 {
   "run": "2026-04-15_era5_t850_monthly_2000_2025",
-  "result": "prepared",
-  "reason": "Official ERA5 monthly t850 production run metadata and downloader are ready on WSL.",
-  "next_action": "Start the production run after the currently running ws10m milestone is formally closed."
+  "result": "started",
+  "reason": "Official ERA5 monthly t850 production run has started on WSL.",
+  "next_action": "Monitor the run until completion, then build the inventory snapshot and formally close the milestone in Git."
 }
