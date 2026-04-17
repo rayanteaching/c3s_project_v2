@@ -71,3 +71,53 @@ Do not track:
 - z500 refers to geopotential at the 500 hPa pressure level.
 - z950 refers to geopotential at the 950 hPa pressure level.
 - If any later scientific conversion is needed, that conversion belongs to the analysis stage, not to the downloader.
+
+## ERA5 monthly QC policy
+
+### QC layers
+- ERA5 monthly collection QC must be performed in two layers:
+  1. Structural QC
+  2. Scientific sanity QC
+
+### Structural QC pass criteria
+- Each completed ERA5 monthly dataset must contain exactly 312 `.grib` files for 2000-2025.
+- Each `.grib` file must have a matching `.request.json` sidecar.
+- Each `.grib` file must have a matching `.sha256` sidecar.
+- The tracked inventory snapshot must match the final file collection on disk.
+- No orphan sidecar files are allowed.
+- No missing months are allowed.
+
+### Scientific sanity QC pass criteria
+- Scientific sanity QC must be documented and tracked before merging the full ERA5 monthly collection milestone.
+- The sanity check must use the official raw files only.
+- The sanity check must not silently convert scientific units without documenting the rule.
+
+#### tp
+- `tp` must be treated as the official raw monthly product delivered by CDS.
+- No negative values are acceptable in the sanity summary.
+- Any later conversion into analysis-ready monthly precipitation quantities must be documented separately.
+
+#### t2m
+- `t2m` must be interpreted in Kelvin unless an explicit documented conversion is applied.
+- The monthly series and annual cycle must be physically plausible over the Northern Hemisphere.
+
+#### ws10m
+- `ws10m` must remain non-negative.
+- The monthly series and annual cycle must be physically plausible over the Northern Hemisphere.
+
+#### z500
+- `z500` in this workflow is the raw ERA5 geopotential field, not geopotential height.
+- Any conversion from geopotential to geopotential height must be documented explicitly.
+- The monthly series and annual cycle must be physically plausible over the Northern Hemisphere.
+
+#### t850
+- `t850` must be interpreted in Kelvin unless an explicit documented conversion is applied.
+- The monthly series and annual cycle must be physically plausible over the Northern Hemisphere.
+
+#### z950
+- `z950` in this workflow is the raw ERA5 geopotential field, not geopotential height.
+- Any conversion from geopotential to geopotential height must be documented explicitly.
+- The monthly series and annual cycle must be physically plausible over the Northern Hemisphere.
+
+### Merge rule
+- The ERA5 monthly collection must not be merged before QC outputs, QC report, tracked plots, and updated run metadata are committed.

@@ -1,2 +1,5 @@
 python scripts/qc/20_check_era5_collection_structure.py
 python scripts/qc/21_build_era5_monthly_sanity_summary.py
+
+python scripts/qc/20_check_era5_collection_structure.py
+python scripts/qc/21_build_era5_monthly_sanity_summary.py
