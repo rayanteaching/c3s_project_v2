@@ -50,13 +50,20 @@ Do not track:
 - Inventory snapshots exist for all completed ERA5 monthly variables.
 - Run metadata exists for all completed ERA5 monthly runs.
 - The ERA5 monthly collection milestone is formally closed in Git.
+- Structural QC for the full ERA5 monthly collection passed and is tracked under runs/2026-04-17_era5_monthly_qc_full/.
+- Scientific sanity QC for the full ERA5 monthly collection passed and produced tracked tables, plots, and a report.
+- The ERA5 monthly collection is ready for merge review before seasonal work starts.
 - The next project phase has not started yet.
 
 ## Immediate next step
-1. Choose the first seasonal forecast dataset/system to collect.
-2. Prepare the corresponding downloader, run metadata, and inventory plan.
-3. Start the first seasonal production workflow on WSL.
-4. Continue using the same milestone-closure discipline in Git.
+
+1. Review the tracked ERA5 monthly QC outputs.
+2. Perform the formal merge workflow for the completed ERA5 monthly phase.
+3. Begin the seasonal-data phase from the clean, QC-verified baseline.
+4. Choose the first seasonal forecast dataset/system to collect.
+5. Prepare the corresponding downloader, run metadata, and inventory plan.
+6. Start the first seasonal production workflow on WSL.
+7. Continue using the same milestone-closure discipline in Git.
 
 ## Standard session report
 Always provide the following before continuing work:

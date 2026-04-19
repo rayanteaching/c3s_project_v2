@@ -1,6 +1,6 @@
 {
   "run": "2026-04-17_era5_monthly_qc_full",
-  "result": "running",
-  "reason": "ERA5 monthly structural QC passed successfully for tp, t2m, ws10m, z500, t850, and z950 on WSL. Scientific sanity QC is the next step.",
-  "next_action": "Create and run the scientific sanity QC summary and tracked plots."
+  "result": "success",
+  "reason": "ERA5 monthly structural QC and scientific sanity QC both passed successfully on WSL. Tracked summary tables, plots, and the QC report were generated for tp, t2m, ws10m, z500, t850, and z950.",
+  "next_action": "Update project status and handoff, then prepare the repository for merge and the next seasonal-data phase."
 }
