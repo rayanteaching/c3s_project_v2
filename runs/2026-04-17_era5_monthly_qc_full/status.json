@@ -1,6 +1,6 @@
 {
   "run": "2026-04-17_era5_monthly_qc_full",
   "result": "running",
-  "reason": "ERA5 monthly collection QC has started on WSL. Structural QC will be executed first, followed by scientific sanity QC.",
-  "next_action": "Create and run the structural QC checker, then review and track the generated outputs."
+  "reason": "ERA5 monthly structural QC passed successfully for tp, t2m, ws10m, z500, t850, and z950 on WSL. Scientific sanity QC is the next step.",
+  "next_action": "Create and run the scientific sanity QC summary and tracked plots."
 }
