@@ -1,0 +1,158 @@
+{
+  "run": "2026-04-17_era5_monthly_qc_full",
+  "checked_at_utc": "2026-04-19T11:09:10Z",
+  "expected_year_range": "2000-2025",
+  "expected_count_per_dataset": 312,
+  "sanity_passed": true,
+  "dataset_summaries": [
+    {
+      "dataset": "tp",
+      "root": "/mnt/e/last-aticol/data/raw/era5/single-levels/total_precipitation/monthly",
+      "units": "m",
+      "count": 312,
+      "start_date": "2000-01",
+      "end_date": "2025-12",
+      "all_finite": true,
+      "coverage_complete": true,
+      "mean_nonnegative_check": true,
+      "mean_range_check": true,
+      "seasonal_cycle_check": true,
+      "min_domain_mean": 0.00212560738015417,
+      "max_domain_mean": 0.0038577585351636545,
+      "mean_of_domain_mean": 0.0030452082308941356,
+      "min_of_domain_min": 0.0,
+      "max_of_domain_max": 0.10013961791992188,
+      "climatology_amplitude": 0.0014825249605721989,
+      "passed": true
+    },
+    {
+      "dataset": "t2m",
+      "root": "/mnt/e/last-aticol/data/raw/era5/single-levels/2m_temperature/monthly",
+      "units": "K",
+      "count": 312,
+      "start_date": "2000-01",
+      "end_date": "2025-12",
+      "all_finite": true,
+      "coverage_complete": true,
+      "mean_nonnegative_check": true,
+      "mean_range_check": true,
+      "seasonal_cycle_check": true,
+      "min_domain_mean": 281.52942314336303,
+      "max_domain_mean": 295.48175067438865,
+      "mean_of_domain_mean": 288.7239836161035,
+      "min_of_domain_min": 222.2910614013672,
+      "max_of_domain_max": 316.150146484375,
+      "climatology_amplitude": 12.631134515334509,
+      "passed": true
+    },
+    {
+      "dataset": "ws10m",
+      "root": "/mnt/e/last-aticol/data/raw/era5/single-levels/10m_wind_speed/monthly",
+      "units": "m s**-1",
+      "count": 312,
+      "start_date": "2000-01",
+      "end_date": "2025-12",
+      "all_finite": true,
+      "coverage_complete": true,
+      "mean_nonnegative_check": true,
+      "mean_range_check": true,
+      "seasonal_cycle_check": true,
+      "min_domain_mean": 4.669780154186061,
+      "max_domain_mean": 6.150278074156712,
+      "mean_of_domain_mean": 5.324683788216205,
+      "min_of_domain_min": 0.44164180755615234,
+      "max_of_domain_max": 17.522024154663086,
+      "climatology_amplitude": 1.0889765675941332,
+      "passed": true
+    },
+    {
+      "dataset": "z500",
+      "root": "/mnt/e/last-aticol/data/raw/era5/pressure-levels/geopotential/500hPa/monthly",
+      "units": "m**2 s**-2",
+      "count": 312,
+      "start_date": "2000-01",
+      "end_date": "2025-12",
+      "all_finite": true,
+      "coverage_complete": true,
+      "mean_nonnegative_check": true,
+      "mean_range_check": true,
+      "seasonal_cycle_check": true,
+      "min_domain_mean": 54941.47528960526,
+      "max_domain_mean": 57084.91574563652,
+      "mean_of_domain_mean": 55942.692302858406,
+      "min_of_domain_min": 47370.3125,
+      "max_of_domain_max": 58604.97265625,
+      "climatology_amplitude": 1841.3946092277329,
+      "passed": true
+    },
+    {
+      "dataset": "t850",
+      "root": "/mnt/e/last-aticol/data/raw/era5/pressure-levels/temperature/850hPa/monthly",
+      "units": "K",
+      "count": 312,
+      "start_date": "2000-01",
+      "end_date": "2025-12",
+      "all_finite": true,
+      "coverage_complete": true,
+      "mean_nonnegative_check": true,
+      "mean_range_check": true,
+      "seasonal_cycle_check": true,
+      "min_domain_mean": 276.708244412689,
+      "max_domain_mean": 289.4828745074429,
+      "mean_of_domain_mean": 282.86021370506364,
+      "min_of_domain_min": 238.0930633544922,
+      "max_of_domain_max": 308.485595703125,
+      "climatology_amplitude": 11.32711787421681,
+      "passed": true
+    },
+    {
+      "dataset": "z950",
+      "root": "/mnt/e/last-aticol/data/raw/era5/pressure-levels/geopotential/950hPa/monthly",
+      "units": "m**2 s**-2",
+      "count": 312,
+      "start_date": "2000-01",
+      "end_date": "2025-12",
+      "all_finite": true,
+      "coverage_complete": true,
+      "mean_nonnegative_check": true,
+      "mean_range_check": true,
+      "seasonal_cycle_check": true,
+      "min_domain_mean": 5274.67773994214,
+      "max_domain_mean": 5461.156339426127,
+      "mean_of_domain_mean": 5373.445341299397,
+      "min_of_domain_min": 2271.658447265625,
+      "max_of_domain_max": 7248.177734375,
+      "climatology_amplitude": 69.88474218062038,
+      "passed": true
+    }
+  ],
+  "plot_registry": {
+    "tp": {
+      "timeseries": "runs/2026-04-17_era5_monthly_qc_full/plots/tp_domain_mean_timeseries.png",
+      "climatology": "runs/2026-04-17_era5_monthly_qc_full/plots/tp_monthly_climatology.png"
+    },
+    "t2m": {
+      "timeseries": "runs/2026-04-17_era5_monthly_qc_full/plots/t2m_domain_mean_timeseries.png",
+      "climatology": "runs/2026-04-17_era5_monthly_qc_full/plots/t2m_monthly_climatology.png"
+    },
+    "ws10m": {
+      "timeseries": "runs/2026-04-17_era5_monthly_qc_full/plots/ws10m_domain_mean_timeseries.png",
+      "climatology": "runs/2026-04-17_era5_monthly_qc_full/plots/ws10m_monthly_climatology.png"
+    },
+    "z500": {
+      "timeseries": "runs/2026-04-17_era5_monthly_qc_full/plots/z500_domain_mean_timeseries.png",
+      "climatology": "runs/2026-04-17_era5_monthly_qc_full/plots/z500_monthly_climatology.png"
+    },
+    "t850": {
+      "timeseries": "runs/2026-04-17_era5_monthly_qc_full/plots/t850_domain_mean_timeseries.png",
+      "climatology": "runs/2026-04-17_era5_monthly_qc_full/plots/t850_monthly_climatology.png"
+    },
+    "z950": {
+      "timeseries": "runs/2026-04-17_era5_monthly_qc_full/plots/z950_domain_mean_timeseries.png",
+      "climatology": "runs/2026-04-17_era5_monthly_qc_full/plots/z950_monthly_climatology.png"
+    }
+  },
+  "timeseries_csv": "runs/2026-04-17_era5_monthly_qc_full/sanity_qc_timeseries.csv",
+  "summary_csv": "runs/2026-04-17_era5_monthly_qc_full/sanity_qc_dataset_summary.csv",
+  "report_path": "docs/qc/ERA5_MONTHLY_QC_REPORT.md"
+}

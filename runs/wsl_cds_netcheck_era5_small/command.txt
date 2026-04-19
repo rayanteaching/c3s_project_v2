@@ -1,0 +1,1 @@
+python scripts/netcheck/00_cds_netcheck_small_era5.py

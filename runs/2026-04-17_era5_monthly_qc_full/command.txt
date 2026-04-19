@@ -1,0 +1,26 @@
+python scripts/qc/20_check_era5_collection_structure.py
+python scripts/qc/21_build_era5_monthly_sanity_summary.py
+
+python scripts/qc/20_check_era5_collection_structure.py
+python scripts/qc/21_build_era5_monthly_sanity_summary.py
+
+cd /home/fibi/projects/c3s_project_v2
+
+/home/fibi/projects/c3s_project_v2/scripts/qc/20_check_era5_collection_structure.py
+
+cat /home/fibi/projects/c3s_project_v2/runs/2026-04-17_era5_monthly_qc_full/structure_qc_summary.csv
+
+python -m json.tool /home/fibi/projects/c3s_project_v2/runs/2026-04-17_era5_monthly_qc_full/structure_qc_details.json | sed -n '1,260p'
+
+/home/fibi/projects/c3s_project_v2/scripts/qc/21_build_era5_monthly_sanity_summary.py
+
+cat /home/fibi/projects/c3s_project_v2/runs/2026-04-17_era5_monthly_qc_full/sanity_qc_dataset_summary.csv
+
+head -n 20 /home/fibi/projects/c3s_project_v2/runs/2026-04-17_era5_monthly_qc_full/sanity_qc_timeseries.csv
+tail -n 20 /home/fibi/projects/c3s_project_v2/runs/2026-04-17_era5_monthly_qc_full/sanity_qc_timeseries.csv
+
+python -m json.tool /home/fibi/projects/c3s_project_v2/runs/2026-04-17_era5_monthly_qc_full/sanity_qc_details.json | sed -n '1,260p'
+
+ls -lh /home/fibi/projects/c3s_project_v2/runs/2026-04-17_era5_monthly_qc_full/plots
+
+sed -n '1,260p' /home/fibi/projects/c3s_project_v2/docs/qc/ERA5_MONTHLY_QC_REPORT.md

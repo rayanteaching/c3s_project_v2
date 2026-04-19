@@ -1,0 +1,6 @@
+{
+  "run": "2026-04-15_era5_t850_monthly_2000_2025",
+  "result": "success",
+  "reason": "Official ERA5 monthly t850 download completed successfully on WSL for 2000-2025 and the final year verification passed.",
+  "next_action": "Start the prepared ERA5 monthly z950 production run."
+}
