@@ -1,6 +1,6 @@
 {
   "run": "2026-04-17_era5_monthly_qc_full",
-  "result": "prepared",
-  "reason": "Tracked QC milestone created for the completed ERA5 monthly collection.",
-  "next_action": "Add QC scripts and run structural and scientific sanity checks before merge."
+  "result": "running",
+  "reason": "ERA5 monthly collection QC has started on WSL. Structural QC will be executed first, followed by scientific sanity QC.",
+  "next_action": "Create and run the structural QC checker, then review and track the generated outputs."
 }
