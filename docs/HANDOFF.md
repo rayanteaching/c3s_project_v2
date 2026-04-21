@@ -33,37 +33,29 @@ Do not track:
 
 ## Current confirmed state
 - Clean repository bootstrap on WSL is complete.
-- Git branches main and dev exist.
+- Git branches main and dev exist and are currently aligned at the ERA5 merge commit.
 - Large datasets are stored under /mnt/e/last-aticol.
 - Miniforge is installed under /home/fibi/miniforge3.
 - Conda environment cds_env exists and is functional.
 - Required workflow packages are installed.
 - Official WSL CDS ERA5 netcheck script has been committed and succeeded.
 - Official ERA5 monthly collection is complete for all required variables for 2000-2025.
-- Completed ERA5 monthly variables:
-  - tp
-  - t2m
-  - ws10m
-  - z500
-  - t850
-  - z950
-- Inventory snapshots exist for all completed ERA5 monthly variables.
-- Run metadata exists for all completed ERA5 monthly runs.
-- The ERA5 monthly collection milestone is formally closed in Git.
-- Structural QC for the full ERA5 monthly collection passed and is tracked under runs/2026-04-17_era5_monthly_qc_full/.
-- Scientific sanity QC for the full ERA5 monthly collection passed and produced tracked tables, plots, and a report.
-- The ERA5 monthly collection is ready for merge review before seasonal work starts.
-- The next project phase has not started yet.
+- Structural QC for the full ERA5 monthly collection passed and is tracked.
+- Scientific sanity QC for the full ERA5 monthly collection passed and is tracked.
+- The ERA5 monthly collection and QC phase has been merged into main.
+- Seasonal forecast work has not started yet.
+- The next active phase is seasonal forecast collection planning from the merged ERA5 baseline.
+- The first seasonal target is ECMWF on the C3S monthly seasonal archives.
 
 ## Immediate next step
-
-1. Review the tracked ERA5 monthly QC outputs.
-2. Perform the formal merge workflow for the completed ERA5 monthly phase.
-3. Begin the seasonal-data phase from the clean, QC-verified baseline.
-4. Choose the first seasonal forecast dataset/system to collect.
-5. Prepare the corresponding downloader, run metadata, and inventory plan.
-6. Start the first seasonal production workflow on WSL.
+1. Add tracked seasonal planning and configuration files.
+2. Define the ECMWF-first seasonal download policy explicitly in Git.
+3. Add an official ECMWF seasonal smoke test.
+4. Add the first official ECMWF seasonal downloader.
+5. Create run metadata before execution.
+6. Start the first seasonal workflow on WSL.
 7. Continue using the same milestone-closure discipline in Git.
+
 
 ## Standard session report
 Always provide the following before continuing work:
