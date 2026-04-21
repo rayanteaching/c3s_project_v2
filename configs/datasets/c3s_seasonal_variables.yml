@@ -1,0 +1,43 @@
+single_levels:
+  t2m:
+    cds_variable: 2m_temperature
+    dataset: seasonal-monthly-single-levels
+    level_label: surface
+    units: K
+
+  ws10m:
+    cds_variable: 10m_wind_speed
+    dataset: seasonal-monthly-single-levels
+    level_label: surface
+    units: m s-1
+
+  tp:
+    cds_variable: total_precipitation
+    dataset: seasonal-monthly-single-levels
+    level_label: surface
+    units: m s-1
+    note: raw monthly archive quantity only; conversion belongs to analysis stage
+
+pressure_levels:
+  z500:
+    cds_variable: geopotential
+    dataset: seasonal-monthly-pressure-levels
+    pressure_level: "500"
+    level_label: 500hPa
+    units: m2 s-2
+    note: raw geopotential, not geopotential height
+
+  t850:
+    cds_variable: temperature
+    dataset: seasonal-monthly-pressure-levels
+    pressure_level: "850"
+    level_label: 850hPa
+    units: K
+
+  z950:
+    cds_variable: geopotential
+    dataset: seasonal-monthly-pressure-levels
+    pressure_level: "950"
+    level_label: 950hPa
+    units: m2 s-2
+    note: raw geopotential, not geopotential height
