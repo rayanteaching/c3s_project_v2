@@ -4,46 +4,21 @@ seasonal_systems:
     system: "51"
     label: "ECMWF SEAS5.1"
     status: active_bootstrap_target
-    hindcast_year_start: 1993
-    hindcast_year_end: 2016
-    forecast_year_start: 2017
-    forecast_year_end: 2025
     is_lagged: false
+    hindcast_production: fixed
+    available_hindcast_year_start: 1981
+    available_hindcast_year_end: 2016
+    available_forecast_year_start: 2017
+    available_forecast_year_end: 2025
+    project_hindcast_year_start: 2000
+    project_hindcast_year_end: 2016
+    project_forecast_year_start: 2017
+    project_forecast_year_end: 2025
+    hindcast_member_count: 25
+    forecast_member_count: 51
     datasets:
       single_levels: seasonal-monthly-single-levels
       pressure_levels: seasonal-monthly-pressure-levels
 
-  ukmo:
-    originating_centre: ukmo
-    system: "603"
-    label: "UK Met Office GloSea6"
-    status: planned
-    is_lagged: true
-
-  dwd:
-    originating_centre: dwd
-    system: "21"
-    label: "DWD GCFS2.1"
-    status: planned
-    is_lagged: false
-
-  cmcc:
-    originating_centre: cmcc
-    system: "35"
-    label: "CMCC SPS3.5"
-    status: planned
-    is_lagged: false
-
-  meteofrance:
-    originating_centre: meteo_france
-    system: "8"
-    label: "Meteo-France System 8"
-    status: planned
-    is_lagged: false
-
-  ncep:
-    originating_centre: ncep
-    system: "2"
-    label: "NCEP CFSv2"
-    status: planned
-    is_lagged: false
+deferred_other_centres:
+  note: "Other centres are intentionally deferred until their period-specific system mapping is validated and committed."

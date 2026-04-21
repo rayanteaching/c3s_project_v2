@@ -7,39 +7,44 @@
 - Repository bootstrap completed
 - Environment setup completed
 - CDS netcheck completed successfully
-- ERA5 monthly collection completed successfully for all required variables (tp, t2m, ws10m, z500, t850, and z950)
+- ERA5 monthly collection completed successfully for all required variables
 - ERA5 monthly structural QC passed
 - ERA5 monthly scientific sanity QC passed
 - ERA5 monthly collection was merged into main
-- Seasonal forecast collection planning is now the active phase
-- First seasonal target: ECMWF monthly seasonal archives on C3S
+- Seasonal forecast planning is active
+- Seasonal bootstrap is restricted to ECMWF only
+- Seasonal bootstrap will start with monthly single-level archives
+- Seasonal pressure-level work is deferred until the 925-vs-supervisor-level decision is documented
+- Hindcast and forecast requests will be separated operationally
 
 ## Confirmed facts
 - Repository root: /home/fibi/projects/c3s_project_v2
 - Raw data root: /mnt/e/last-aticol/data/raw
 - Processed data root: /mnt/e/last-aticol/data/processed
-- Git branches main and dev exist and currently point to the same merge commit
-- Miniforge is installed at /home/fibi/miniforge3
-- Conda environment cds_env exists and works
-- Core workflow packages are installed
-- Official WSL CDS ERA5 netcheck succeeded
-- Official ERA5 monthly collection and QC baseline is closed and merged
-- Seasonal monthly download phase has not started yet
-- Seasonal work will begin from the merged ERA5 baseline
+- Git branches main and dev exist
+- ECMWF seasonal bootstrap target is system 51
+- Project seasonal hindcast target is 2000-2016
+- Project seasonal forecast target is 2017-2025
+- Seasonal bootstrap product type is monthly_mean
+- Seasonal bootstrap format is GRIB
+- Seasonal work has not started yet
+- No seasonal smoke test has been committed yet
+- No seasonal downloader has been committed yet
 
 ## Current blockers
 - No current WSL CDS connectivity blocker
 - No open ERA5 blocker
-- No current seasonal download blocker identified yet
-- Seasonal ECMWF smoke test and downloader bootstrap have not yet been created
+- Seasonal operational files still need correction before execution
+- Seasonal smoke test and first downloader are not yet committed
 
 ## Next action
-1. Refresh tracked project state after the ERA5 merge
-2. Add tracked seasonal planning/config files for ECMWF
-3. Add an official ECMWF seasonal smoke test on C3S monthly single levels
-4. Add the first official ECMWF seasonal downloader
-5. Commit run metadata before execution
-6. Start the first seasonal production workflow on WSL
+1. Correct and commit the seasonal policy/config files
+2. Add an official ECMWF seasonal smoke test
+3. Add the first official ECMWF monthly single-level downloader
+4. Commit hindcast and forecast run metadata separately before execution
+5. Start the hindcast bootstrap run
+6. Start the forecast bootstrap run
+7. Track inventory and close the milestone formally in Git
 
 ## Last verified commit
-- f35ad85
+- e070f4d

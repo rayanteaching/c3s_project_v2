@@ -1,4 +1,4 @@
-single_levels:
+bootstrap_single_levels:
   t2m:
     cds_variable: 2m_temperature
     dataset: seasonal-monthly-single-levels
@@ -18,7 +18,7 @@ single_levels:
     units: m s-1
     note: raw monthly archive quantity only; conversion belongs to analysis stage
 
-pressure_levels:
+deferred_pressure_levels:
   z500:
     cds_variable: geopotential
     dataset: seasonal-monthly-pressure-levels
@@ -34,10 +34,10 @@ pressure_levels:
     level_label: 850hPa
     units: K
 
-  z950:
+  z925:
     cds_variable: geopotential
     dataset: seasonal-monthly-pressure-levels
-    pressure_level: "950"
-    level_label: 950hPa
+    pressure_level: "925"
+    level_label: 925hPa
     units: m2 s-2
-    note: raw geopotential, not geopotential height
+    note: deferred seasonal pressure-level candidate pending final repo decision against the supervisor wording z950

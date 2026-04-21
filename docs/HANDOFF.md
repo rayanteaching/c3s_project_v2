@@ -1,4 +1,4 @@
-# Handoff   
+# Handoff
 
 ## Project identity
 - Name: c3s_project_v2
@@ -33,29 +33,25 @@ Do not track:
 
 ## Current confirmed state
 - Clean repository bootstrap on WSL is complete.
-- Git branches main and dev exist and are currently aligned at the ERA5 merge commit.
-- Large datasets are stored under /mnt/e/last-aticol.
-- Miniforge is installed under /home/fibi/miniforge3.
-- Conda environment cds_env exists and is functional.
-- Required workflow packages are installed.
-- Official WSL CDS ERA5 netcheck script has been committed and succeeded.
-- Official ERA5 monthly collection is complete for all required variables for 2000-2025.
-- Structural QC for the full ERA5 monthly collection passed and is tracked.
-- Scientific sanity QC for the full ERA5 monthly collection passed and is tracked.
-- The ERA5 monthly collection and QC phase has been merged into main.
-- Seasonal forecast work has not started yet.
-- The next active phase is seasonal forecast collection planning from the merged ERA5 baseline.
-- The first seasonal target is ECMWF on the C3S monthly seasonal archives.
+- The ERA5 monthly baseline is complete, QC-verified, and merged.
+- Seasonal work has not started yet.
+- Seasonal bootstrap is intentionally restricted to ECMWF only.
+- ECMWF seasonal bootstrap uses C3S system 51.
+- Seasonal bootstrap starts with monthly single-level archives only.
+- Seasonal pressure-level work is deferred until the pressure-level requirement is documented cleanly against CDS monthly availability.
+- Seasonal hindcasts and forecasts will be requested separately.
+- Project seasonal hindcast target is 2000-2016.
+- Project seasonal forecast target is 2017-2025.
+- GRIB is the operational download format.
 
 ## Immediate next step
-1. Add tracked seasonal planning and configuration files.
-2. Define the ECMWF-first seasonal download policy explicitly in Git.
-3. Add an official ECMWF seasonal smoke test.
-4. Add the first official ECMWF seasonal downloader.
-5. Create run metadata before execution.
-6. Start the first seasonal workflow on WSL.
-7. Continue using the same milestone-closure discipline in Git.
-
+1. Correct and commit the seasonal configuration and policy files.
+2. Add an official ECMWF seasonal smoke test.
+3. Add the first official ECMWF monthly single-level downloader.
+4. Create separate run metadata for hindcast and forecast execution.
+5. Start the hindcast bootstrap workflow on WSL.
+6. Start the forecast bootstrap workflow on WSL.
+7. Continue with the same Git milestone-closure discipline.
 
 ## Standard session report
 Always provide the following before continuing work:
@@ -69,4 +65,3 @@ If a run exists, also provide:
 
 If environment work was done, also provide:
 - conda env list
-
