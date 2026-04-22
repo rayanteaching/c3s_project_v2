@@ -57,4 +57,4 @@
 6. Close the first ECMWF seasonal monthly single-level milestone formally in Git
 
 ## Last verified commit
-- 8147cb5
+- d7d41b2
