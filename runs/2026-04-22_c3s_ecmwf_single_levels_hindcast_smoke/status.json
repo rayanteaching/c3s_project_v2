@@ -2,5 +2,7 @@
   "run": "2026-04-22_c3s_ecmwf_single_levels_hindcast_smoke",
   "result": "success",
   "reason": "ECMWF system 51 seasonal monthly single-level hindcast smoke test succeeded for project year 2000 with GRIB, request sidecar, and SHA256 sidecar created.",
-  "next_action": "Execute the forecast smoke test for the first project forecast year."
+  "next_action": "Hindcast smoke validation is complete. Forecast smoke validation was later executed successfully in its dedicated run metadata."
 }
+
+

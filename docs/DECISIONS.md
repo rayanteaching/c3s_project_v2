@@ -1,5 +1,8 @@
 # Decisions
 
+## Pre-read rule:
+Before any continuation step, always read the current project decision, policy, handoff, status, known-issues, and active dataset-config files from the repository. Continuation must rely on repository state, not chat memory.
+
 ## Repository tracking policy
 Track all lightweight, text-based, workflow-critical files that are needed to understand, reproduce, verify, continue, or audit the project.
 
