@@ -1,0 +1,6 @@
+/home/fibi/projects/c3s_project_v2/scripts/netcheck/10_c3s_seasonal_ecmwf_single_levels_smoke.py \
+  --year 2000 \
+  --month 01 \
+  --leadtime-month 1 \
+  --variable 2m_temperature \
+  --out /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/smoke/cds__c3s_seasonal__monthly-single-levels__ecmwf__s51__t2m__surface__monthly_mean__2000__m01__lead1__NH0_90.grib

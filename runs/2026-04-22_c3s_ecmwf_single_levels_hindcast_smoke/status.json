@@ -1,0 +1,6 @@
+{
+  "run": "2026-04-22_c3s_ecmwf_single_levels_hindcast_smoke",
+  "result": "prepared",
+  "reason": "ECMWF seasonal monthly single-level hindcast smoke test metadata is prepared.",
+  "next_action": "Execute the hindcast smoke test and verify that GRIB, request sidecar, and SHA256 sidecar are created."
+}
