@@ -6,19 +6,19 @@ seasonal_systems:
     status: active_bootstrap_target
     is_lagged: false
     hindcast_production: fixed
-    available_hindcast_year_start: 1981
-    available_hindcast_year_end: 2016
-    available_forecast_year_start: 2017
-    available_forecast_year_end: 2025
+    documented_hindcast_year_start: 1981
+    documented_hindcast_year_end: 2016
     project_hindcast_year_start: 2000
     project_hindcast_year_end: 2016
     project_forecast_year_start: 2017
     project_forecast_year_end: 2025
     hindcast_member_count: 25
     forecast_member_count: 51
+    bootstrap_assumption_forecast_system_2017_2025: true
+    bootstrap_assumption_note: "Repository bootstrap proceeds by requesting ECMWF system 51 for forecast years 2017-2025. This is a working repository assumption to be checked by smoke tests and first production retrievals. A period-specific forecast-system manifest may still be required later for scientific evaluation."
     datasets:
       single_levels: seasonal-monthly-single-levels
       pressure_levels: seasonal-monthly-pressure-levels
 
 deferred_other_centres:
-  note: "Other centres are intentionally deferred until their period-specific system mapping is validated and committed."
+  note: "Other centres remain deferred until period-specific system mapping and issue registration are validated and committed."

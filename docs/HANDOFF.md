@@ -38,20 +38,23 @@ Do not track:
 - Seasonal bootstrap is intentionally restricted to ECMWF only.
 - ECMWF seasonal bootstrap uses C3S system 51.
 - Seasonal bootstrap starts with monthly single-level archives only.
+- For project forecast years 2017-2025, the use of ECMWF system 51 is currently a working repository assumption for bootstrap execution and later validation.
 - Seasonal pressure-level work is deferred until the pressure-level requirement is documented cleanly against CDS monthly availability.
+- The repository seasonal pressure-level substitute is z925, not z950.
+- Matching ERA5 monthly z925 must be downloaded later before seasonal pressure-level verification begins.
 - Seasonal hindcasts and forecasts will be requested separately.
 - Project seasonal hindcast target is 2000-2016.
 - Project seasonal forecast target is 2017-2025.
 - GRIB is the operational download format.
+- A tracked seasonal known-issues register is required before any non-ECMWF centre is activated.
 
 ## Immediate next step
-1. Correct and commit the seasonal configuration and policy files.
-2. Add an official ECMWF seasonal smoke test.
-3. Add the first official ECMWF monthly single-level downloader.
-4. Create separate run metadata for hindcast and forecast execution.
-5. Start the hindcast bootstrap workflow on WSL.
-6. Start the forecast bootstrap workflow on WSL.
-7. Continue with the same Git milestone-closure discipline.
+1. Add an official ECMWF seasonal smoke test.
+2. Add the first official ECMWF monthly single-level downloader.
+3. Create separate run metadata for hindcast and forecast execution.
+4. Start the hindcast bootstrap workflow on WSL.
+5. Start the forecast bootstrap workflow on WSL.
+6. Continue with the same Git milestone-closure discipline.
 
 ## Standard session report
 Always provide the following before continuing work:
