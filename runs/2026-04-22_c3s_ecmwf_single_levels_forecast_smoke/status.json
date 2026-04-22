@@ -1,6 +1,6 @@
 {
   "run": "2026-04-22_c3s_ecmwf_single_levels_forecast_smoke",
-  "result": "prepared",
-  "reason": "ECMWF seasonal monthly single-level forecast smoke test metadata is prepared.",
-  "next_action": "Execute the forecast smoke test and verify whether the repository bootstrap assumption for system 51 succeeds on the first project forecast year."
+  "result": "success",
+  "reason": "ECMWF system 51 seasonal monthly single-level forecast smoke test succeeded for the first project forecast year 2017.",
+  "next_action": "Prepare the first grouped ECMWF monthly single-level production downloader with separate hindcast and forecast blocks."
 }
