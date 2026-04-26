@@ -1,0 +1,6 @@
+{
+  "run": "2026-04-22_c3s_ecmwf_single_levels_hindcast_2000_2016",
+  "result": "prepared",
+  "reason": "Grouped ECMWF monthly single-level hindcast production metadata is prepared.",
+  "next_action": "Start the grouped hindcast bootstrap workflow on WSL."
+}

@@ -194,3 +194,64 @@ Before moving to the next meaningful step, do all applicable items below:
 - Do not rely on memory for operational details.
 - If a command is likely to be reused, store it here.
 - If a detail belongs to a single execution only, store it under `runs/<run_name>/`.
+
+## ECMWF seasonal monthly single-level grouped production
+
+Script:
+- `scripts/download/20_download_c3s_ecmwf_single_levels_monthly_grib_cli.py`
+
+Hindcast production command:
+
+```bash
+nohup /home/fibi/projects/c3s_project_v2/scripts/download/20_download_c3s_ecmwf_single_levels_monthly_grib_cli.py \
+  --start-year 2000 \
+  --end-year 2016 \
+  --out-root /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/hindcast_2000_2016 \
+  --skip-existing \
+  > /home/fibi/projects/c3s_project_v2/logs/c3s_ecmwf_single_levels_hindcast_2000_2016.log 2>&1 &
+```
+
+Forecast production command:
+
+```bash
+nohup /home/fibi/projects/c3s_project_v2/scripts/download/20_download_c3s_ecmwf_single_levels_monthly_grib_cli.py \
+  --start-year 2017 \
+  --end-year 2025 \
+  --out-root /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/forecast_2017_2025 \
+  --skip-existing \
+  > /home/fibi/projects/c3s_project_v2/logs/c3s_ecmwf_single_levels_forecast_2017_2025.log 2>&1 &
+```
+
+Monitor:
+
+```bash
+ps -ef | grep 20_download_c3s_ecmwf_single_levels_monthly_grib_cli.py | grep -v grep
+tail -n 80 -f /home/fibi/projects/c3s_project_v2/logs/c3s_ecmwf_single_levels_hindcast_2000_2016.log
+tail -n 80 -f /home/fibi/projects/c3s_project_v2/logs/c3s_ecmwf_single_levels_forecast_2017_2025.log
+```
+
+Expected grouped file count after each completed block:
+
+```bash
+find /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/hindcast_2000_2016 -maxdepth 1 -type f -name "*.grib" | wc -l
+find /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/hindcast_2000_2016 -maxdepth 1 -type f -name "*.request.json" | wc -l
+find /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/hindcast_2000_2016 -maxdepth 1 -type f -name "*.sha256" | wc -l
+
+find /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/forecast_2017_2025 -maxdepth 1 -type f -name "*.grib" | wc -l
+find /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/forecast_2017_2025 -maxdepth 1 -type f -name "*.request.json" | wc -l
+find /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/forecast_2017_2025 -maxdepth 1 -type f -name "*.sha256" | wc -l
+```
+
+Inventory commands:
+
+```bash
+/home/fibi/projects/c3s_project_v2/scripts/inventory/10_build_inventory_csv.py \
+  --root /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/hindcast_2000_2016 \
+  --pattern "*.grib" \
+  --out /home/fibi/projects/c3s_project_v2/data/inventory/c3s_ecmwf_single_levels_hindcast_2000_2016.csv
+
+/home/fibi/projects/c3s_project_v2/scripts/inventory/10_build_inventory_csv.py \
+  --root /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/forecast_2017_2025 \
+  --pattern "*.grib" \
+  --out /home/fibi/projects/c3s_project_v2/data/inventory/c3s_ecmwf_single_levels_forecast_2017_2025.csv
+```

@@ -1,0 +1,6 @@
+{
+  "run": "2026-04-22_c3s_ecmwf_single_levels_forecast_2017_2025",
+  "result": "prepared",
+  "reason": "Grouped ECMWF monthly single-level forecast production metadata is prepared.",
+  "next_action": "Start the grouped forecast bootstrap workflow on WSL."
+}
