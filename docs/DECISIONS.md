@@ -1,5 +1,8 @@
 # Decisions
 
+## Pre-read rule:
+Before any continuation step, always read the current project decision, policy, handoff, status, known-issues, and active dataset-config files from the repository. Continuation must rely on repository state, not chat memory.
+
 ## Repository tracking policy
 Track all lightweight, text-based, workflow-critical files that are needed to understand, reproduce, verify, continue, or audit the project.
 
@@ -121,3 +124,19 @@ Do not track:
 
 ### Merge rule
 - The ERA5 monthly collection must not be merged before QC outputs, QC report, tracked plots, and updated run metadata are committed.
+
+## Seasonal ECMWF bootstrap assumption
+- The seasonal bootstrap phase currently proceeds with ECMWF only.
+- The repository will request ECMWF monthly seasonal data using system=51 for both project hindcasts (2000-2016) and project forecasts (2017-2025).
+- For forecast years 2017-2025, this is a working repository assumption adopted for bootstrap execution and later validation; it is not yet a fully validated period-specific system manifest for scientific evaluation.
+- The assumption must be revisited after smoke tests and first production retrievals.
+
+## Seasonal pressure-level substitution
+- The supervisor wording includes z950, but the monthly C3S pressure-level archive spans 925 hPa to 10 hPa.
+- Therefore the repository seasonal pressure-level substitute is z925, not z950.
+- Before seasonal pressure-level verification begins, the matching ERA5 monthly z925 dataset must also be downloaded and tracked through the normal run and inventory workflow.
+
+## Seasonal known-issues register rule
+- Official C3S seasonal known issues must be copied into tracked repository documentation before a new centre or sensitive variable is activated.
+- Each affected case must be classified in the repository as allow, warn, mask, or exclude.
+- Non-ECMWF centres remain deferred until both period-specific system mapping and known-issues registration are committed.

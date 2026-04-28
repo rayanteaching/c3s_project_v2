@@ -1,0 +1,6 @@
+{
+  "run": "2026-04-22_c3s_ecmwf_single_levels_forecast_2017_2025",
+  "result": "success",
+  "reason": "Grouped ECMWF seasonal monthly single-level forecast download for 2017-2025 completed successfully with 12 GRIB files, 12 request sidecars, 12 SHA256 sidecars, and a tracked inventory snapshot.",
+  "next_action": "Update tracked project state and close the ECMWF single-level monthly bootstrap download milestone together with the hindcast block."
+}

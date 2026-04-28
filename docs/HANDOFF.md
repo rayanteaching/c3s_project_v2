@@ -1,4 +1,4 @@
-# Handoff   
+# Handoff
 
 ## Project identity
 - Name: c3s_project_v2
@@ -31,39 +31,67 @@ Do not track:
 - WSL Ubuntu is the primary download and validation environment.
 - The remote server is used later for downstream processing after verified transfer.
 
+## Mandatory pre-read before continuation
+Before any continuation, design, execution, correction, download, QC, or new decision, run:
+
+```bash
+cd /home/fibi/projects/c3s_project_v2
+
+cat docs/DECISIONS.md
+cat docs/SEASONAL_DOWNLOAD_POLICY.md
+cat docs/SEASONAL_KNOWN_ISSUES.md
+cat docs/STATUS.md
+cat docs/HANDOFF.md
+cat configs/datasets/c3s_seasonal_systems.yml
+cat configs/datasets/c3s_seasonal_variables.yml
+```
+
+Rules:
+- Continue only from the repository state read from those files.
+- If a new policy or operational file becomes part of the official workflow, add it to the pre-read list.
+- If repository state conflicts with remembered chat context, repository state is final.
+- Do not skip this step before any new production run.
+
 ## Current confirmed state
 - Clean repository bootstrap on WSL is complete.
-- Git branches main and dev exist.
-- Large datasets are stored under /mnt/e/last-aticol.
-- Miniforge is installed under /home/fibi/miniforge3.
-- Conda environment cds_env exists and is functional.
-- Required workflow packages are installed.
-- Official WSL CDS ERA5 netcheck script has been committed and succeeded.
-- Official ERA5 monthly collection is complete for all required variables for 2000-2025.
-- Completed ERA5 monthly variables:
-  - tp
-  - t2m
-  - ws10m
-  - z500
-  - t850
-  - z950
-- Inventory snapshots exist for all completed ERA5 monthly variables.
-- Run metadata exists for all completed ERA5 monthly runs.
-- The ERA5 monthly collection milestone is formally closed in Git.
-- Structural QC for the full ERA5 monthly collection passed and is tracked under runs/2026-04-17_era5_monthly_qc_full/.
-- Scientific sanity QC for the full ERA5 monthly collection passed and produced tracked tables, plots, and a report.
-- The ERA5 monthly collection is ready for merge review before seasonal work starts.
-- The next project phase has not started yet.
+- The ERA5 monthly baseline is complete, QC-verified, and merged.
+- Seasonal work has advanced through planning, smoke-test validation, and the first grouped ECMWF bootstrap download.
+- Seasonal bootstrap is intentionally restricted to ECMWF only.
+- ECMWF seasonal bootstrap uses C3S system 51.
+- Seasonal bootstrap starts with monthly single-level archives only.
+- For project forecast years 2017-2025, the use of ECMWF system 51 is currently a working repository assumption for bootstrap execution and later validation.
+- That ECMWF system-51 bootstrap assumption passed the initial smoke test for the first project forecast year 2017.
+- The ECMWF hindcast path also passed the initial smoke test for project year 2000.
+- The official smoke-test script is tracked at scripts/netcheck/10_c3s_seasonal_ecmwf_single_levels_smoke.py.
+- The official grouped production downloader is tracked at scripts/download/20_download_c3s_ecmwf_single_levels_monthly_grib_cli.py.
+- Grouped hindcast download metadata is tracked under:
+  - runs/2026-04-22_c3s_ecmwf_single_levels_hindcast_2000_2016/
+- Grouped forecast download metadata is tracked under:
+  - runs/2026-04-22_c3s_ecmwf_single_levels_forecast_2017_2025/
+- Grouped raw outputs were created successfully under:
+  - /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/hindcast_2000_2016
+  - /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/forecast_2017_2025
+- Each grouped block contains 12 GRIB files with matching request and SHA256 sidecars.
+- Tracked inventory snapshots exist for both grouped blocks.
+- The grouped ECMWF single-level bootstrap download milestone is formally closed on dev at e373eb8.
+- main is still behind dev and does not yet contain this seasonal bootstrap milestone.
+- The current task/era5-z925 branch is not clean for z925 work because it contains an accidental seasonal closure commit.
+- Seasonal pressure-level work is deferred until the repository begins the z925-based pressure-level branch.
+- The repository seasonal pressure-level substitute is z925, not z950.
+- Matching ERA5 monthly z925 must be downloaded later before seasonal pressure-level verification begins.
+- Seasonal hindcasts and forecasts are requested separately.
+- Project seasonal hindcast target is 2000-2016.
+- Project seasonal forecast target is 2017-2025.
+- GRIB is the operational download format.
+- A tracked seasonal known-issues register is required before any non-ECMWF centre is activated.
 
 ## Immediate next step
-
-1. Review the tracked ERA5 monthly QC outputs.
-2. Perform the formal merge workflow for the completed ERA5 monthly phase.
-3. Begin the seasonal-data phase from the clean, QC-verified baseline.
-4. Choose the first seasonal forecast dataset/system to collect.
-5. Prepare the corresponding downloader, run metadata, and inventory plan.
-6. Start the first seasonal production workflow on WSL.
-7. Continue using the same milestone-closure discipline in Git.
+1. Refresh RUNBOOK with grouped ECMWF production and inventory commands.
+2. Commit the refreshed project documents on dev.
+3. Merge dev into main to close the ECMWF seasonal monthly single-level bootstrap milestone cleanly at the stable branch level.
+4. Recreate a clean task/era5-z925 branch from the updated main before starting z925 work.
+5. Decide the next bootstrap step only after merge closure.
+6. Before any seasonal pressure-level verification, download and track matching ERA5 monthly z925.
 
 ## Standard session report
 Always provide the following before continuing work:
@@ -74,7 +102,7 @@ Always provide the following before continuing work:
 
 If a run exists, also provide:
 - tail -n 80 <relevant_log_file>
+- cat <relevant_status_json>
 
 If environment work was done, also provide:
 - conda env list
-

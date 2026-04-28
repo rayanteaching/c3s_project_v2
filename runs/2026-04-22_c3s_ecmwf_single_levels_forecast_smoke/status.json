@@ -1,0 +1,6 @@
+{
+  "run": "2026-04-22_c3s_ecmwf_single_levels_forecast_smoke",
+  "result": "success",
+  "reason": "ECMWF system 51 seasonal monthly single-level forecast smoke test succeeded for the first project forecast year 2017.",
+  "next_action": "Prepare the first grouped ECMWF monthly single-level production downloader with separate hindcast and forecast blocks."
+}

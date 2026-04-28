@@ -1,0 +1,48 @@
+bootstrap_single_levels:
+  t2m:
+    cds_variable: 2m_temperature
+    dataset: seasonal-monthly-single-levels
+    level_label: surface
+    units: K
+
+  ws10m:
+    cds_variable: 10m_wind_speed
+    dataset: seasonal-monthly-single-levels
+    level_label: surface
+    units: m s-1
+
+  tp:
+    cds_variable: total_precipitation
+    dataset: seasonal-monthly-single-levels
+    level_label: surface
+    units: m s-1
+    note: raw monthly archive quantity only; conversion belongs to analysis stage
+
+deferred_pressure_levels:
+  z500:
+    cds_variable: geopotential
+    dataset: seasonal-monthly-pressure-levels
+    pressure_level: "500"
+    level_label: 500hPa
+    units: m2 s-2
+    note: raw geopotential, not geopotential height
+
+  t850:
+    cds_variable: temperature
+    dataset: seasonal-monthly-pressure-levels
+    pressure_level: "850"
+    level_label: 850hPa
+    units: K
+
+  z925:
+    cds_variable: geopotential
+    dataset: seasonal-monthly-pressure-levels
+    pressure_level: "925"
+    level_label: 925hPa
+    units: m2 s-2
+    note: seasonal pressure-level substitute for the supervisor wording z950; matching ERA5 monthly z925 must be downloaded later before seasonal pressure-level verification
+
+external_requirement_note:
+  supervisor_original_pressure_level_wording: z950
+  repository_operational_pressure_level_substitute: z925
+  reason: seasonal-monthly-pressure-levels documentation spans 925 hPa to 10 hPa, not 950 hPa

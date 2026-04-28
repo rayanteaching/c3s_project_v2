@@ -7,50 +7,61 @@
 - Repository bootstrap completed
 - Environment setup completed
 - CDS netcheck completed successfully
-- ERA5 monthly collection completed successfully for all required variables (tp, t2m, ws10m, z500, t850, and z950)
+- ERA5 monthly collection completed successfully for all required variables
 - ERA5 monthly structural QC passed
 - ERA5 monthly scientific sanity QC passed
-- ERA5 monthly collection is ready for merge review
-- Seasonal forecast collection has not started yet
+- ERA5 monthly collection was merged into main
+- Seasonal forecast planning is active
+- Seasonal bootstrap is restricted to ECMWF only
+- Seasonal bootstrap starts with monthly single-level archives
+- ECMWF seasonal monthly single-level smoke tests succeeded for project hindcast year 2000 and first project forecast year 2017
+- The repository bootstrap assumption using ECMWF system 51 for forecast years 2017-2025 has passed initial smoke validation
+- Grouped ECMWF monthly single-level hindcast download for 2000-2016 completed successfully
+- Grouped ECMWF monthly single-level forecast download for 2017-2025 completed successfully
+- Tracked inventory snapshots were created for both ECMWF grouped single-level blocks
+- The first ECMWF seasonal monthly single-level bootstrap download milestone is formally closed in Git on dev
+- Seasonal pressure-level work is deferred until the repository begins the z925-based pressure-level branch
+- A matching ERA5 monthly z925 dataset must be downloaded later before seasonal pressure-level verification begins
+- Hindcast and forecast requests are handled separately operationally
 
 ## Confirmed facts
 - Repository root: /home/fibi/projects/c3s_project_v2
 - Raw data root: /mnt/e/last-aticol/data/raw
 - Processed data root: /mnt/e/last-aticol/data/processed
 - Git branches main and dev exist
-- Miniforge is installed at /home/fibi/miniforge3
-- Conda environment cds_env exists and works
-- Core workflow packages are installed
-- Official WSL CDS ERA5 netcheck succeeded
-- Official ERA5 monthly total precipitation download completed successfully for 2000-2025
-- Official ERA5 monthly 2m temperature download completed successfully for 2000-2025
-- Official ERA5 monthly 10m wind speed download completed successfully for 2000-2025
-- Official ERA5 monthly geopotential at 500 hPa download completed successfully for 2000-2025
-- Official ERA5 monthly temperature at 850 hPa download completed successfully for 2000-2025
-- Official ERA5 monthly geopotential at 950 hPa download completed successfully for 2000-2025
-- Inventory snapshots exist for ERA5 monthly tp, t2m, ws10m, z500, t850, and z950
-- Run metadata exists for all ERA5 monthly production runs
-- ERA5 monthly collection milestone is formally closed in Git
-- ERA5 monthly structural QC passed with tracked summary and details outputs
-- ERA5 monthly scientific sanity QC passed with tracked CSV outputs, plots, and report
+- Branch dev is ahead of main with seasonal planning and ECMWF bootstrap commits
+- ECMWF seasonal bootstrap target is system 51
+- Documented ECMWF hindcast coverage for system 51 reaches 2016
+- Project seasonal hindcast target is 2000-2016
+- Project seasonal forecast target is 2017-2025
+- Seasonal bootstrap product type is monthly_mean
+- Seasonal bootstrap format is GRIB
+- Seasonal known-issues registration is part of repository policy
+- Official ECMWF seasonal monthly single-level smoke-test script is tracked
+- Official grouped ECMWF seasonal monthly single-level production downloader is tracked
+- Hindcast grouped download produced 12 GRIB files, 12 request sidecars, and 12 SHA256 sidecars
+- Forecast grouped download produced 12 GRIB files, 12 request sidecars, and 12 SHA256 sidecars
+- No `.part` files remain in the grouped forecast directory
+- Inventory snapshots exist at:
+  - data/inventory/c3s_ecmwf_single_levels_hindcast_2000_2016.csv
+  - data/inventory/c3s_ecmwf_single_levels_forecast_2017_2025.csv
+- The grouped-download milestone closure commit on dev is e373eb8
+- main does not yet contain the grouped ECMWF bootstrap milestone
+- The current task/era5-z925 branch contains an accidental seasonal closure commit and must not be reused as a clean z925 working branch
 
 ## Current blockers
 - No current WSL CDS connectivity blocker
-- No open ERA5 monthly download blocker
-- Seasonal forecast download phase has not started yet
-- No current ERA5 monthly QC blocker
-- Merge to main has not been performed yet
+- No open ERA5 blocker
+- No current ECMWF grouped download blocker
+- No blocker remains for the completed ECMWF single-level bootstrap download milestone
 
 ## Next action
-1. Review the tracked ERA5 monthly QC report and plots
-2. Prepare and perform the dev-to-main merge for the completed ERA5 monthly phase
-3. Start the next seasonal-data phase on top of the closed ERA5 monthly baseline
-4. Define the first seasonal forecast collection target and dataset order
-5. Prepare the first official seasonal downloader and run metadata
-6. Start the first seasonal production run on WSL
-7. After WSL validation, plan transfer and downstream server use
+1. Refresh RUNBOOK with grouped ECMWF production and inventory commands
+2. Commit the refreshed project documents on dev
+3. Merge dev into main after the doc-refresh commit
+4. Recreate a clean task/era5-z925 branch from the updated main before starting z925 work
+5. Decide the next bootstrap step only after merge closure
+6. Before any seasonal pressure-level verification, download and track matching ERA5 monthly z925
 
 ## Last verified commit
-- ecc9545
-
-
+- e373eb8
