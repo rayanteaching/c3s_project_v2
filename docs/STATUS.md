@@ -19,6 +19,7 @@
 - Grouped ECMWF monthly single-level hindcast download for 2000-2016 completed successfully
 - Grouped ECMWF monthly single-level forecast download for 2017-2025 completed successfully
 - Tracked inventory snapshots were created for both ECMWF grouped single-level blocks
+- The first ECMWF seasonal monthly single-level bootstrap download milestone is formally closed in Git on dev
 - Seasonal pressure-level work is deferred until the repository begins the z925-based pressure-level branch
 - A matching ERA5 monthly z925 dataset must be downloaded later before seasonal pressure-level verification begins
 - Hindcast and forecast requests are handled separately operationally
@@ -44,20 +45,23 @@
 - Inventory snapshots exist at:
   - data/inventory/c3s_ecmwf_single_levels_hindcast_2000_2016.csv
   - data/inventory/c3s_ecmwf_single_levels_forecast_2017_2025.csv
+- The grouped-download milestone closure commit on dev is e373eb8
+- main does not yet contain the grouped ECMWF bootstrap milestone
+- The current task/era5-z925 branch contains an accidental seasonal closure commit and must not be reused as a clean z925 working branch
 
 ## Current blockers
 - No current WSL CDS connectivity blocker
 - No open ERA5 blocker
 - No current ECMWF grouped download blocker
-- The first ECMWF seasonal monthly single-level milestone is not yet formally closed in Git
-- Broader scientific evaluation and later period-specific manifest review are still pending beyond bootstrap download completion
+- No blocker remains for the completed ECMWF single-level bootstrap download milestone
 
 ## Next action
-1. Update tracked handoff after grouped ECMWF download completion
-2. Commit run status updates and tracked inventory snapshots
-3. Formally close the ECMWF seasonal monthly single-level bootstrap download milestone in Git
-4. Decide the next bootstrap step after closure
-5. Before any seasonal pressure-level verification, download and track matching ERA5 monthly z925
+1. Refresh RUNBOOK with grouped ECMWF production and inventory commands
+2. Commit the refreshed project documents on dev
+3. Merge dev into main after the doc-refresh commit
+4. Recreate a clean task/era5-z925 branch from the updated main before starting z925 work
+5. Decide the next bootstrap step only after merge closure
+6. Before any seasonal pressure-level verification, download and track matching ERA5 monthly z925
 
 ## Last verified commit
-- a407039
+- e373eb8
