@@ -55,36 +55,39 @@ Rules:
 ## Current confirmed state
 - Clean repository bootstrap on WSL is complete.
 - The ERA5 monthly baseline is complete, QC-verified, and merged.
-- Seasonal work has started at the planning and smoke-test stage.
+- Seasonal work has advanced through planning, smoke-test validation, and the first grouped ECMWF bootstrap download.
 - Seasonal bootstrap is intentionally restricted to ECMWF only.
 - ECMWF seasonal bootstrap uses C3S system 51.
 - Seasonal bootstrap starts with monthly single-level archives only.
 - For project forecast years 2017-2025, the use of ECMWF system 51 is currently a working repository assumption for bootstrap execution and later validation.
-- That ECMWF system-51 bootstrap assumption has passed the initial smoke test for the first project forecast year 2017.
-- The ECMWF hindcast path has also passed the initial smoke test for project year 2000.
+- That ECMWF system-51 bootstrap assumption passed the initial smoke test for the first project forecast year 2017.
+- The ECMWF hindcast path also passed the initial smoke test for project year 2000.
 - The official smoke-test script is tracked at scripts/netcheck/10_c3s_seasonal_ecmwf_single_levels_smoke.py.
-- Smoke-test run metadata is tracked under:
-  - runs/2026-04-22_c3s_ecmwf_single_levels_hindcast_smoke/
-  - runs/2026-04-22_c3s_ecmwf_single_levels_forecast_smoke/
-- Smoke-test raw outputs were created successfully under:
-  - /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/smoke
+- The official grouped production downloader is tracked at scripts/download/20_download_c3s_ecmwf_single_levels_monthly_grib_cli.py.
+- Grouped hindcast download metadata is tracked under:
+  - runs/2026-04-22_c3s_ecmwf_single_levels_hindcast_2000_2016/
+- Grouped forecast download metadata is tracked under:
+  - runs/2026-04-22_c3s_ecmwf_single_levels_forecast_2017_2025/
+- Grouped raw outputs were created successfully under:
+  - /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/hindcast_2000_2016
+  - /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/forecast_2017_2025
+- Each grouped block contains 12 GRIB files with matching request and SHA256 sidecars.
+- Tracked inventory snapshots exist for both grouped blocks.
 - Seasonal pressure-level work is deferred until the repository begins the z925-based pressure-level branch.
 - The repository seasonal pressure-level substitute is z925, not z950.
 - Matching ERA5 monthly z925 must be downloaded later before seasonal pressure-level verification begins.
-- Seasonal hindcasts and forecasts will be requested separately.
+- Seasonal hindcasts and forecasts are requested separately.
 - Project seasonal hindcast target is 2000-2016.
 - Project seasonal forecast target is 2017-2025.
 - GRIB is the operational download format.
 - A tracked seasonal known-issues register is required before any non-ECMWF centre is activated.
-- Branch dev is ahead of main with seasonal planning and smoke-test commits.
+- Branch dev is ahead of main with seasonal planning, smoke-test, and grouped ECMWF bootstrap commits.
 
 ## Immediate next step
-1. Add the first official grouped ECMWF monthly single-level production downloader.
-2. Create separate hindcast and forecast production run metadata.
-3. Start the grouped hindcast bootstrap workflow on WSL.
-4. Start the grouped forecast bootstrap workflow on WSL.
-5. Track inventory snapshots for produced files.
-6. Continue with the same Git milestone-closure discipline.
+1. Commit run status updates, inventories, and refreshed project documents.
+2. Formally close the first ECMWF seasonal monthly single-level bootstrap download milestone in Git.
+3. Decide the next bootstrap step only after milestone closure.
+4. Before any seasonal pressure-level verification, download and track matching ERA5 monthly z925.
 
 ## Standard session report
 Always provide the following before continuing work:
