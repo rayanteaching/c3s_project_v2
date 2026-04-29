@@ -34,7 +34,8 @@
     "11",
     "12"
   ],
-  "status": "prepared",
+  "started_at_utc": "2026-04-29T17:34:08Z",
+  "status": "running",
   "system": "51",
   "targets": [
     "z500",
