@@ -329,3 +329,14 @@ Before moving to the next meaningful step, do all applicable items below:
 * If a command is likely to be reused, store it here.
 * If a detail belongs to a single execution only, store it under `runs/<run_name>/`.
 
+
+## Start ECMWF seasonal monthly pressure-level downloads
+
+Run from repository root on branch task/ecmwf-pressure-levels.
+
+source "$(conda info --base)/etc/profile.d/conda.sh"
+conda activate cds_env
+
+nohup bash runs/2026-04-29_c3s_ecmwf_pressure_levels_2000_2025/command.txt > logs/c3s_ecmwf_pressure_levels_2000_2025.nohup.out 2>&1 &
+
+tail -f logs/c3s_ecmwf_pressure_levels_2000_2025.nohup.out

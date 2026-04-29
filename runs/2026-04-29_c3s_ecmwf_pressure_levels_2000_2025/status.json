@@ -1,0 +1,44 @@
+{
+  "branch": "task/ecmwf-pressure-levels",
+  "created_at_utc": "2026-04-29T17:33:22Z",
+  "data_format": "grib",
+  "dataset": "seasonal-monthly-pressure-levels",
+  "domain": "NH0_90",
+  "forecast_years": "2017-2025",
+  "grid": "1.0x1.0",
+  "hindcast_years": "2000-2016",
+  "leadtime_months": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ],
+  "originating_centre": "ecmwf",
+  "policy_note": "This task branch starts preliminary ECMWF seasonal pressure-level downloads. Do not merge or use for pressure-level verification until ERA5 monthly z925 is completed and merged into main.",
+  "product_type": "monthly_mean",
+  "raw_output_root": "/mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ecmwf/system_51",
+  "run_id": "2026-04-29_c3s_ecmwf_pressure_levels_2000_2025",
+  "start_months": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12"
+  ],
+  "status": "prepared",
+  "system": "51",
+  "targets": [
+    "z500",
+    "t850",
+    "z925"
+  ]
+}

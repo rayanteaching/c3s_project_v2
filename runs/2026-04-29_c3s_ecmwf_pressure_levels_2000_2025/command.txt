@@ -1,0 +1,14 @@
+cd /home/fibi/projects/c3s_project_v2
+
+source "$(conda info --base)/etc/profile.d/conda.sh"
+conda activate cds_env
+
+python -u scripts/download/21_download_c3s_ecmwf_pressure_levels_monthly_grib_cli.py \
+  --block hindcast \
+  --start-year 2000 \
+  --end-year 2016
+
+python -u scripts/download/21_download_c3s_ecmwf_pressure_levels_monthly_grib_cli.py \
+  --block forecast \
+  --start-year 2017 \
+  --end-year 2025

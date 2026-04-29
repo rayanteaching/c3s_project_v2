@@ -140,3 +140,13 @@ Do not track:
 - Official C3S seasonal known issues must be copied into tracked repository documentation before a new centre or sensitive variable is activated.
 - Each affected case must be classified in the repository as allow, warn, mask, or exclude.
 - Non-ECMWF centres remain deferred until both period-specific system mapping and known-issues registration are committed.
+
+
+## ECMWF seasonal pressure-level preliminary download branch
+- Decision time UTC: 2026-04-29T17:33:23Z
+- Preliminary ECMWF seasonal pressure-level downloads may be started on task branch task/ecmwf-pressure-levels.
+- This does not override the policy that seasonal pressure-level verification and merge to main require the matching ERA5 monthly z925 baseline.
+- Operational pressure-level targets are z500, t850, and z925.
+- Dataset is seasonal-monthly-pressure-levels.
+- ECMWF system is 51.
+- Hindcast and forecast blocks remain separate.

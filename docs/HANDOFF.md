@@ -107,3 +107,14 @@ If a run exists, also provide:
 
 If environment work was done, also provide:
 - conda env list
+
+
+## ECMWF seasonal pressure-level task handoff
+- Updated at UTC: 2026-04-29T17:33:23Z
+- Active branch for this task: task/ecmwf-pressure-levels
+- Script: scripts/download/21_download_c3s_ecmwf_pressure_levels_monthly_grib_cli.py
+- Run metadata: runs/2026-04-29_c3s_ecmwf_pressure_levels_2000_2025/
+- Raw output root: /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ecmwf/system_51
+- Targets: z500, t850, z925
+- Blocks: hindcast 2000-2016, forecast 2017-2025
+- Policy guard: do not merge or verify pressure-level products until ERA5 monthly z925 is completed and merged into main.
