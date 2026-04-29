@@ -19,8 +19,9 @@
 - Grouped ECMWF monthly single-level hindcast download for 2000-2016 completed successfully
 - Grouped ECMWF monthly single-level forecast download for 2017-2025 completed successfully
 - Tracked inventory snapshots were created for both ECMWF grouped single-level blocks
-- The first ECMWF seasonal monthly single-level bootstrap download milestone is formally closed in Git on dev
-- Seasonal pressure-level work is deferred until the repository begins the z925-based pressure-level branch
+- The first ECMWF seasonal monthly single-level bootstrap download milestone was merged into main
+- A separate linked worktree exists for parallel ERA5 monthly z925 work
+- Seasonal pressure-level work on the stable main branch remains deferred until the z925 branch workflow is completed and merged
 - A matching ERA5 monthly z925 dataset must be downloaded later before seasonal pressure-level verification begins
 - Hindcast and forecast requests are handled separately operationally
 
@@ -28,8 +29,14 @@
 - Repository root: /home/fibi/projects/c3s_project_v2
 - Raw data root: /mnt/e/last-aticol/data/raw
 - Processed data root: /mnt/e/last-aticol/data/processed
-- Git branches main and dev exist
-- Branch dev is ahead of main with seasonal planning and ECMWF bootstrap commits
+- Git branches main, dev, task/era5-z925, and backup-task-era5-z925-before-main-sync exist
+- main is the current stable branch baseline
+- The grouped ECMWF bootstrap milestone was merged into main at commit 0566034
+- The grouped-download milestone closure commit on dev is e373eb8
+- The post-closure document refresh commit on dev is 5d450ee
+- The current dev tip is already contained in main through merge commit 0566034
+- A linked worktree exists at /home/fibi/projects/c3s_project_v2_era5_z925 on branch task/era5-z925
+- The linked task/era5-z925 branch currently points to commit 44c6d4d and is behind main
 - ECMWF seasonal bootstrap target is system 51
 - Documented ECMWF hindcast coverage for system 51 reaches 2016
 - Project seasonal hindcast target is 2000-2016
@@ -45,23 +52,21 @@
 - Inventory snapshots exist at:
   - data/inventory/c3s_ecmwf_single_levels_hindcast_2000_2016.csv
   - data/inventory/c3s_ecmwf_single_levels_forecast_2017_2025.csv
-- The grouped-download milestone closure commit on dev is e373eb8
-- main does not yet contain the grouped ECMWF bootstrap milestone
-- The current task/era5-z925 branch contains an accidental seasonal closure commit and must not be reused as a clean z925 working branch
 
 ## Current blockers
 - No current WSL CDS connectivity blocker
-- No open ERA5 blocker
-- No current ECMWF grouped download blocker
-- No blocker remains for the completed ECMWF single-level bootstrap download milestone
+- No open ERA5 monthly blocker on main
+- No current ECMWF grouped single-level download blocker
+- Seasonal pressure-level verification on main remains blocked until ERA5 monthly z925 is downloaded, tracked, and later merged from the parallel branch workflow
 
 ## Next action
-1. Refresh RUNBOOK with grouped ECMWF production and inventory commands
-2. Commit the refreshed project documents on dev
-3. Merge dev into main after the doc-refresh commit
-4. Recreate a clean task/era5-z925 branch from the updated main before starting z925 work
-5. Decide the next bootstrap step only after merge closure
-6. Before any seasonal pressure-level verification, download and track matching ERA5 monthly z925
+1. Keep main as the stable project-state branch
+2. Continue ERA5 monthly z925 work only in the linked worktree /home/fibi/projects/c3s_project_v2_era5_z925 on branch task/era5-z925
+3. Before final reintegration, handle the fact that task/era5-z925 is behind main explicitly
+4. Formally close the ERA5 monthly z925 milestone in Git on that branch
+5. Merge the z925 branch back into main after milestone closure
+6. Begin seasonal pressure-level verification only after the ERA5 monthly z925 baseline is available in repository state on main
+7. Re-read repository state before any new production run or any new merge decision
 
 ## Last verified commit
-- e373eb8
+- 0566034
