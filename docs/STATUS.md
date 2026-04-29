@@ -22,6 +22,8 @@
 - Seasonal pressure-level work is deferred until the repository begins the z925-based pressure-level branch
 - A matching ERA5 monthly z925 dataset must be downloaded later before seasonal pressure-level verification begins
 - Hindcast and forecast requests are handled separately operationally
+- Task branch task/era5-z925 is preparing a parallel ERA5 monthly z925 download while keeping the existing z950 baseline intact
+
 
 ## Confirmed facts
 - Repository root: /home/fibi/projects/c3s_project_v2

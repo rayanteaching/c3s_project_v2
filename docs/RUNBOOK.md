@@ -255,3 +255,15 @@ Inventory commands:
   --pattern "*.grib" \
   --out /home/fibi/projects/c3s_project_v2/data/inventory/c3s_ecmwf_single_levels_forecast_2017_2025.csv
 ```
+
+
+## ERA5 monthly z925 downloader
+
+Script:
+- scripts/download/16_download_era5_z925_monthly_grib_cli.py
+
+Production run command:
+
+nohup /home/fibi/projects/c3s_project_v2_era5_z925/scripts/download/16_download_era5_z925_monthly_grib_cli.py \
+  --start-year 2000 --end-year 2025 \
+  > /home/fibi/projects/c3s_project_v2_era5_z925/logs/era5_z925_monthly_2000_2025.log 2>&1 &

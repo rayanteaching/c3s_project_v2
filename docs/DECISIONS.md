@@ -117,6 +117,12 @@ Do not track:
 - `t850` must be interpreted in Kelvin unless an explicit documented conversion is applied.
 - The monthly series and annual cycle must be physically plausible over the Northern Hemisphere.
 
+## ERA5 monthly z925 alignment rule
+- The task branch `task/era5-z925` adds ERA5 monthly z925 as a parallel aligned dataset for the seasonal pressure-level substitute.
+- Existing ERA5 monthly z950 data, metadata, inventory, and historical QC outputs remain intact and must not be deleted by this task.
+- ERA5 z925 is added for seasonal comparison alignment with the repository seasonal pressure-level substitute z925.
+
+
 #### z950
 - `z950` in this workflow is the raw ERA5 geopotential field, not geopotential height.
 - Any conversion from geopotential to geopotential height must be documented explicitly.

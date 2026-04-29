@@ -82,6 +82,7 @@ Rules:
 - GRIB is the operational download format.
 - A tracked seasonal known-issues register is required before any non-ECMWF centre is activated.
 - Branch dev is ahead of main with seasonal planning, smoke-test, and grouped ECMWF bootstrap commits.
+- The isolated task branch task/era5-z925 is dedicated to adding ERA5 monthly z925 without modifying the existing z950 baseline.
 
 ## Immediate next step
 1. Commit run status updates, inventories, and refreshed project documents.
