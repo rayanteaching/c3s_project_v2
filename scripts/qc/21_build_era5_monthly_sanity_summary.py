@@ -19,7 +19,7 @@ import numpy as np
 import pandas as pd
 
 
-REPO_ROOT = Path("/home/fibi/projects/c3s_project_v2")
+REPO_ROOT = Path(__file__).resolve().parents[2]
 RUN_ROOT = REPO_ROOT / "runs" / "2026-04-17_era5_monthly_qc_full"
 PLOTS_DIR = RUN_ROOT / "plots"
 REPORT_PATH = REPO_ROOT / "docs" / "qc" / "ERA5_MONTHLY_QC_REPORT.md"
@@ -70,6 +70,13 @@ DATASETS = [
         "mean_min": 180.0,
         "mean_max": 330.0,
         "expect_nonnegative_mean": False,
+    },
+    {
+        "name": "z925",
+        "root": Path("/mnt/e/last-aticol/data/raw/era5/pressure-levels/geopotential/925hPa/monthly"),
+        "mean_min": 0.0,
+        "mean_max": None,
+        "expect_nonnegative_mean": True,
     },
     {
         "name": "z950",
@@ -143,15 +150,11 @@ def weighted_domain_mean(data_array) -> float:
     if lat_name is None or lon_name is None:
         return float(data_array.mean().item())
 
-    lat_values = data_array[lat_name].values
-    weights = np.cos(np.deg2rad(lat_values))
-
-    if not np.isfinite(weights).all():
+    weights = np.cos(np.deg2rad(data_array[lat_name]))
+    if not np.isfinite(weights.values).all():
         return float(data_array.mean(dim=[lat_name, lon_name]).item())
 
-    return float(
-        data_array.weighted(data_array[lat_name] * 0 + weights).mean(dim=[lat_name, lon_name]).item()
-    )
+    return float(data_array.weighted(weights).mean(dim=[lat_name, lon_name]).item())
 
 
 def open_grib_field(path: Path):
@@ -174,7 +177,6 @@ def process_dataset(config: dict) -> tuple[pd.DataFrame, dict]:
         date_str = f"{year}-{month:02d}"
 
         data_var, data_array = open_grib_field(path)
-
         units = str(data_array.attrs.get("units", "unknown"))
 
         domain_mean = weighted_domain_mean(data_array)
@@ -324,6 +326,16 @@ def make_climatology_plot(frame: pd.DataFrame, dataset_name: str, units: str) ->
     return str(output_path.relative_to(REPO_ROOT))
 
 
+def format_number(value) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, bool):
+        return str(value)
+    if isinstance(value, (int, float, np.floating)):
+        return f"{float(value):.6f}"
+    return str(value)
+
+
 def write_report(
     summaries: list[dict],
     plot_registry: dict[str, dict[str, str]],
@@ -334,72 +346,68 @@ def write_report(
 
     lines.append("# ERA5 Monthly QC Report")
     lines.append("")
-    lines.append("## Scope")
-    lines.append("- Dataset family: ERA5 monthly Northern Hemisphere collection")
-    lines.append("- Period: 2000-01 to 2025-12")
-    lines.append("- Datasets: tp, t2m, ws10m, z500, t850, z950")
-    lines.append("")
-    lines.append("## Structural QC")
+    lines.append(f"- Report generated at: `{utc_now_iso()}`")
+    lines.append("- Dataset coverage: 2000-01 to 2025-12")
+    lines.append("- Datasets: tp, t2m, ws10m, z500, t850, z925, z950")
     lines.append(f"- Structural QC reference: `{structural_qc_ref}`")
-    lines.append("- Structural QC status: passed")
     lines.append("- Files per dataset: 312 GRIB + 312 request JSON + 312 SHA256")
     lines.append("")
     lines.append("## Scientific sanity QC pass criteria")
-    lines.append("- Full monthly coverage from 2000-01 through 2025-12")
-    lines.append("- Finite domain mean, domain minimum, and domain maximum for every monthly field")
-    lines.append("- Positive seasonal-cycle amplitude in the domain-mean monthly climatology")
-    lines.append("- Nonnegative domain-mean values for tp, ws10m, z500, and z950")
+    lines.append("- Finite domain-mean, domain-min, and domain-max values for every monthly file")
+    lines.append("- Complete monthly coverage from 2000-01 through 2025-12")
+    lines.append("- Nonnegative domain-mean values for tp, ws10m, z500, z925, and z950")
     lines.append("- Domain-mean plausible range check for t2m and t850: 180 K to 330 K")
+    lines.append("- Nonzero seasonal-cycle amplitude for every dataset")
     lines.append("")
     lines.append("## Dataset summary")
     lines.append("")
-    lines.append("| Dataset | Units | Count | Start | End | Mean(domain mean) | Min(domain mean) | Max(domain mean) | Min(domain min) | Max(domain max) | Climatology amplitude | Passed |")
+    lines.append("| Dataset | Units | Count | Start | End | Mean(domain_mean) | Min(domain_mean) | Max(domain_mean) | Min(domain_min) | Max(domain_max) | Climatology amplitude | Passed |")
     lines.append("|---|---|---:|---|---|---:|---:|---:|---:|---:|---:|---|")
 
     for summary in summaries:
         lines.append(
-            "| "
-            f"{summary['dataset']} | "
+            f"| {summary['dataset']} | "
             f"{summary['units']} | "
             f"{summary['count']} | "
             f"{summary['start_date']} | "
             f"{summary['end_date']} | "
-            f"{summary['mean_of_domain_mean']:.6f} | "
-            f"{summary['min_domain_mean']:.6f} | "
-            f"{summary['max_domain_mean']:.6f} | "
-            f"{summary['min_of_domain_min']:.6f} | "
-            f"{summary['max_of_domain_max']:.6f} | "
-            f"{summary['climatology_amplitude']:.6f} | "
+            f"{format_number(summary['mean_of_domain_mean'])} | "
+            f"{format_number(summary['min_domain_mean'])} | "
+            f"{format_number(summary['max_domain_mean'])} | "
+            f"{format_number(summary['min_of_domain_min'])} | "
+            f"{format_number(summary['max_of_domain_max'])} | "
+            f"{format_number(summary['climatology_amplitude'])} | "
             f"{summary['passed']} |"
         )
 
     lines.append("")
-    lines.append("## Generated plots")
+    lines.append("## Plots")
     lines.append("")
 
-    for dataset_name, plot_paths in plot_registry.items():
+    for dataset_name in [config["name"] for config in DATASETS]:
+        plot_paths = plot_registry.get(dataset_name, {})
         lines.append(f"### {dataset_name}")
-        lines.append(f"- Time series: `{plot_paths['timeseries']}`")
-        lines.append(f"- Monthly climatology: `{plot_paths['climatology']}`")
+        if plot_paths:
+            lines.append(f"- Time series: `{plot_paths['timeseries']}`")
+            lines.append(f"- Monthly climatology: `{plot_paths['climatology']}`")
+        else:
+            lines.append("- Plot generation skipped because the dataset did not produce a valid frame.")
         lines.append("")
 
     lines.append("## Conclusion")
+    lines.append("")
     if sanity_passed:
-        lines.append("- Scientific sanity QC passed for all six ERA5 monthly datasets.")
-        lines.append("- The tracked ERA5 monthly collection is structurally complete and scientifically plausible for workflow continuation.")
+        lines.append("- Scientific sanity QC passed for all seven ERA5 monthly datasets.")
     else:
         lines.append("- Scientific sanity QC did not pass for all datasets.")
         lines.append("- Review the summary CSV, details JSON, and plots before proceeding.")
-    lines.append("")
 
-    REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    REPORT_PATH.write_text("\n".join(lines), encoding="utf-8")
+    REPORT_PATH.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
 
 
 def main() -> int:
     RUN_ROOT.mkdir(parents=True, exist_ok=True)
     PLOTS_DIR.mkdir(parents=True, exist_ok=True)
-    REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
     dataset_frames: list[pd.DataFrame] = []
     summaries: list[dict] = []
@@ -424,7 +432,7 @@ def main() -> int:
 
     sanity_passed = bool(summary_frame["passed"].all())
 
-    payload = {
+    details_payload = {
         "run": "2026-04-17_era5_monthly_qc_full",
         "checked_at_utc": utc_now_iso(),
         "expected_year_range": f"{START_YEAR}-{END_YEAR}",
@@ -434,10 +442,11 @@ def main() -> int:
         "plot_registry": plot_registry,
         "timeseries_csv": str(TIMESERIES_CSV.relative_to(REPO_ROOT)),
         "summary_csv": str(SUMMARY_CSV.relative_to(REPO_ROOT)),
-        "report_path": str(REPORT_PATH.relative_to(REPO_ROOT)),
+        "report_md": str(REPORT_PATH.relative_to(REPO_ROOT)),
     }
 
-    DETAILS_JSON.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    with DETAILS_JSON.open("w", encoding="utf-8") as handle:
+        json.dump(details_payload, handle, indent=2)
 
     write_report(
         summaries=summaries,
@@ -453,13 +462,11 @@ def main() -> int:
     print(f"Timeseries CSV: {TIMESERIES_CSV}")
     print(f"Summary CSV: {SUMMARY_CSV}")
     print(f"Details JSON: {DETAILS_JSON}")
-    print(f"Report: {REPORT_PATH}")
+    print(f"Report MD: {REPORT_PATH}")
 
     if sanity_passed:
-        print("SANITY_QC_PASS")
         return 0
 
-    print("SANITY_QC_FAIL")
     return 1
 
 

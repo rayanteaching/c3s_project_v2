@@ -1,0 +1,6 @@
+{
+  "run": "2026-04-28_era5_z925_monthly_2000_2025",
+  "result": "success",
+  "reason": "Official ERA5 monthly z925 download completed successfully on WSL for 2000-2025 and the tracked inventory snapshot was generated.",
+  "next_action": "Update the ERA5 structural and sanity QC workflow to include z925 explicitly and then close the task branch milestone in Git."
+}

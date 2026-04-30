@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-REPO_ROOT = Path("/home/fibi/projects/c3s_project_v2")
+REPO_ROOT = Path(__file__).resolve().parents[2]
 RUN_ROOT = REPO_ROOT / "runs" / "2026-04-17_era5_monthly_qc_full"
 SUMMARY_CSV = RUN_ROOT / "structure_qc_summary.csv"
 DETAILS_JSON = RUN_ROOT / "structure_qc_details.json"
@@ -40,6 +40,10 @@ DATASET_ROOTS = [
     (
         "t850",
         Path("/mnt/e/last-aticol/data/raw/era5/pressure-levels/temperature/850hPa/monthly"),
+    ),
+    (
+        "z925",
+        Path("/mnt/e/last-aticol/data/raw/era5/pressure-levels/geopotential/925hPa/monthly"),
     ),
     (
         "z950",
@@ -135,8 +139,8 @@ def collect_dataset_result(dataset_name: str, dataset_root: Path) -> dict:
     orphan_request_files = sorted(request_target_set - grib_name_set)
     orphan_sha256_files = sorted(sha256_target_set - grib_name_set)
 
-    month_keys = []
-    invalid_grib_names = []
+    month_keys: list[str] = []
+    invalid_grib_names: list[str] = []
 
     for grib_name in grib_names:
         month_key = extract_month_key(grib_name)
@@ -265,10 +269,8 @@ def main() -> int:
     print_summary(results)
 
     if all(result["passed"] for result in results):
-        print("STRUCTURAL_QC_PASS")
         return 0
 
-    print("STRUCTURAL_QC_FAIL")
     return 1
 
 
