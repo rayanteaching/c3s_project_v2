@@ -24,7 +24,7 @@
 - Grouped ECMWF monthly single-level hindcast download for 2000-2016 completed successfully
 - Grouped ECMWF monthly single-level forecast download for 2017-2025 completed successfully
 - Tracked inventory snapshots were created for both ECMWF grouped single-level blocks
-- The first ECMWF seasonal monthly single-level bootstrap download milestone is formally closed in Git on dev
+- The first ECMWF seasonal monthly single-level bootstrap download milestone is formally closed and merged into main
 - Seasonal pressure-level work has begun on the z925-based pressure-level track
 - A matching ERA5 monthly z925 dataset has been downloaded, inventoried, and included in the ERA5 monthly QC workflow before seasonal pressure-level verification
 - Hindcast and forecast requests are handled separately operationally
@@ -66,4 +66,4 @@
 3. Decide the next seasonal pressure-level verification step only after this clean merged state is confirmed
 
 ## Last verified commit
-- 62e7544
+- cbc80a0

@@ -40,7 +40,7 @@ deferred_pressure_levels:
     pressure_level: "925"
     level_label: 925hPa
     units: m2 s-2
-    note: seasonal pressure-level substitute for the supervisor wording z950; matching ERA5 monthly z925 must be downloaded later before seasonal pressure-level verification
+    note: seasonal pressure-level substitute for the supervisor wording z950; matching ERA5 monthly z925 has been downloaded, tracked, QC-verified, and merged into main
 
 external_requirement_note:
   supervisor_original_pressure_level_wording: z950

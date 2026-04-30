@@ -55,8 +55,8 @@ Rules:
 ## Current confirmed state
 - Clean repository bootstrap on WSL is complete.
 - The ERA5 monthly baseline is complete, QC-verified, and merged.
-- The ERA5 monthly z925 supplement for 2000-2025 is complete on task/era5-z925.
-- The ERA5 monthly z925 inventory snapshot is tracked.
+- The ERA5 monthly z925 supplement for 2000-2025 is complete and merged into main.
+- The ERA5 monthly z925 inventory snapshot is tracked on main.
 - The ERA5 monthly QC workflow now includes z925 explicitly.
 - ERA5 monthly structural and scientific sanity QC passed for tp, t2m, ws10m, z500, t850, z925, and z950.
 - Seasonal work has advanced through planning, smoke-test validation, and the first grouped ECMWF bootstrap download.
@@ -77,7 +77,7 @@ Rules:
   - /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/forecast_2017_2025
 - Each grouped block contains 12 GRIB files with matching request and SHA256 sidecars.
 - Tracked inventory snapshots exist for both grouped blocks.
-- The grouped ECMWF single-level bootstrap download milestone is formally closed on dev at e373eb8.
+- The grouped ECMWF single-level bootstrap download milestone is formally closed and merged into main.
 - main contains the closed ECMWF grouped single-level bootstrap milestone and re-entry protocol commits.
 - main contains the ERA5 z925 supplement and z925 QC extension commits after reintegration.
 - task/era5-z925 has been reintegrated into main for the ERA5 z925 supplement and QC extension.

@@ -68,8 +68,9 @@ For operational collection in this repository, hindcasts and forecasts must be r
 - each issue must be classified as allow, warn, mask, or exclude
 - issues stating that archived wrong data will not be overwritten must be treated as hard warnings
 
-## Future ERA5 dependency
-- before seasonal pressure-level verification begins, the matching ERA5 monthly z925 dataset must be downloaded and tracked
+## ERA5 z925 dependency
+- before seasonal pressure-level verification begins, the matching ERA5 monthly z925 dataset must be downloaded, tracked, QC-verified, and merged into main
+- this dependency is now satisfied on main
 
 ## Tracking policy
 The following must be tracked in Git:
