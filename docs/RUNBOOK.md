@@ -249,7 +249,8 @@ Grouped run metadata paths:
 - Hindcast and forecast production requests must remain separated operationally.
 - Native GRIB is the operational seasonal download format.
 - Exact API payloads must be recorded in run metadata and raw sidecars.
-- Before seasonal pressure-level verification begins, the matching ERA5 monthly z925 dataset must be downloaded and tracked.
+- Before seasonal pressure-level verification begins, the matching ERA5 monthly z925 dataset must be downloaded, inventoried, and included in ERA5 monthly QC.
+- On task/era5-z925, the ERA5 monthly z925 dataset for 2000-2025 has already been downloaded, inventoried, and included in structural and scientific sanity QC.
 
 ## Milestone closure checklist
 Before moving to the next meaningful step, do all applicable items below:

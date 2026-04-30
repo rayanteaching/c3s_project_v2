@@ -55,6 +55,10 @@ Rules:
 ## Current confirmed state
 - Clean repository bootstrap on WSL is complete.
 - The ERA5 monthly baseline is complete, QC-verified, and merged.
+- The ERA5 monthly z925 supplement for 2000-2025 is complete on task/era5-z925.
+- The ERA5 monthly z925 inventory snapshot is tracked.
+- The ERA5 monthly QC workflow now includes z925 explicitly.
+- ERA5 monthly structural and scientific sanity QC passed for tp, t2m, ws10m, z500, t850, z925, and z950.
 - Seasonal work has advanced through planning, smoke-test validation, and the first grouped ECMWF bootstrap download.
 - Seasonal bootstrap is intentionally restricted to ECMWF only.
 - ECMWF seasonal bootstrap uses C3S system 51.
@@ -74,11 +78,12 @@ Rules:
 - Each grouped block contains 12 GRIB files with matching request and SHA256 sidecars.
 - Tracked inventory snapshots exist for both grouped blocks.
 - The grouped ECMWF single-level bootstrap download milestone is formally closed on dev at e373eb8.
-- main is still behind dev and does not yet contain this seasonal bootstrap milestone.
-- The current task/era5-z925 branch is not clean for z925 work because it contains an accidental seasonal closure commit.
-- Seasonal pressure-level work is deferred until the repository begins the z925-based pressure-level branch.
+- main contains the closed ECMWF grouped single-level bootstrap milestone and re-entry protocol commits.
+- main does not yet contain the ERA5 z925 supplement and z925 QC extension commits.
+- task/era5-z925 has been synchronized with the latest seasonal integration state and is now the active ERA5 z925 supplement branch.
+- Seasonal pressure-level work has begun on the z925-based pressure-level track.
 - The repository seasonal pressure-level substitute is z925, not z950.
-- Matching ERA5 monthly z925 must be downloaded later before seasonal pressure-level verification begins.
+- Matching ERA5 monthly z925 has been downloaded, inventoried, and included in ERA5 monthly QC before seasonal pressure-level verification begins.
 - Seasonal hindcasts and forecasts are requested separately.
 - Project seasonal hindcast target is 2000-2016.
 - Project seasonal forecast target is 2017-2025.
@@ -86,12 +91,11 @@ Rules:
 - A tracked seasonal known-issues register is required before any non-ECMWF centre is activated.
 
 ## Immediate next step
-1. Refresh RUNBOOK with grouped ECMWF production and inventory commands.
-2. Commit the refreshed project documents on dev.
-3. Merge dev into main to close the ECMWF seasonal monthly single-level bootstrap milestone cleanly at the stable branch level.
-4. Recreate a clean task/era5-z925 branch from the updated main before starting z925 work.
-5. Decide the next bootstrap step only after merge closure.
-6. Before any seasonal pressure-level verification, download and track matching ERA5 monthly z925.
+1. Refresh STATUS, HANDOFF, and RUNBOOK to reflect the completed ERA5 z925 download and QC extension.
+2. Commit the refreshed z925 project state on task/era5-z925.
+3. Resolve or abort the stale integration merge-conflict state in /home/fibi/projects/c3s_project_v2 before reintegration.
+4. Merge task/era5-z925 into main only after the main worktree is clean.
+5. Decide the next seasonal pressure-level verification step only after z925 reintegration is closed.
 
 ## Standard session report
 Always provide the following before continuing work:
