@@ -1,6 +1,6 @@
 {
   "run": "2026-04-28_era5_z925_monthly_2000_2025",
-  "result": "prepared",
-  "reason": "Official ERA5 monthly z925 download metadata is prepared on the isolated task branch for seasonal alignment.",
-  "next_action": "Execute the ERA5 monthly z925 production run, verify sidecars, and build the tracked inventory snapshot."
+  "result": "running",
+  "reason": "Official ERA5 monthly z925 download is running on WSL for 2000-2025.",
+  "next_action": "Wait for the downloader to finish, then verify yearly completion, build the tracked inventory snapshot, and close the milestone in Git."
 }
