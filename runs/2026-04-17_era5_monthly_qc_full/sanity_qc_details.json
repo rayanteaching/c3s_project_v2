@@ -1,6 +1,6 @@
 {
   "run": "2026-04-17_era5_monthly_qc_full",
-  "checked_at_utc": "2026-04-19T11:09:10Z",
+  "checked_at_utc": "2026-04-30T16:49:39Z",
   "expected_year_range": "2000-2025",
   "expected_count_per_dataset": 312,
   "sanity_passed": true,
@@ -106,6 +106,26 @@
       "passed": true
     },
     {
+      "dataset": "z925",
+      "root": "/mnt/e/last-aticol/data/raw/era5/pressure-levels/geopotential/925hPa/monthly",
+      "units": "m**2 s**-2",
+      "count": 312,
+      "start_date": "2000-01",
+      "end_date": "2025-12",
+      "all_finite": true,
+      "coverage_complete": true,
+      "mean_nonnegative_check": true,
+      "mean_range_check": true,
+      "seasonal_cycle_check": true,
+      "min_domain_mean": 7470.136535428648,
+      "max_domain_mean": 7656.007271580272,
+      "mean_of_domain_mean": 7574.433808830885,
+      "min_of_domain_min": 4344.48046875,
+      "max_of_domain_max": 9217.265625,
+      "climatology_amplitude": 70.29409678326192,
+      "passed": true
+    },
+    {
       "dataset": "z950",
       "root": "/mnt/e/last-aticol/data/raw/era5/pressure-levels/geopotential/950hPa/monthly",
       "units": "m**2 s**-2",
@@ -147,6 +167,10 @@
       "timeseries": "runs/2026-04-17_era5_monthly_qc_full/plots/t850_domain_mean_timeseries.png",
       "climatology": "runs/2026-04-17_era5_monthly_qc_full/plots/t850_monthly_climatology.png"
     },
+    "z925": {
+      "timeseries": "runs/2026-04-17_era5_monthly_qc_full/plots/z925_domain_mean_timeseries.png",
+      "climatology": "runs/2026-04-17_era5_monthly_qc_full/plots/z925_monthly_climatology.png"
+    },
     "z950": {
       "timeseries": "runs/2026-04-17_era5_monthly_qc_full/plots/z950_domain_mean_timeseries.png",
       "climatology": "runs/2026-04-17_era5_monthly_qc_full/plots/z950_monthly_climatology.png"
@@ -154,5 +178,5 @@
   },
   "timeseries_csv": "runs/2026-04-17_era5_monthly_qc_full/sanity_qc_timeseries.csv",
   "summary_csv": "runs/2026-04-17_era5_monthly_qc_full/sanity_qc_dataset_summary.csv",
-  "report_path": "docs/qc/ERA5_MONTHLY_QC_REPORT.md"
+  "report_md": "docs/qc/ERA5_MONTHLY_QC_REPORT.md"
 }
