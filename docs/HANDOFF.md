@@ -73,6 +73,9 @@ Rules:
   - /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/system_51/forecast_2017_2025
 - Each grouped block contains 12 GRIB files with matching request and SHA256 sidecars.
 - Tracked inventory snapshots exist for both grouped blocks.
+- The grouped ECMWF single-level bootstrap download milestone is formally closed on dev at e373eb8.
+- main is still behind dev and does not yet contain this seasonal bootstrap milestone.
+- The current task/era5-z925 branch is not clean for z925 work because it contains an accidental seasonal closure commit.
 - Seasonal pressure-level work is deferred until the repository begins the z925-based pressure-level branch.
 - The repository seasonal pressure-level substitute is z925, not z950.
 - Matching ERA5 monthly z925 must be downloaded later before seasonal pressure-level verification begins.
@@ -81,14 +84,14 @@ Rules:
 - Project seasonal forecast target is 2017-2025.
 - GRIB is the operational download format.
 - A tracked seasonal known-issues register is required before any non-ECMWF centre is activated.
-- Branch dev is ahead of main with seasonal planning, smoke-test, and grouped ECMWF bootstrap commits.
-- The isolated task branch task/era5-z925 is dedicated to adding ERA5 monthly z925 without modifying the existing z950 baseline.
 
 ## Immediate next step
-1. Commit run status updates, inventories, and refreshed project documents.
-2. Formally close the first ECMWF seasonal monthly single-level bootstrap download milestone in Git.
-3. Decide the next bootstrap step only after milestone closure.
-4. Before any seasonal pressure-level verification, download and track matching ERA5 monthly z925.
+1. Refresh RUNBOOK with grouped ECMWF production and inventory commands.
+2. Commit the refreshed project documents on dev.
+3. Merge dev into main to close the ECMWF seasonal monthly single-level bootstrap milestone cleanly at the stable branch level.
+4. Recreate a clean task/era5-z925 branch from the updated main before starting z925 work.
+5. Decide the next bootstrap step only after merge closure.
+6. Before any seasonal pressure-level verification, download and track matching ERA5 monthly z925.
 
 ## Standard session report
 Always provide the following before continuing work:

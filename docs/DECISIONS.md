@@ -124,7 +124,11 @@ Do not track:
 - The task branch `task/era5-z925` adds ERA5 monthly z925 as a parallel aligned dataset for the seasonal pressure-level substitute.
 - Existing ERA5 monthly z950 data, metadata, inventory, and historical QC outputs remain intact and must not be deleted by this task.
 - ERA5 z925 is added for seasonal comparison alignment with the repository seasonal pressure-level substitute z925.
-
+- z925 is tracked as an ERA5 monthly pressure-level product in this repository
+- z925 is the seasonal-aligned ERA5 supplement
+- z950 baseline is retained and not deleted
+- the z925 download/inventory is complete on task/era5-z925
+- QC still needs to be extended explicitly for z925 before reintegration
 
 #### z950
 - `z950` in this workflow is the raw ERA5 geopotential field, not geopotential height.
