@@ -68,11 +68,14 @@ Do not track:
 
 
 ## ERA5 monthly pressure-level workflow semantics
-- The workflow labels t850, z500, and z950 refer to official ERA5 monthly pressure-level products.
+- The workflow labels t850, z500, z925, and z950 refer to official ERA5 monthly pressure-level products tracked in this repository.
 - The downloader retrieves the official raw ERA5 pressure-level fields exactly as delivered by CDS.
 - t850 refers to temperature at the 850 hPa pressure level.
 - z500 refers to geopotential at the 500 hPa pressure level.
+- z925 refers to geopotential at the 925 hPa pressure level.
 - z950 refers to geopotential at the 950 hPa pressure level.
+- The z925 collection is the seasonal-aligned ERA5 supplement introduced because the monthly C3S seasonal pressure-level archive does not provide 950 hPa.
+- The pre-existing z950 ERA5 collection is retained and not deleted.
 - If any later scientific conversion is needed, that conversion belongs to the analysis stage, not to the downloader.
 
 ## ERA5 monthly QC policy
@@ -140,7 +143,9 @@ Do not track:
 ## Seasonal pressure-level substitution
 - The supervisor wording includes z950, but the monthly C3S pressure-level archive spans 925 hPa to 10 hPa.
 - Therefore the repository seasonal pressure-level substitute is z925, not z950.
-- Before seasonal pressure-level verification begins, the matching ERA5 monthly z925 dataset must also be downloaded and tracked through the normal run and inventory workflow.
+- The matching ERA5 monthly z925 dataset has now been downloaded and inventoried on the dedicated task/era5-z925 branch.
+- That z925 collection is the seasonal-aligned supplement and does not replace the already tracked ERA5 z950 baseline.
+- Before seasonal pressure-level verification begins on the main integration branch, the z925 task branch changes must be merged and the ERA5 QC workflow must be extended to include z925 explicitly.
 
 ## Seasonal known-issues register rule
 - Official C3S seasonal known issues must be copied into tracked repository documentation before a new centre or sensitive variable is activated.
