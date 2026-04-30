@@ -150,3 +150,10 @@ Do not track:
 - Dataset is seasonal-monthly-pressure-levels.
 - ECMWF system is 51.
 - Hindcast and forecast blocks remain separate.
+
+
+## ECMWF seasonal pressure-level download closure
+- Decision time UTC: 2026-04-30T09:31:09Z
+- ECMWF seasonal pressure-level raw downloads for z500, t850, and z925 were allowed to complete on task branch task/ecmwf-pressure-levels.
+- The completed raw download does not authorize pressure-level verification yet.
+- The branch remains blocked from merge to main until ERA5 monthly z925 is completed, verified, inventoried, documented, and merged.

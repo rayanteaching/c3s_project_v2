@@ -83,3 +83,21 @@
 - Forecast target: 2017-2025
 - This is a task-branch download start only.
 - Do not merge this pressure-level branch into main and do not begin pressure-level verification until ERA5 monthly z925 is completed and merged into main.
+
+
+## ECMWF seasonal pressure-level download completed on task branch
+- Updated at UTC: 2026-04-30T09:31:09Z
+- Branch: task/ecmwf-pressure-levels
+- Dataset: seasonal-monthly-pressure-levels
+- Centre: ECMWF
+- System: 51
+- Targets: z500, t850, z925
+- Hindcast block: 2000-2016
+- Forecast block: 2017-2025
+- Completed GRIB files: 72
+- Completed request sidecars: 72
+- Completed SHA256 sidecars: 72
+- Inventory snapshots:
+  - data/inventory/c3s_ecmwf_pressure_levels_hindcast_2000_2016.csv
+  - data/inventory/c3s_ecmwf_pressure_levels_forecast_2017_2025.csv
+- Policy guard remains active: do not merge this branch or use pressure-level products for verification until ERA5 monthly z925 is completed and merged into main.

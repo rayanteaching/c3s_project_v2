@@ -118,3 +118,25 @@ If environment work was done, also provide:
 - Targets: z500, t850, z925
 - Blocks: hindcast 2000-2016, forecast 2017-2025
 - Policy guard: do not merge or verify pressure-level products until ERA5 monthly z925 is completed and merged into main.
+
+
+## ECMWF seasonal pressure-level download completion handoff
+- Updated at UTC: 2026-04-30T09:31:09Z
+- Branch: task/ecmwf-pressure-levels
+- Run metadata: runs/2026-04-29_c3s_ecmwf_pressure_levels_2000_2025/
+- Log file: logs/c3s_ecmwf_pressure_levels_2000_2025.nohup.out
+- Raw output root: /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ecmwf/system_51
+- Completed blocks:
+  - hindcast_2000_2016
+  - forecast_2017_2025
+- Completed targets:
+  - z500
+  - t850
+  - z925
+- Completed GRIB files: 72
+- Completed request sidecars: 72
+- Completed SHA256 sidecars: 72
+- Inventory snapshots:
+  - data/inventory/c3s_ecmwf_pressure_levels_hindcast_2000_2016.csv
+  - data/inventory/c3s_ecmwf_pressure_levels_forecast_2017_2025.csv
+- Next safe step: finish and merge ERA5 monthly z925 before pressure-level verification or merge of this branch.

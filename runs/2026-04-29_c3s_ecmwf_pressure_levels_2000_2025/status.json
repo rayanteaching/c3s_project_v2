@@ -1,12 +1,24 @@
 {
+  "actual_grib_count": 72,
+  "actual_request_json_count": 72,
+  "actual_sha256_count": 72,
   "branch": "task/ecmwf-pressure-levels",
+  "closure_note": "Download completed and sidecars verified. Branch must still not be merged to main until ERA5 monthly z925 is completed and merged.",
+  "completed_at_utc": "2026-04-30T09:31:09Z",
   "created_at_utc": "2026-04-29T17:33:22Z",
   "data_format": "grib",
   "dataset": "seasonal-monthly-pressure-levels",
   "domain": "NH0_90",
+  "expected_grib_count": 72,
+  "expected_request_json_count": 72,
+  "expected_sha256_count": 72,
   "forecast_years": "2017-2025",
   "grid": "1.0x1.0",
   "hindcast_years": "2000-2016",
+  "inventory_snapshots": [
+    "data/inventory/c3s_ecmwf_pressure_levels_hindcast_2000_2016.csv",
+    "data/inventory/c3s_ecmwf_pressure_levels_forecast_2017_2025.csv"
+  ],
   "leadtime_months": [
     "1",
     "2",
@@ -19,6 +31,7 @@
   "policy_note": "This task branch starts preliminary ECMWF seasonal pressure-level downloads. Do not merge or use for pressure-level verification until ERA5 monthly z925 is completed and merged into main.",
   "product_type": "monthly_mean",
   "raw_output_root": "/mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ecmwf/system_51",
+  "remaining_part_files": 0,
   "run_id": "2026-04-29_c3s_ecmwf_pressure_levels_2000_2025",
   "start_months": [
     "01",
@@ -35,7 +48,7 @@
     "12"
   ],
   "started_at_utc": "2026-04-29T17:34:08Z",
-  "status": "running",
+  "status": "completed",
   "system": "51",
   "targets": [
     "z500",
