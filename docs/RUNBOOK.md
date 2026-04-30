@@ -1,13 +1,11 @@
 # Runbook
 
 ## Purpose
-
 This file stores reusable operational commands, standard checks, and repeatable workflow steps.
 It is not a log file for a single run.
 Single-run details must go under `runs/<run_name>/`.
 
 ## Mandatory seasonal pre-read
-
 Before any continuation, design, execution, correction, download, QC, or new decision in the seasonal phase, run:
 
 ```bash
@@ -23,14 +21,12 @@ cat configs/datasets/c3s_seasonal_variables.yml
 ```
 
 Pre-read rules:
-
-* Decide only from the current repository state.
-* If a new policy or operational file becomes official workflow state, add it to this pre-read list.
-* If repository state conflicts with remembered chat context, repository state is final.
-* Do not skip this step before any new production run.
+- Decide only from the current repository state.
+- If a new policy or operational file becomes official workflow state, add it to this pre-read list.
+- If repository state conflicts with remembered chat context, repository state is final.
+- Do not skip this step before any new production run.
 
 ## Standard session report
-
 Always provide these before continuing work:
 
 ```bash
@@ -52,48 +48,6 @@ If environment work was done, also provide:
 
 ```bash
 conda env list
-```
-
-## Branch and worktree operating rule
-
-* `main` is the stable project-state branch.
-* The first ECMWF seasonal grouped single-level bootstrap milestone is already merged into `main`.
-* Parallel ERA5 monthly z925 work must be done in the linked worktree at `/home/fibi/projects/c3s_project_v2_era5_z925`.
-* The linked worktree uses branch `task/era5-z925`.
-* A backup branch named `backup-task-era5-z925-before-main-sync` exists for safety.
-* Before reintegrating z925 work, explicitly handle the fact that `task/era5-z925` is behind `main`.
-* Seasonal pressure-level verification on `main` must wait until the z925 branch work is completed, closed in Git, and merged back into `main`.
-
-## Main repository quick check
-
-```bash
-cd /home/fibi/projects/c3s_project_v2
-pwd
-git status --short --branch
-git branch -vv
-git log --oneline --decorate --graph -n 12
-```
-
-## Linked worktree quick check
-
-```bash
-cd /home/fibi/projects/c3s_project_v2
-
-printf '\n===== WORKTREES =====\n'
-git worktree list --porcelain
-
-printf '\n===== MAIN REPO =====\n'
-pwd
-git status --short --branch
-git branch -vv
-git log --oneline --decorate --graph -n 12
-
-printf '\n===== TASK WORKTREE =====\n'
-cd /home/fibi/projects/c3s_project_v2_era5_z925
-pwd
-git status --short --branch
-git branch -vv
-git log --oneline --decorate --graph -n 12
 ```
 
 ## Environment activation
@@ -119,8 +73,7 @@ Expected permission style:
 ## Official WSL CDS ERA5 netcheck
 
 Script:
-
-* `scripts/netcheck/00_cds_netcheck_small_era5.py`
+- `scripts/netcheck/00_cds_netcheck_small_era5.py`
 
 Run command:
 
@@ -137,18 +90,15 @@ tail -n 100 -f /home/fibi/projects/c3s_project_v2/logs/wsl_cds_netcheck_era5_sma
 ```
 
 Run metadata path:
-
-* `runs/wsl_cds_netcheck_era5_small/`
+- `runs/wsl_cds_netcheck_era5_small/`
 
 ## Official ERA5 monthly total precipitation downloader
 
 Script:
-
-* `scripts/download/10_download_era5_tp_monthly_grib_cli.py`
+- `scripts/download/10_download_era5_tp_monthly_grib_cli.py`
 
 Raw data root:
-
-* `/mnt/e/last-aticol/data/raw/era5/single-levels/total_precipitation/monthly`
+- `/mnt/e/last-aticol/data/raw/era5/single-levels/total_precipitation/monthly`
 
 Production run command:
 
@@ -166,14 +116,12 @@ tail -n 100 -f /home/fibi/projects/c3s_project_v2/logs/era5_tp_monthly_2000_2025
 ```
 
 Run metadata path:
-
-* `runs/2026-04-13_era5_tp_monthly_2000_2025/`
+- `runs/2026-04-13_era5_tp_monthly_2000_2025/`
 
 ## Inventory snapshot generation
 
 Inventory builder script:
-
-* `scripts/inventory/10_build_inventory_csv.py`
+- `scripts/inventory/10_build_inventory_csv.py`
 
 ERA5 tp monthly inventory command:
 
@@ -187,8 +135,7 @@ ERA5 tp monthly inventory command:
 ## ECMWF seasonal monthly single-level smoke tests
 
 Script:
-
-* `scripts/netcheck/10_c3s_seasonal_ecmwf_single_levels_smoke.py`
+- `scripts/netcheck/10_c3s_seasonal_ecmwf_single_levels_smoke.py`
 
 Hindcast smoke test:
 
@@ -203,8 +150,7 @@ Hindcast smoke test:
 ```
 
 Hindcast smoke metadata:
-
-* `runs/2026-04-22_c3s_ecmwf_single_levels_hindcast_smoke/`
+- `runs/2026-04-22_c3s_ecmwf_single_levels_hindcast_smoke/`
 
 Forecast smoke test:
 
@@ -219,8 +165,7 @@ Forecast smoke test:
 ```
 
 Forecast smoke metadata:
-
-* `runs/2026-04-22_c3s_ecmwf_single_levels_forecast_smoke/`
+- `runs/2026-04-22_c3s_ecmwf_single_levels_forecast_smoke/`
 
 Smoke output quick check:
 
@@ -231,8 +176,7 @@ ls -lh /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-single-levels/ecmwf/syst
 ## ECMWF grouped monthly single-level production
 
 Script:
-
-* `scripts/download/20_download_c3s_ecmwf_single_levels_monthly_grib_cli.py`
+- `scripts/download/20_download_c3s_ecmwf_single_levels_monthly_grib_cli.py`
 
 Hindcast grouped production command:
 
@@ -265,10 +209,9 @@ tail -n 80 /home/fibi/projects/c3s_project_v2/logs/c3s_ecmwf_single_levels_forec
 ```
 
 Expected grouped-file counts after successful completion:
-
-* Hindcast block: 12 `.grib`, 12 `.request.json`, 12 `.sha256`
-* Forecast block: 12 `.grib`, 12 `.request.json`, 12 `.sha256`
-* No `.part` files should remain
+- Hindcast block: 12 `.grib`, 12 `.request.json`, 12 `.sha256`
+- Forecast block: 12 `.grib`, 12 `.request.json`, 12 `.sha256`
+- No `.part` files should remain
 
 Quick grouped completion checks:
 
@@ -298,34 +241,28 @@ Grouped inventory commands:
 ```
 
 Grouped run metadata paths:
-
-* `runs/2026-04-22_c3s_ecmwf_single_levels_hindcast_2000_2016/`
-* `runs/2026-04-22_c3s_ecmwf_single_levels_forecast_2017_2025/`
+- `runs/2026-04-22_c3s_ecmwf_single_levels_hindcast_2000_2016/`
+- `runs/2026-04-22_c3s_ecmwf_single_levels_forecast_2017_2025/`
 
 ## Seasonal bootstrap production rules
-
-* ECMWF-only bootstrap is the active seasonal production scope.
-* Hindcast and forecast production requests must remain separated operationally.
-* Native GRIB is the operational seasonal download format.
-* Exact API payloads must be recorded in run metadata and raw sidecars.
-* On the stable `main` branch, seasonal pressure-level verification must not start before the ERA5 monthly z925 baseline is downloaded, tracked, and merged.
-* Parallel z925 work must stay isolated in the linked worktree branch until that milestone is formally closed.
+- ECMWF-only bootstrap is the active seasonal production scope.
+- Hindcast and forecast production requests must remain separated operationally.
+- Native GRIB is the operational seasonal download format.
+- Exact API payloads must be recorded in run metadata and raw sidecars.
+- The ERA5 monthly z925 dataset for 2000-2025 has been downloaded, inventoried, included in structural and scientific sanity QC, and merged into main.
+- Seasonal pressure-level verification may proceed only after the standard pre-read confirms the clean merged main state.
 
 ## Milestone closure checklist
-
 Before moving to the next meaningful step, do all applicable items below:
-
-* Confirm the run finished successfully or failed definitively.
-* Update `runs/<run_name>/status.json`.
-* Update `docs/STATUS.md`.
-* Update `docs/HANDOFF.md`.
-* Update `docs/RUNBOOK.md` if reusable commands or checks were added.
-* Commit the changes with a precise message.
-* Produce the standard session report.
+- Confirm the run finished successfully or failed definitively.
+- Update `runs/<run_name>/status.json`.
+- Update `docs/STATUS.md`.
+- Update `docs/HANDOFF.md`.
+- Update `docs/RUNBOOK.md` if reusable commands or checks were added.
+- Commit the changes with a precise message.
+- Produce the standard session report.
 
 ## Notes
-
-* Do not rely on memory for operational details.
-* If a command is likely to be reused, store it here.
-* If a detail belongs to a single execution only, store it under `runs/<run_name>/`.
-
+- Do not rely on memory for operational details.
+- If a command is likely to be reused, store it here.
+- If a detail belongs to a single execution only, store it under `runs/<run_name>/`.
