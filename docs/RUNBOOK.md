@@ -244,6 +244,19 @@ Grouped run metadata paths:
 - `runs/2026-04-22_c3s_ecmwf_single_levels_hindcast_2000_2016/`
 - `runs/2026-04-22_c3s_ecmwf_single_levels_forecast_2017_2025/`
 
+## ECMWF seasonal monthly pressure-level z925 smoke tests
+
+Script:
+- `scripts/netcheck/11_c3s_seasonal_ecmwf_pressure_levels_smoke.py`
+
+Hindcast z925 smoke metadata:
+- `runs/2026-05-01_c3s_ecmwf_pressure_levels_hindcast_z925_smoke/`
+
+Forecast z925 smoke metadata:
+- `runs/2026-05-01_c3s_ecmwf_pressure_levels_forecast_z925_smoke/`
+
+The raw GRIB smoke outputs, request sidecars, SHA256 sidecars, and logs are not tracked by Git.
+
 ## Seasonal bootstrap production rules
 - ECMWF-only bootstrap is the active seasonal production scope.
 - Hindcast and forecast production requests must remain separated operationally.

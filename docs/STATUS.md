@@ -20,6 +20,7 @@
 - Seasonal bootstrap is restricted to ECMWF only
 - Seasonal bootstrap starts with monthly single-level archives
 - ECMWF seasonal monthly single-level smoke tests succeeded for project hindcast year 2000 and first project forecast year 2017
+- ECMWF seasonal monthly pressure-level z925 smoke tests succeeded for project hindcast year 2000 and first project forecast year 2017
 - The repository bootstrap assumption using ECMWF system 51 for forecast years 2017-2025 has passed initial smoke validation
 - Grouped ECMWF monthly single-level hindcast download for 2000-2016 completed successfully
 - Grouped ECMWF monthly single-level forecast download for 2017-2025 completed successfully
@@ -43,6 +44,7 @@
 - Seasonal bootstrap format is GRIB
 - Seasonal known-issues registration is part of repository policy
 - Official ECMWF seasonal monthly single-level smoke-test script is tracked
+- Official ECMWF seasonal monthly pressure-level smoke-test script is tracked
 - Official grouped ECMWF seasonal monthly single-level production downloader is tracked
 - Hindcast grouped download produced 12 GRIB files, 12 request sidecars, and 12 SHA256 sidecars
 - Forecast grouped download produced 12 GRIB files, 12 request sidecars, and 12 SHA256 sidecars
@@ -63,7 +65,7 @@
 ## Next action
 1. Verify main is clean after ERA5 z925 reintegration
 2. Use main as the source of truth for ERA5 z925 and seasonal z925 pressure-level planning
-3. Decide the next seasonal pressure-level verification step only after this clean merged state is confirmed
+3. Add the grouped ECMWF seasonal monthly pressure-level production downloader for z500, t850, and z925
 
 ## Last verified commit
 - 78c7442

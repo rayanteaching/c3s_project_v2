@@ -64,9 +64,11 @@ Rules:
 - ECMWF seasonal bootstrap uses C3S system 51.
 - Seasonal bootstrap starts with monthly single-level archives only.
 - For project forecast years 2017-2025, the use of ECMWF system 51 is currently a working repository assumption for bootstrap execution and later validation.
-- That ECMWF system-51 bootstrap assumption passed the initial smoke test for the first project forecast year 2017.
-- The ECMWF hindcast path also passed the initial smoke test for project year 2000.
-- The official smoke-test script is tracked at scripts/netcheck/10_c3s_seasonal_ecmwf_single_levels_smoke.py.
+- That ECMWF system-51 bootstrap assumption passed the initial single-level smoke test for the first project forecast year 2017.
+- The ECMWF single-level hindcast path also passed the initial smoke test for project year 2000.
+- ECMWF seasonal monthly pressure-level z925 smoke tests passed for project hindcast year 2000 and first project forecast year 2017.
+- The official single-level smoke-test script is tracked at scripts/netcheck/10_c3s_seasonal_ecmwf_single_levels_smoke.py.
+- The official pressure-level smoke-test script is tracked at scripts/netcheck/11_c3s_seasonal_ecmwf_pressure_levels_smoke.py.
 - The official grouped production downloader is tracked at scripts/download/20_download_c3s_ecmwf_single_levels_monthly_grib_cli.py.
 - Grouped hindcast download metadata is tracked under:
   - runs/2026-04-22_c3s_ecmwf_single_levels_hindcast_2000_2016/
@@ -93,7 +95,7 @@ Rules:
 ## Immediate next step
 1. Verify main is clean after ERA5 z925 reintegration.
 2. Use main as the source of truth for ERA5 z925 and seasonal z925 pressure-level planning.
-3. Decide the next seasonal pressure-level verification step only after this clean merged state is confirmed.
+3. Add the grouped ECMWF seasonal monthly pressure-level production downloader for z500, t850, and z925.
 
 ## Standard session report
 Always provide the following before continuing work:

@@ -1,0 +1,8 @@
+scripts/netcheck/11_c3s_seasonal_ecmwf_pressure_levels_smoke.py \
+  --year 2000 \
+  --month 01 \
+  --leadtime-month 1 \
+  --variable geopotential \
+  --pressure-level 925 \
+  --out /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ecmwf/system_51/smoke/cds__c3s_seasonal__monthly-pressure-levels__ecmwf__s51__z925__925hPa__monthly_mean__2000__m01__lead1__NH0_90.grib \
+  2>&1 | tee logs/c3s_ecmwf_pressure_levels_hindcast_z925_smoke.log

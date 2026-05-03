@@ -1,0 +1,18 @@
+{
+  "run": "2026-05-01_c3s_ecmwf_pressure_levels_forecast_z925_smoke",
+  "dataset": "seasonal-monthly-pressure-levels",
+  "originating_centre": "ecmwf",
+  "system": "51",
+  "product_type": "monthly_mean",
+  "variable": "geopotential",
+  "pressure_level": "925",
+  "year": "2017",
+  "month": "01",
+  "leadtime_month": "1",
+  "status": "completed",
+  "passed": true,
+  "grib": "/mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ecmwf/system_51/smoke/cds__c3s_seasonal__monthly-pressure-levels__ecmwf__s51__z925__925hPa__monthly_mean__2017__m01__lead1__NH0_90.grib",
+  "request_json": "/mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ecmwf/system_51/smoke/cds__c3s_seasonal__monthly-pressure-levels__ecmwf__s51__z925__925hPa__monthly_mean__2017__m01__lead1__NH0_90.grib.request.json",
+  "sha256": "/mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ecmwf/system_51/smoke/cds__c3s_seasonal__monthly-pressure-levels__ecmwf__s51__z925__925hPa__monthly_mean__2017__m01__lead1__NH0_90.grib.sha256",
+  "log": "logs/c3s_ecmwf_pressure_levels_forecast_z925_smoke.log"
+}
