@@ -1,0 +1,41 @@
+{
+  "run": "2026-05-01_c3s_ecmwf_pressure_levels_hindcast_2000_2016",
+  "status": "started",
+  "started_at_utc": "2026-05-03T17:06:14Z",
+  "dataset": "seasonal-monthly-pressure-levels",
+  "originating_centre": "ecmwf",
+  "system": "51",
+  "product_type": "monthly_mean",
+  "data_format": "grib",
+  "start_year": 2000,
+  "end_year": 2016,
+  "months": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12"
+  ],
+  "leadtime_months": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ],
+  "variables": [
+    "z500",
+    "t850",
+    "z925"
+  ],
+  "out_root": "/mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ecmwf/system_51/hindcast_2000_2016",
+  "log": "logs/c3s_ecmwf_pressure_levels_hindcast_2000_2016.log"
+}

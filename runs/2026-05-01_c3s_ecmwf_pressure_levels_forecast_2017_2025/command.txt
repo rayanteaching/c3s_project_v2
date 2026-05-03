@@ -1,0 +1,6 @@
+nohup /home/fibi/projects/c3s_project_v2/scripts/download/21_download_c3s_ecmwf_pressure_levels_monthly_grib_cli.py \
+  --start-year 2017 \
+  --end-year 2025 \
+  --out-root /mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ecmwf/system_51/forecast_2017_2025 \
+  --skip-existing \
+  > /home/fibi/projects/c3s_project_v2/logs/c3s_ecmwf_pressure_levels_forecast_2017_2025.log 2>&1 &
