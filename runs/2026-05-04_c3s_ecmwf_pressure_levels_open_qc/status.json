@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "verified": true,
+  "dataset": "seasonal-monthly-pressure-levels",
+  "originating_centre": "ecmwf",
+  "system": "51",
+  "qc_type": "lightweight canonical GRIB openability QC using ecCodes",
+  "sample_months": [
+    "01",
+    "12"
+  ],
+  "sampled_file_count": 12,
+  "variables": [
+    "t850",
+    "z500",
+    "z925"
+  ],
+  "blocks": [
+    "forecast",
+    "hindcast"
+  ],
+  "summary_csv": "runs/2026-05-04_c3s_ecmwf_pressure_levels_open_qc/open_qc_summary.csv",
+  "details_json": "runs/2026-05-04_c3s_ecmwf_pressure_levels_open_qc/open_qc_details.json",
+  "result": "Canonical ECMWF pressure-level sampled GRIB files passed checksum, openability, and metadata checks."
+}

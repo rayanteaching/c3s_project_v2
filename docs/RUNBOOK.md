@@ -308,3 +308,19 @@ Before moving to the next meaningful step, do all applicable items below:
 - Do not rely on memory for operational details.
 - If a command is likely to be reused, store it here.
 - If a detail belongs to a single execution only, store it under `runs/<run_name>/`.
+
+## ECMWF seasonal pressure-level openability QC
+
+Script:
+- `scripts/qc/22_check_c3s_ecmwf_pressure_levels_openability.py`
+
+Run command:
+- `/home/fibi/projects/c3s_project_v2/scripts/qc/22_check_c3s_ecmwf_pressure_levels_openability.py`
+
+Expected tracked outputs:
+- `runs/2026-05-04_c3s_ecmwf_pressure_levels_open_qc/command.txt`
+- `runs/2026-05-04_c3s_ecmwf_pressure_levels_open_qc/run.md`
+- `runs/2026-05-04_c3s_ecmwf_pressure_levels_open_qc/status.json`
+- `runs/2026-05-04_c3s_ecmwf_pressure_levels_open_qc/open_qc_summary.csv`
+- `runs/2026-05-04_c3s_ecmwf_pressure_levels_open_qc/open_qc_details.json`
+
