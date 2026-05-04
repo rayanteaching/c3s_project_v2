@@ -14,6 +14,7 @@ cd /home/fibi/projects/c3s_project_v2
 cat docs/DECISIONS.md
 cat docs/SEASONAL_DOWNLOAD_POLICY.md
 cat docs/SEASONAL_KNOWN_ISSUES.md
+cat docs/GIT_WORKFLOW.md
 cat docs/STATUS.md
 cat docs/HANDOFF.md
 cat configs/datasets/c3s_seasonal_systems.yml
