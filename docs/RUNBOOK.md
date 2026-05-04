@@ -257,6 +257,34 @@ Forecast z925 smoke metadata:
 
 The raw GRIB smoke outputs, request sidecars, SHA256 sidecars, and logs are not tracked by Git.
 
+## ECMWF seasonal monthly pressure-level production
+
+Script:
+- scripts/download/21_download_c3s_ecmwf_pressure_levels_monthly_grib_cli.py
+
+Completed production blocks:
+- Hindcast: 2000-2016
+- Forecast: 2017-2025
+
+Variables:
+- z500
+- t850
+- z925
+
+Expected completion counts per block:
+- 72 GRIB files
+- 72 request JSON sidecars
+- 72 SHA256 sidecars
+- 0 part files
+
+Inventory snapshots:
+- data/inventory/c3s_ecmwf_pressure_levels_hindcast_2000_2016.csv
+- data/inventory/c3s_ecmwf_pressure_levels_forecast_2017_2025.csv
+
+Run metadata:
+- runs/2026-05-01_c3s_ecmwf_pressure_levels_hindcast_2000_2016/
+- runs/2026-05-01_c3s_ecmwf_pressure_levels_forecast_2017_2025/
+
 ## Seasonal bootstrap production rules
 - ECMWF-only bootstrap is the active seasonal production scope.
 - Hindcast and forecast production requests must remain separated operationally.

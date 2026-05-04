@@ -1,14 +1,22 @@
 {
-  "run": "2026-05-01_c3s_ecmwf_pressure_levels_hindcast_2000_2016",
-  "status": "started",
-  "started_at_utc": "2026-05-03T17:06:14Z",
-  "dataset": "seasonal-monthly-pressure-levels",
-  "originating_centre": "ecmwf",
-  "system": "51",
-  "product_type": "monthly_mean",
-  "data_format": "grib",
-  "start_year": 2000,
-  "end_year": 2016,
+  "status": "completed",
+  "verified": true,
+  "block": "hindcast",
+  "years": "2000-2016",
+  "completed_at_utc": "2026-05-03T22:16:55Z",
+  "verified_at_utc": "2026-05-04T09:58:17Z",
+  "raw_root": "/mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ecmwf/system_51/hindcast_2000_2016",
+  "inventory": "data/inventory/c3s_ecmwf_pressure_levels_hindcast_2000_2016.csv",
+  "expected_grib_count": 72,
+  "grib_count": 72,
+  "request_json_count": 72,
+  "sha256_count": 72,
+  "part_count": 0,
+  "variables": [
+    "z500",
+    "t850",
+    "z925"
+  ],
   "months": [
     "01",
     "02",
@@ -31,11 +39,5 @@
     "5",
     "6"
   ],
-  "variables": [
-    "z500",
-    "t850",
-    "z925"
-  ],
-  "out_root": "/mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ecmwf/system_51/hindcast_2000_2016",
-  "log": "logs/c3s_ecmwf_pressure_levels_hindcast_2000_2016.log"
+  "result": "ECMWF seasonal monthly pressure-level production completed and inventory was built."
 }

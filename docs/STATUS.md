@@ -29,6 +29,8 @@
 - Seasonal pressure-level work has begun on the z925-based pressure-level track
 - A matching ERA5 monthly z925 dataset has been downloaded, inventoried, and included in the ERA5 monthly QC workflow before seasonal pressure-level verification
 - Hindcast and forecast requests are handled separately operationally
+- ECMWF seasonal monthly pressure-level production completed successfully for hindcast 2000-2016 and forecast 2017-2025
+- ECMWF pressure-level inventory snapshots were created for z500, t850, and z925
 
 ## Confirmed facts
 - Repository root: /home/fibi/projects/c3s_project_v2
@@ -61,6 +63,7 @@
 - No open ERA5 blocker
 - No current ECMWF grouped download blocker
 - No blocker remains for the completed ECMWF single-level bootstrap download milestone
+- No blocker remains for the completed ECMWF pressure-level production download milestone
 
 ## Next action
 1. Verify main is clean after ERA5 z925 reintegration
