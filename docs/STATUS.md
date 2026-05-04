@@ -73,4 +73,4 @@
 3. Add the grouped ECMWF seasonal monthly pressure-level production downloader for z500, t850, and z925
 
 ## Last verified commit
-- bd51780
+- 7f52d8e
