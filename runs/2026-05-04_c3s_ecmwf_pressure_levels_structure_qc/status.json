@@ -1,0 +1,26 @@
+{
+  "status": "verified_with_warning",
+  "dataset": "seasonal-monthly-pressure-levels",
+  "originating_centre": "ecmwf",
+  "system": "51",
+  "hindcast_years": "2000-2016",
+  "forecast_years": "2017-2025",
+  "variables": [
+    "z500",
+    "t850",
+    "z925"
+  ],
+  "hindcast_grib_count": 72,
+  "hindcast_request_json_count": 72,
+  "hindcast_sha256_count": 72,
+  "hindcast_part_count": 0,
+  "forecast_grib_count": 72,
+  "forecast_request_json_count": 72,
+  "forecast_sha256_count": 72,
+  "forecast_part_count": 0,
+  "inventory_hindcast_lines": 73,
+  "inventory_forecast_lines": 73,
+  "checksum_verification": "passed",
+  "warning": "Each variable has 24 GRIB files per block rather than 12 because two naming families are present in the raw pressure-level directories. No raw files were deleted. This must be handled before scientific analysis or derived products.",
+  "result": "Structural integrity and checksum verification passed with duplicate naming-family warning."
+}

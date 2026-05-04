@@ -89,6 +89,7 @@ Rules:
 - Matching ERA5 monthly z925 has been downloaded, inventoried, and included in ERA5 monthly QC before seasonal pressure-level verification begins.
 - ECMWF seasonal monthly pressure-level production completed successfully for hindcast 2000-2016 and forecast 2017-2025.
 - ECMWF pressure-level inventory snapshots were created for z500, t850, and z925.
+- ECMWF pressure-level structural checksum QC passed with a duplicate naming-family warning.
 - Seasonal hindcasts and forecasts are requested separately.
 - Project seasonal hindcast target is 2000-2016.
 - Project seasonal forecast target is 2017-2025.
