@@ -31,7 +31,7 @@
 - Hindcast and forecast requests are handled separately operationally
 - ECMWF seasonal monthly pressure-level production completed successfully for hindcast 2000-2016 and forecast 2017-2025
 - ECMWF pressure-level inventory snapshots were created for z500, t850, and z925
-- ECMWF pressure-level structural checksum QC passed with a duplicate naming-family warning
+- ECMWF pressure-level structural checksum QC passed after canonical naming-family selection
 
 ## Confirmed facts
 - Repository root: /home/fibi/projects/c3s_project_v2
@@ -65,7 +65,7 @@
 - No current ECMWF grouped download blocker
 - No blocker remains for the completed ECMWF single-level bootstrap download milestone
 - No blocker remains for the completed ECMWF pressure-level production download milestone
-- Pressure-level duplicate naming-family warning must be handled before scientific analysis
+- Pressure-level duplicate naming-family warning was handled by moving the noncanonical duplicate family out of active raw directories without deletion
 
 ## Next action
 1. Verify main is clean after ERA5 z925 reintegration

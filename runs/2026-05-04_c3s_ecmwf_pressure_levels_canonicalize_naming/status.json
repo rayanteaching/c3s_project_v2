@@ -1,0 +1,12 @@
+{
+  "status": "completed",
+  "action": "canonicalize_pressure_level_raw_naming",
+  "canonical_family": "cds__c3s_seasonal__monthly-pressure-levels__ecmwf__s51__...__stXX__lead1-6__NH0_90",
+  "noncanonical_family": "cds__seasonal-monthly-pressure-levels__ecmwf__system_51__...__mXX__lt01-06__NH0_90__grid_1p0",
+  "raw_files_deleted": false,
+  "noncanonical_files_moved_to": "/mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ecmwf/system_51/noncanonical_duplicate_naming_family_20260504",
+  "active_expected_hindcast_grib_count": 36,
+  "active_expected_forecast_grib_count": 36,
+  "active_expected_inventory_lines_per_block": 37,
+  "result": "Active ECMWF pressure-level raw directories now retain the naming family aligned with the single-level workflow."
+}
