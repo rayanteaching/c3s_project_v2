@@ -87,6 +87,7 @@ Rules:
 - Seasonal pressure-level work has begun on the z925-based pressure-level track.
 - The repository seasonal pressure-level substitute is z925, not z950.
 - Matching ERA5 monthly z925 has been downloaded, inventoried, and included in ERA5 monthly QC before seasonal pressure-level verification begins.
+- ECMWF pressure-level canonical GRIB openability QC passed for sampled st01 and st12 files using ecCodes.
 - ECMWF seasonal monthly pressure-level production completed successfully for hindcast 2000-2016 and forecast 2017-2025.
 - ECMWF pressure-level inventory snapshots were created for z500, t850, and z925.
 - ECMWF pressure-level structural checksum QC passed after canonical naming-family selection.

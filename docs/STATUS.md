@@ -66,6 +66,7 @@
 - No blocker remains for the completed ECMWF single-level bootstrap download milestone
 - No blocker remains for the completed ECMWF pressure-level production download milestone
 - Pressure-level duplicate naming-family warning was handled by moving the noncanonical duplicate family out of active raw directories without deletion
+- ECMWF pressure-level canonical GRIB openability QC passed for sampled st01 and st12 files using ecCodes
 
 ## Next action
 1. Verify main is clean after ERA5 z925 reintegration
@@ -73,4 +74,4 @@
 3. Add the grouped ECMWF seasonal monthly pressure-level production downloader for z500, t850, and z925
 
 ## Last verified commit
-- 7f52d8e
+- 962c7b7
