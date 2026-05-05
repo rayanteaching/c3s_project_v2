@@ -98,9 +98,9 @@ Rules:
 - A tracked seasonal known-issues register is required before any non-ECMWF centre is activated.
 
 ## Immediate next step
-1. Verify main is clean after ERA5 z925 reintegration.
-2. Use main as the source of truth for ERA5 z925 and seasonal z925 pressure-level planning.
-3. Add the grouped ECMWF seasonal monthly pressure-level production downloader for z500, t850, and z925.
+1. Run the next ECMWF pressure-level scientific sanity/QC step using the canonical z500, t850, and z925 files.
+2. Keep main and dev synchronized after the QC milestone is closed.
+3. Decide the next seasonal verification or processing step only after the pressure-level QC result is documented.
 
 ## Standard session report
 Always provide the following before continuing work:
