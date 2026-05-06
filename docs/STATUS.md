@@ -68,11 +68,12 @@
 - Pressure-level duplicate naming-family warning was handled by moving the noncanonical duplicate family out of active raw directories without deletion
 - ECMWF pressure-level canonical GRIB openability QC passed for sampled st01 and st12 files using ecCodes
 - ECMWF pressure-level scientific sanity QC passed for all 72 canonical GRIB files using ecCodes sampled-message checks
+- NCEP CFSv2 activation review has started; production download is blocked until smoke tests verify system=2 coverage and member handling
 
 ## Next action
-1. Use main as the source of truth for completed ECMWF seasonal single-level and pressure-level raw collections
-2. Decide the next seasonal verification or processing step after reviewing the completed pressure-level QC outputs
-3. Keep main and dev synchronized after each milestone closure
+1. Create and run NCEP CFSv2 smoke tests for representative hindcast and forecast years
+2. Verify NCEP system=2 coverage, member counts, nominal start handling, and request semantics before production
+3. Keep main and dev synchronized after the NCEP activation-review milestone is closed
 
 ## Last verified commit
 - 1a7451b

@@ -97,11 +97,12 @@ Rules:
 - Project seasonal forecast target is 2017-2025.
 - GRIB is the operational download format.
 - A tracked seasonal known-issues register is required before any non-ECMWF centre is activated.
+- NCEP CFSv2 activation review has started; production download is blocked until smoke tests verify system=2 coverage and member handling.
 
 ## Immediate next step
-1. Use main as the source of truth for completed ECMWF seasonal single-level and pressure-level raw collections.
-2. Decide the next seasonal verification or processing step after reviewing the completed pressure-level QC outputs.
-3. Keep main and dev synchronized after each milestone closure.
+1. Create and run NCEP CFSv2 smoke tests for representative hindcast and forecast years.
+2. Verify NCEP system=2 coverage, member counts, nominal start handling, and request semantics before production.
+3. Keep main and dev synchronized after the NCEP activation-review milestone is closed.
 
 ## Standard session report
 Always provide the following before continuing work:

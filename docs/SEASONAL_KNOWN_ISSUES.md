@@ -32,3 +32,13 @@ This register tracks official C3S seasonal data issues that affect repository do
 - Issues stating that archived wrong data will not be overwritten must be treated as hard warnings.
 - Data gaps must be recorded explicitly in run metadata and inventories.
 - Deferred centres must not be operationally downloaded until their issue registration is committed.
+
+## NCEP CFSv2 activation review
+- Status: candidate centre under review; production download is not yet authorized.
+- System: CFSv2-v20110310.
+- CDS system keyword: 2.
+- Operational caution: NCEP uses lagged/daily initialization; member counts and nominal start handling must be verified by smoke tests before production.
+- E4.a1/E4.a2: fixed historical CDS availability issues for NCEP monthly statistics/anomalies. Repository action: allow after standard verification.
+- E7/E7b: fixed missing-member issues affecting NCEP daily/subdaily datasets. Repository action: warn if daily/subdaily NCEP data are later activated; not a direct blocker for current monthly pressure-level workflow.
+- E6: NCEP surface solar radiation variables were swapped for affected dates. Repository action: exclude from current workflow; re-review only if radiation variables are activated.
+- G8: NCEP system=2 forecast data for 2023-05-22 are unavailable. Repository action: warn; forecast May 2023 member counts must be checked explicitly in NCEP QC.
