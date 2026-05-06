@@ -67,11 +67,12 @@
 - No blocker remains for the completed ECMWF pressure-level production download milestone
 - Pressure-level duplicate naming-family warning was handled by moving the noncanonical duplicate family out of active raw directories without deletion
 - ECMWF pressure-level canonical GRIB openability QC passed for sampled st01 and st12 files using ecCodes
+- ECMWF pressure-level scientific sanity QC passed for all 72 canonical GRIB files using ecCodes sampled-message checks
 
 ## Next action
-1. Run the next ECMWF pressure-level scientific sanity/QC step using the canonical z500, t850, and z925 files
-2. Keep main and dev synchronized after the QC milestone is closed
-3. Decide the next seasonal verification or processing step only after the pressure-level QC result is documented
+1. Use main as the source of truth for completed ECMWF seasonal single-level and pressure-level raw collections
+2. Decide the next seasonal verification or processing step after reviewing the completed pressure-level QC outputs
+3. Keep main and dev synchronized after each milestone closure
 
 ## Last verified commit
 - 25c87fa

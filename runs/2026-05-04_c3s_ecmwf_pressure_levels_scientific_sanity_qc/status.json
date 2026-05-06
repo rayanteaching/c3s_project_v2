@@ -1,0 +1,36 @@
+{
+  "blocks": [
+    "forecast",
+    "hindcast"
+  ],
+  "checked_file_count": 72,
+  "dataset": "seasonal-monthly-pressure-levels",
+  "details_json": "runs/2026-05-04_c3s_ecmwf_pressure_levels_scientific_sanity_qc/scientific_sanity_details.json",
+  "max_messages_per_file": 12,
+  "months": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12"
+  ],
+  "originating_centre": "ecmwf",
+  "qc_type": "sampled scientific sanity QC using ecCodes",
+  "result": "Canonical ECMWF pressure-level files passed sampled scientific sanity checks.",
+  "status": "passed",
+  "summary_csv": "runs/2026-05-04_c3s_ecmwf_pressure_levels_scientific_sanity_qc/scientific_sanity_summary.csv",
+  "system": "51",
+  "variables": [
+    "t850",
+    "z500",
+    "z925"
+  ],
+  "verified": true
+}

@@ -324,3 +324,17 @@ Expected tracked outputs:
 - `runs/2026-05-04_c3s_ecmwf_pressure_levels_open_qc/open_qc_summary.csv`
 - `runs/2026-05-04_c3s_ecmwf_pressure_levels_open_qc/open_qc_details.json`
 
+## ECMWF seasonal pressure-level scientific sanity QC
+
+Script:
+- `scripts/qc/23_check_c3s_ecmwf_pressure_levels_scientific_sanity.py`
+
+Run command:
+- `/home/fibi/projects/c3s_project_v2/scripts/qc/23_check_c3s_ecmwf_pressure_levels_scientific_sanity.py`
+
+Expected tracked outputs:
+- `runs/2026-05-04_c3s_ecmwf_pressure_levels_scientific_sanity_qc/command.txt`
+- `runs/2026-05-04_c3s_ecmwf_pressure_levels_scientific_sanity_qc/run.md`
+- `runs/2026-05-04_c3s_ecmwf_pressure_levels_scientific_sanity_qc/status.json`
+- `runs/2026-05-04_c3s_ecmwf_pressure_levels_scientific_sanity_qc/scientific_sanity_summary.csv`
+- `runs/2026-05-04_c3s_ecmwf_pressure_levels_scientific_sanity_qc/scientific_sanity_details.json`

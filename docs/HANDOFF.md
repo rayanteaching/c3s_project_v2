@@ -88,6 +88,7 @@ Rules:
 - The repository seasonal pressure-level substitute is z925, not z950.
 - Matching ERA5 monthly z925 has been downloaded, inventoried, and included in ERA5 monthly QC before seasonal pressure-level verification begins.
 - ECMWF pressure-level canonical GRIB openability QC passed for sampled st01 and st12 files using ecCodes.
+- ECMWF pressure-level scientific sanity QC passed for all 72 canonical GRIB files using ecCodes sampled-message checks.
 - ECMWF seasonal monthly pressure-level production completed successfully for hindcast 2000-2016 and forecast 2017-2025.
 - ECMWF pressure-level inventory snapshots were created for z500, t850, and z925.
 - ECMWF pressure-level structural checksum QC passed after canonical naming-family selection.
@@ -98,9 +99,9 @@ Rules:
 - A tracked seasonal known-issues register is required before any non-ECMWF centre is activated.
 
 ## Immediate next step
-1. Run the next ECMWF pressure-level scientific sanity/QC step using the canonical z500, t850, and z925 files.
-2. Keep main and dev synchronized after the QC milestone is closed.
-3. Decide the next seasonal verification or processing step only after the pressure-level QC result is documented.
+1. Use main as the source of truth for completed ECMWF seasonal single-level and pressure-level raw collections.
+2. Decide the next seasonal verification or processing step after reviewing the completed pressure-level QC outputs.
+3. Keep main and dev synchronized after each milestone closure.
 
 ## Standard session report
 Always provide the following before continuing work:
