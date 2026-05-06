@@ -75,4 +75,4 @@
 3. Keep main and dev synchronized after each milestone closure
 
 ## Last verified commit
-- 25c87fa
+- 1a7451b
