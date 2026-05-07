@@ -77,4 +77,4 @@
 3. Verify NCEP system=2 coverage, member counts, nominal start handling, leadtime metadata, and GRIB request semantics before production
 
 ## Last verified commit
-- 46f578e
+- 0520078
