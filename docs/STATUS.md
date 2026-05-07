@@ -72,9 +72,9 @@
 - C3S seasonal pressure-level QA review is documented; NCEP production remains blocked until smoke tests verify system=2 coverage, member handling, and metadata semantics
 
 ## Next action
-1. Resolve or restore the uncommitted configs/datasets/c3s_seasonal_variables.yml change before NCEP smoke testing
-2. Create and run NCEP CFSv2 smoke tests for representative hindcast and forecast years
-3. Verify NCEP system=2 coverage, member counts, nominal start handling, leadtime metadata, and GRIB request semantics before production
+1. Create and run NCEP CFSv2 smoke tests for representative hindcast and forecast years
+2. Verify NCEP system=2 coverage, member counts, nominal start handling, leadtime metadata, and GRIB request semantics before production
+3. Keep main and dev synchronized after the NCEP smoke-test milestone is closed
 
 ## Last verified commit
-- 0520078
+- 4c82f86
