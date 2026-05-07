@@ -97,3 +97,12 @@ No seasonal milestone is considered complete until:
 - docs/HANDOFF.md is updated
 - any reusable operational command is added to docs/RUNBOOK.md when needed
 - a precise closing commit is created
+
+## Seasonal pressure-level QA policy
+- Monthly pressure-level products are monthly statistics derived from subdaily seasonal forecast data.
+- Seasonal products must be interpreted probabilistically.
+- Bias correction or bias-aware interpretation is required for scientific applications and derived forecast products.
+- Hindcasts/reforecasts are required for model climatology, anomaly construction, and verification.
+- Native GRIB remains the operational format for complex seasonal requests.
+- Experimental NetCDF is not authorized for operational seasonal download workflows without a separate documented validation.
+- Differences between forecast systems in grid, ensemble generation, start-date handling, leadtime metadata, and hindcast availability must be checked before a new centre is activated.

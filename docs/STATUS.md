@@ -69,11 +69,12 @@
 - ECMWF pressure-level canonical GRIB openability QC passed for sampled st01 and st12 files using ecCodes
 - ECMWF pressure-level scientific sanity QC passed for all 72 canonical GRIB files using ecCodes sampled-message checks
 - NCEP CFSv2 activation review has started; production download is blocked until smoke tests verify system=2 coverage and member handling
+- C3S seasonal pressure-level QA review is documented; NCEP production remains blocked until smoke tests verify system=2 coverage, member handling, and metadata semantics
 
 ## Next action
-1. Create and run NCEP CFSv2 smoke tests for representative hindcast and forecast years
-2. Verify NCEP system=2 coverage, member counts, nominal start handling, and request semantics before production
-3. Keep main and dev synchronized after the NCEP activation-review milestone is closed
+1. Resolve or restore the uncommitted configs/datasets/c3s_seasonal_variables.yml change before NCEP smoke testing
+2. Create and run NCEP CFSv2 smoke tests for representative hindcast and forecast years
+3. Verify NCEP system=2 coverage, member counts, nominal start handling, leadtime metadata, and GRIB request semantics before production
 
 ## Last verified commit
 - 1a7451b

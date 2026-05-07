@@ -155,3 +155,12 @@ Do not track:
 - Official C3S seasonal known issues must be copied into tracked repository documentation before a new centre or sensitive variable is activated.
 - Each affected case must be classified in the repository as allow, warn, mask, or exclude.
 - Non-ECMWF centres remain deferred until both period-specific system mapping and known-issues registration are committed.
+
+## C3S seasonal pressure-level QA interpretation
+- Seasonal monthly pressure-level products are monthly statistics derived from subdaily forecast data.
+- These products are probabilistic seasonal forecast products, not deterministic weather forecasts.
+- Monthly pressure-level fields may contain system-, region-, variable-, season-, and lead-dependent biases.
+- Hindcasts/reforecasts are required for bias estimation, anomaly construction, and forecast skill assessment.
+- Operational seasonal downloads must remain in native GRIB because complex NetCDF requests can have limited metadata and interpretation risk.
+- Download success, checksum success, and openability success do not imply scientific readiness.
+- NCEP CFSv2 production download is blocked until smoke tests verify system=2 coverage, member counts, nominal start handling, and leadtime metadata.

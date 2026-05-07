@@ -114,3 +114,15 @@ Blocked until smoke tests pass:
 - grouped NCEP production download
 - NCEP inclusion in multi-model analysis
 - NCEP-derived products
+
+## CDS quality-assurance implications for NCEP
+The CDS quality information for seasonal monthly pressure-levels reinforces that NCEP must be activated cautiously.
+
+Repository implications:
+- Do not proceed directly to NCEP production download.
+- Verify NCEP system=2 request semantics using smoke tests first.
+- Verify member-count behaviour explicitly because NCEP uses lagged/daily ensemble generation.
+- Verify nominal start-month and leadtime metadata before grouped downloads.
+- Keep native GRIB as the operational format.
+- Do not use experimental NetCDF for operational NCEP downloads.
+- Do not create NCEP anomaly, bias-corrected, or multi-model products until hindcast-based verification and bias strategy are documented.
