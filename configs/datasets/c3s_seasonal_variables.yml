@@ -16,7 +16,7 @@ bootstrap_single_levels:
     dataset: seasonal-monthly-single-levels
     level_label: surface
     units: m s-1
-    note: raw monthly archive quantity only; conversion belongs to analysis stage
+    note: official CDS seasonal monthly single-level unit for total_precipitation; raw monthly archive quantity only; conversion to accumulated depth belongs to analysis stage
 
 deferred_pressure_levels:
   z500:
