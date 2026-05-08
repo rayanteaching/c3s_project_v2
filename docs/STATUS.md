@@ -72,9 +72,9 @@
 - C3S seasonal pressure-level QA review is documented; NCEP production remains blocked until smoke tests verify system=2 coverage, member handling, and metadata semantics
 
 ## Next action
-1. Create and run NCEP CFSv2 smoke tests for representative hindcast and forecast years
-2. Verify NCEP system=2 coverage, member counts, nominal start handling, leadtime metadata, and GRIB request semantics before production
-3. Keep main and dev synchronized after the NCEP smoke-test milestone is closed
+1. On branch task/ncep-pressure-levels-smoke, revise the NCEP smoke-test script to test z500 and t850 first, not z925
+2. Run small NCEP CFSv2 smoke tests for a safe hindcast year and a safe forecast year before any production download
+3. Add explicit May 2023 member/date-handling QC before using NCEP forecast May 2023 in any derived product
 
 ## Last verified commit
 - 4c82f86
