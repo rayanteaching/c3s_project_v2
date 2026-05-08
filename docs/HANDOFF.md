@@ -99,6 +99,7 @@ Rules:
 - A tracked seasonal known-issues register is required before any non-ECMWF centre is activated.
 - NCEP CFSv2 activation review has started; production download is blocked until smoke tests verify system=2 coverage and member handling.
 - C3S seasonal pressure-level QA review is documented; NCEP production remains blocked until smoke tests verify system=2 coverage, member handling, and metadata semantics.
+- NCEP May 2023 forecast requires explicit member/date-handling QC because documented system=2 data initialized on 2023-05-22 are unavailable.
 
 ## Immediate next step
 1. Create and run NCEP CFSv2 smoke tests for representative hindcast and forecast years.

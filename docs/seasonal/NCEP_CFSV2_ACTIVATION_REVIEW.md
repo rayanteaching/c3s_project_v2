@@ -67,6 +67,7 @@ Required smoke-test years:
 - forecast: 2025
 
 ## Known issues relevant to NCEP
+- G8 caution: NCEP system=2 forecast data initialized on 2023-05-22 are unavailable because all four members for that date were not correctly transmitted. Repository interpretation: this is not a blanket blocker for monthly_mean retrieval, but May 2023 forecast member/date handling must be explicitly checked during NCEP QC before using NCEP in derived products or multi-model analysis.
 ### E4.a1 and E4.a2
 Monthly statistics and anomalies for some NCEP CFSv2 hindcast and forecast dates were temporarily unavailable in 2019.
 Official status: fixed in the archive.
