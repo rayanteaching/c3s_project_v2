@@ -73,27 +73,50 @@ def read_grib_metadata(path: Path, max_samples: int = 30) -> dict[str, Any]:
 
     samples: list[dict[str, Any]] = []
     message_count = 0
+    data_date_counts: dict[str, int] = {}
+    data_time_counts: dict[str, int] = {}
 
     with path.open("rb") as handle:
         while True:
             gid = eccodes.codes_grib_new_from_file(handle)
             if gid is None:
                 break
+
             message_count += 1
+            item: dict[str, Any] = {}
+
+            for key in keys:
+                try:
+                    item[key] = eccodes.codes_get(gid, key)
+                except Exception:
+                    item[key] = None
+
+            data_date = item.get("dataDate")
+            data_time = item.get("dataTime")
+
+            if data_date is not None:
+                data_date_text = str(data_date)
+                data_date_counts[data_date_text] = data_date_counts.get(data_date_text, 0) + 1
+
+                if data_time is not None:
+                    data_time_text = f"{data_date_text}_{int(data_time):04d}"
+                    data_time_counts[data_time_text] = data_time_counts.get(data_time_text, 0) + 1
+
             if len(samples) < max_samples:
-                item: dict[str, Any] = {}
-                for key in keys:
-                    try:
-                        item[key] = eccodes.codes_get(gid, key)
-                    except Exception:
-                        item[key] = None
                 samples.append(item)
+
             eccodes.codes_release(gid)
 
     return {
         "eccodes_available": True,
         "message_count": message_count,
         "sample_messages": samples,
+        "unique_data_dates": sorted(data_date_counts),
+        "unique_data_times": sorted(data_time_counts),
+        "data_date_counts": dict(sorted(data_date_counts.items())),
+        "data_time_counts": dict(sorted(data_time_counts.items())),
+        "contains_20230522": "20230522" in data_date_counts,
+        "messages_for_20230522": data_date_counts.get("20230522", 0),
         "error": "",
     }
 
