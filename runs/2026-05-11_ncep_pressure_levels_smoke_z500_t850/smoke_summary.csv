@@ -1,0 +1,5 @@
+metadata_file,status,variable_key,year,month,leadtime_month,message_count,first_shortName,first_level,first_typeOfLevel,first_forecastMonth,first_stepRange,first_dataDate,first_dataTime,first_number
+cds__c3s_seasonal__monthly-pressure-levels__ncep__s2__t850__850hPa__monthly_mean__2000__st01__lead1__NH0_90.grib.metadata.json,downloaded,t850,2000,01,1,28,t,850,isobaricInhPa,1,744,20000101,0,0
+cds__c3s_seasonal__monthly-pressure-levels__ncep__s2__t850__850hPa__monthly_mean__2020__st01__lead1__NH0_90.grib.metadata.json,downloaded,t850,2020,01,1,124,t,850,isobaricInhPa,1,744,20200101,0,0
+cds__c3s_seasonal__monthly-pressure-levels__ncep__s2__z500__500hPa__monthly_mean__2000__st01__lead1__NH0_90.grib.metadata.json,downloaded,z500,2000,01,1,28,z,500,isobaricInhPa,1,744,20000101,0,0
+cds__c3s_seasonal__monthly-pressure-levels__ncep__s2__z500__500hPa__monthly_mean__2020__st01__lead1__NH0_90.grib.metadata.json,downloaded,z500,2020,01,1,124,z,500,isobaricInhPa,1,744,20200101,0,0

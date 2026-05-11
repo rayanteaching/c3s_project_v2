@@ -1,0 +1,5 @@
+NCEP z500/t850 smoke tests were run from:
+/mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ncep/system_2/smoke_z500_t850_20260510
+
+The executed smoke-test script was:
+scripts/netcheck/12_c3s_seasonal_ncep_pressure_levels_smoke.py

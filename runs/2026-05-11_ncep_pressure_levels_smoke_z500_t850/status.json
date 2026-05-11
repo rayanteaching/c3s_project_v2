@@ -1,0 +1,25 @@
+{
+  "dataset": "seasonal-monthly-pressure-levels",
+  "details_json": "runs/2026-05-11_ncep_pressure_levels_smoke_z500_t850/smoke_details.json",
+  "grib_count": 4,
+  "leadtime_month": "1",
+  "metadata_json_count": 4,
+  "month": "01",
+  "originating_centre": "ncep",
+  "part_count": 0,
+  "production_download_authorized": false,
+  "request_json_count": 4,
+  "result": "Initial NCEP z500/t850 smoke tests passed for hindcast year 2000 and forecast year 2020. Production download remains blocked pending May 2023 member/date QC and final NCEP production policy.",
+  "sha256_count": 4,
+  "status": "passed",
+  "summary_csv": "runs/2026-05-11_ncep_pressure_levels_smoke_z500_t850/smoke_summary.csv",
+  "system": "2",
+  "variables": [
+    "z500",
+    "t850"
+  ],
+  "years_checked": [
+    "2000",
+    "2020"
+  ]
+}
