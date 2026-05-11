@@ -80,5 +80,4 @@
 2. Keep production NCEP download blocked until the policy commit is closed
 3. After policy closure, design the NCEP production downloader and QC plan as a separate reviewed step
 
-## Last verified commit
-- a95dfc1
+jda4a3
