@@ -1,0 +1,2 @@
+status,dataset,originating_centre,system,variable_key,year,month,leadtime_month,message_count,contains_20230522,messages_for_20230522,unique_data_date_count,expected_full_window_message_count_if_31_dates,observed_missing_message_count,production_download_authorized
+passed,seasonal-monthly-pressure-levels,ncep,2,z500,2023,06,1,120,False,0,30,124,4,False

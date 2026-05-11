@@ -1,0 +1,7 @@
+Raw smoke-test output inspected from:
+/mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ncep/system_2/smoke_g8_202306
+
+Source metadata JSON:
+/mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ncep/system_2/smoke_g8_202306/cds__c3s_seasonal__monthly-pressure-levels__ncep__s2__z500__500hPa__monthly_mean__2023__st06__lead1__NH0_90.grib.metadata.json
+
+No production download was started by this metadata-recording step.
