@@ -72,11 +72,12 @@
 - C3S seasonal pressure-level QA review is documented; NCEP production remains blocked until smoke tests verify system=2 coverage, member handling, and metadata semantics
 - NCEP May 2023 forecast requires explicit member/date-handling QC because documented system=2 data initialized on 2023-05-22 are unavailable.
 - Initial NCEP CFSv2 pressure-level smoke tests passed for z500 and t850 for hindcast year 2000 and forecast year 2020; production download remains blocked.
+- Corrected NCEP G8-sensitive smoke test for nominal June 2023 z500 confirmed that dataDate=20230522 is absent; message_count=120 instead of the expected 124 for a complete 31-date lagged window.
 
 ## Next action
-1. Run explicit NCEP May 2023 member/date-handling smoke or QC checks before any NCEP-derived product
-2. Decide and document final NCEP production-download policy after reviewing smoke-test metadata and May 2023 handling
-3. Keep production NCEP download blocked until the final policy is committed
+1. Decide and document final NCEP production-download policy using the committed initial smoke-test metadata and G8 missing-date evidence
+2. Keep production NCEP download blocked until the final policy is committed
+3. Do not use NCEP May/June 2023 blindly in any derived product without explicit missing-date handling
 
 ## Last verified commit
 - a95dfc1

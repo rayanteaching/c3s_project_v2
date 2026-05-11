@@ -86,6 +86,8 @@ Repository action: not relevant to current z500, t850, z925 workflow. Exclude or
 NCEP system=2 forecast data for 2023-05-22 are unavailable because all four members initialized on that date were not correctly transmitted.
 Repository action: warn. Forecast May 2023 member counts must be explicitly checked during NCEP QC.
 
+Repository smoke-test evidence: corrected nominal June 2023 z500 monthly_mean retrieval recorded dataDate=20230522 as absent, messages_for_20230522=0, message_count=120, and observed_missing_message_count=4. This confirms the G8 missing initialization-date issue in retrieved monthly_mean GRIB metadata. Production download remains blocked until final NCEP production policy is documented.
+
 ## Pressure-level variable decision
 The repository pressure-level substitute remains z925, not z950.
 
