@@ -72,6 +72,15 @@ For operational collection in this repository, hindcasts and forecasts must be r
 - before seasonal pressure-level verification begins, the matching ERA5 monthly z925 dataset must be downloaded, tracked, QC-verified, and merged into main
 - this dependency is now satisfied on main
 
+## NCEP CFSv2 pressure-level production policy
+- NCEP CFSv2 uses originating_centre=ncep and system=2.
+- NCEP production download is not authorized until the committed policy, downloader design, inventory schema, and QC checks explicitly handle lagged initialization dates and missing-date completeness.
+- Initial NCEP pressure-level smoke tests passed for z500 and t850 for hindcast year 2000 and forecast year 2020.
+- Corrected G8-sensitive smoke evidence confirms that nominal June 2023 z500 monthly_mean retrieval is missing dataDate=20230522: contains_20230522=false, messages_for_20230522=0, message_count=120, expected complete 31-date window message_count=124.
+- G8 is not a blanket blocker for all NCEP monthly_mean retrievals, but affected nominal months must be flagged and handled explicitly.
+- NCEP production inventories and QC summaries must include member/date completeness fields before any NCEP-derived product or multi-model analysis.
+- Native GRIB remains required for NCEP production.
+
 ## Tracking policy
 The following must be tracked in Git:
 - docs/
