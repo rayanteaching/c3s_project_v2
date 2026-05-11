@@ -26,8 +26,10 @@ docs/CHATGPT_REENTRY_PROTOCOL.md
 docs/DECISIONS.md
 docs/SEASONAL_DOWNLOAD_POLICY.md
 docs/SEASONAL_KNOWN_ISSUES.md
+docs/GIT_WORKFLOW.md
 docs/STATUS.md
 docs/HANDOFF.md
+docs/RUNBOOK.md
 configs/datasets/c3s_seasonal_systems.yml
 configs/datasets/c3s_seasonal_variables.yml
 
@@ -44,6 +46,7 @@ cat docs/SEASONAL_KNOWN_ISSUES.md
 cat docs/GIT_WORKFLOW.md
 cat docs/STATUS.md
 cat docs/HANDOFF.md
+cat docs/RUNBOOK.md
 cat configs/datasets/c3s_seasonal_systems.yml
 cat configs/datasets/c3s_seasonal_variables.yml
 
