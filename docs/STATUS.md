@@ -87,5 +87,5 @@
 3. Keep the unrelated NCEP design-only run metadata out of the workflow closure commit
 4. Handle runs/2026-05-11_ncep_pressure_levels_production_design_plan/ in a dedicated NCEP milestone
 
-## Last verified commit
+## Last verified milestone commit
 - fd60190
