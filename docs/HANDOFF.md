@@ -9,6 +9,7 @@
 ## Source of truth
 The repository is the authoritative source of truth.
 Do not rely on conversation memory when repository state, logs, or tracked files provide evidence.
+Use the hybrid ChatGPT re-entry workflow. Normal mode is for low-risk continuation. Deep audit mode is required for production downloads, merges, QC pass/fail declarations, policy changes, scientific-method decisions, destructive operations, branch cleanup, and recovery after confused state.
 
 ## Repository rules
 Track:
@@ -31,27 +32,36 @@ Do not track:
 - WSL Ubuntu is the primary download and validation environment.
 - The remote server is used later for downstream processing after verified transfer.
 
-## Mandatory pre-read before continuation
-Before any continuation, design, execution, correction, download, QC, or new decision, run:
+## Re-entry workflow before continuation
+Use the repository-maintained ChatGPT re-entry protocol and pack generator.
+Normal mode is sufficient for planning, discussion, documentation edits, small script review, low-risk continuation, and non-destructive diagnosis.
+Deep audit mode is required for production downloads, merge decisions, branch cleanup, policy changes, QC pass/fail declarations, scientific-method decisions, destructive file operations, and recovery after confusing or failed workflows.
+
+Normal-mode command:
 
 ```bash
 cd /home/fibi/projects/c3s_project_v2
 
-cat docs/DECISIONS.md
-cat docs/SEASONAL_DOWNLOAD_POLICY.md
-cat docs/SEASONAL_KNOWN_ISSUES.md
-cat docs/GIT_WORKFLOW.md
-cat docs/STATUS.md
-cat docs/HANDOFF.md
-cat configs/datasets/c3s_seasonal_systems.yml
-cat configs/datasets/c3s_seasonal_variables.yml
+./scripts/make_chatgpt_reentry_pack.sh normal "REPLACE_WITH_CURRENT_OBJECTIVE"
 ```
 
+Deep-audit command:
+
+```bash
+cd /home/fibi/projects/c3s_project_v2
+
+./scripts/make_chatgpt_reentry_pack.sh deep "REPLACE_WITH_CURRENT_OBJECTIVE"
+```
+
+Use only one mode per session unless escalation is needed.
+
+Do not load unrelated literature notes, full repository trees, full tracked-file lists, all inventories, or long logs into normal chats.
+
 Rules:
-- Continue only from the repository state read from those files.
-- If a new policy or operational file becomes part of the official workflow, add it to the pre-read list.
+- Continue only from repository evidence included in the generated re-entry pack and the tracked project files it references.
+- If a new policy or operational file becomes part of the official workflow, add it to docs/CHATGPT_REENTRY_PROTOCOL.md and scripts/make_chatgpt_reentry_pack.sh.
 - If repository state conflicts with remembered chat context, repository state is final.
-- Do not skip this step before any new production run.
+- Use deep audit mode before any new production run.
 
 ## Current confirmed state
 - Clean repository bootstrap on WSL is complete.
@@ -101,9 +111,10 @@ Rules:
 - C3S seasonal pressure-level QA review is documented; NCEP production remains blocked until smoke tests verify system=2 coverage, member handling, and metadata semantics.
 
 ## Immediate next step
-1. Create and run NCEP CFSv2 smoke tests for representative hindcast and forecast years.
-2. Verify NCEP system=2 coverage, member counts, nominal start handling, leadtime metadata, and GRIB request semantics before production.
-3. Keep main and dev synchronized after the NCEP smoke-test milestone is closed.
+1. Review the hybrid LLM workflow closure commit on task/llm-workflow-os.
+2. Decide whether to merge or reintegrate task/llm-workflow-os according to repository branch policy.
+3. Keep the unrelated NCEP design-only run metadata out of the workflow closure commit.
+4. Handle runs/2026-05-11_ncep_pressure_levels_production_design_plan/ in a dedicated NCEP milestone.
 
 ## Standard session report
 Always provide the following before continuing work:
