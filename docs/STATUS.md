@@ -84,10 +84,10 @@
 - NCEP production download remains blocked until the production downloader design, inventory schema, and QC plan are reviewed and committed
 
 ## Next action
-1. Review and commit docs/STATUS.md and docs/HANDOFF.md state closure for task/ncep-main-integration
-2. Keep NCEP production download blocked
-3. Review the design-only NCEP production plan as a separate milestone before writing or running any production downloader
-4. Merge task/ncep-main-integration only after state closure is committed and the branch diff is reviewed
+1. Review final branch diff for task/ncep-main-integration against main
+2. Merge task/ncep-main-integration into main only if the final diff remains limited to NCEP evidence, policy, and state integration
+3. Keep NCEP production download blocked
+4. Review the design-only NCEP production plan as a separate milestone before writing or running any production downloader
 
 ## Last verified milestone commit
 - f63fcc7
