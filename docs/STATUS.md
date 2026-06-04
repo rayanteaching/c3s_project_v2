@@ -77,15 +77,17 @@
 - Pressure-level duplicate naming-family warning was handled by moving the noncanonical duplicate family out of active raw directories without deletion
 - ECMWF pressure-level canonical GRIB openability QC passed for sampled st01 and st12 files using ecCodes
 - ECMWF pressure-level scientific sanity QC passed for all 72 canonical GRIB files using ecCodes sampled-message checks
-- NCEP CFSv2 activation review has started; production download is blocked until smoke tests verify system=2 coverage and member handling
-- C3S seasonal pressure-level QA review is documented; NCEP production remains blocked until smoke tests verify system=2 coverage, member handling, and metadata semantics
-- An unrelated untracked NCEP design-only run metadata directory exists at runs/2026-05-11_ncep_pressure_levels_production_design_plan/ and must be handled in a separate NCEP milestone
+- NCEP CFSv2 activation review has advanced through smoke-test and G8 missing-date evidence integration on task/ncep-main-integration
+- Initial NCEP CFSv2 pressure-level smoke evidence for z500 and t850 has been imported
+- Corrected NCEP G8-sensitive nominal June 2023 z500 evidence has been imported and confirms dataDate=20230522 is absent
+- Final NCEP production-download policy has been integrated after G8 smoke evidence
+- NCEP production download remains blocked until the production downloader design, inventory schema, and QC plan are reviewed and committed
 
 ## Next action
-1. Review the hybrid LLM workflow closure commit on task/llm-workflow-os
-2. Decide whether to merge or reintegrate task/llm-workflow-os according to repository branch policy
-3. Keep the unrelated NCEP design-only run metadata out of the workflow closure commit
-4. Handle runs/2026-05-11_ncep_pressure_levels_production_design_plan/ in a dedicated NCEP milestone
+1. Review and commit docs/STATUS.md and docs/HANDOFF.md state closure for task/ncep-main-integration
+2. Keep NCEP production download blocked
+3. Review the design-only NCEP production plan as a separate milestone before writing or running any production downloader
+4. Merge task/ncep-main-integration only after state closure is committed and the branch diff is reviewed
 
 ## Last verified milestone commit
-- fd60190
+- f63fcc7
