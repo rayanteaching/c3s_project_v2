@@ -58,6 +58,7 @@ Forecast systems can differ in:
 - system-version transitions
 
 Repository implications for NCEP:
+- May 2023 NCEP forecast data require explicit member/date-handling QC because the documented G8 issue states that NCEP system=2 data initialized on 2023-05-22 are unavailable.
 - NCEP CFSv2 must not be treated as operationally identical to ECMWF.
 - NCEP member counts, nominal start dates, initialization-date handling, and lead-time metadata must be verified by smoke tests before production.
 - NCEP production download remains blocked until smoke tests confirm correct request semantics and metadata interpretation.

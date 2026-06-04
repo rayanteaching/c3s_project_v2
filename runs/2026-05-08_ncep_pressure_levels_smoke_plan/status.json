@@ -1,0 +1,23 @@
+{
+  "status": "planned",
+  "dataset": "seasonal-monthly-pressure-levels",
+  "originating_centre": "ncep",
+  "system": "2",
+  "forecast_system": "CFSv2-v20110310",
+  "purpose": "pre-production NCEP pressure-level smoke-test planning",
+  "production_download_authorized": false,
+  "safe_first_variables": ["z500", "t850"],
+  "unsafe_first_targets": ["z925", "pressure_level=925", "year=2017 as first forecast smoke-test year"],
+  "required_checks": [
+    "system=2 request semantics",
+    "hindcast availability",
+    "forecast availability",
+    "pressure-level availability",
+    "nominal start-month handling",
+    "leadtime_month metadata",
+    "member/date handling",
+    "May 2023 G8 caution handling",
+    "GRIB metadata readability"
+  ],
+  "may_2023_g8_caution": "NCEP system=2 data initialized on 2023-05-22 are unavailable because all four members for that date were not correctly transmitted. This is not a blanket blocker for monthly_mean retrieval, but May 2023 must receive explicit member/date-handling QC."
+}

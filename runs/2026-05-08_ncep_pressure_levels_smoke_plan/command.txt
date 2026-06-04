@@ -1,0 +1,2 @@
+No download command was run in this planning step.
+Next operational step is to write or revise the NCEP smoke-test script so that it tests z500 and t850 first, not z925.
