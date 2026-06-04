@@ -107,14 +107,17 @@ Rules:
 - Project seasonal forecast target is 2017-2025.
 - GRIB is the operational download format.
 - A tracked seasonal known-issues register is required before any non-ECMWF centre is activated.
-- NCEP CFSv2 activation review has started; production download is blocked until smoke tests verify system=2 coverage and member handling.
-- C3S seasonal pressure-level QA review is documented; NCEP production remains blocked until smoke tests verify system=2 coverage, member handling, and metadata semantics.
+- NCEP CFSv2 activation review has advanced through smoke-test and G8 missing-date evidence integration on task/ncep-main-integration.
+- Initial NCEP CFSv2 pressure-level smoke evidence for z500 and t850 has been imported.
+- Corrected NCEP G8-sensitive nominal June 2023 z500 evidence has been imported and confirms dataDate=20230522 is absent.
+- Final NCEP production-download policy has been integrated after G8 smoke evidence.
+- NCEP production download remains blocked until the production downloader design, inventory schema, and QC plan are reviewed and committed.
 
 ## Immediate next step
-1. Review the hybrid LLM workflow closure commit on task/llm-workflow-os.
-2. Decide whether to merge or reintegrate task/llm-workflow-os according to repository branch policy.
-3. Keep the unrelated NCEP design-only run metadata out of the workflow closure commit.
-4. Handle runs/2026-05-11_ncep_pressure_levels_production_design_plan/ in a dedicated NCEP milestone.
+1. Review final branch diff for task/ncep-main-integration against main.
+2. Merge task/ncep-main-integration into main only if the final diff remains limited to NCEP evidence, policy, and state integration.
+3. Keep NCEP production download blocked.
+4. Review the design-only NCEP production plan as a separate milestone before writing or running any production downloader.
 
 ## Standard session report
 Always provide the following before continuing work:

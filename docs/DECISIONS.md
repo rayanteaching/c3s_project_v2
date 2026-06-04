@@ -164,3 +164,14 @@ Do not track:
 - Operational seasonal downloads must remain in native GRIB because complex NetCDF requests can have limited metadata and interpretation risk.
 - Download success, checksum success, and openability success do not imply scientific readiness.
 - NCEP CFSv2 production download is blocked until smoke tests verify system=2 coverage, member counts, nominal start handling, and leadtime metadata.
+
+## 2026-05-11 - NCEP CFSv2 pressure-level production policy
+- Decision: NCEP CFSv2 system=2 pressure-level production may be prepared only after the production downloader and QC plan explicitly record member/date completeness for every requested nominal start month, variable, year, and leadtime.
+- Decision: NCEP pressure-level production must remain blocked until this policy update is committed and the production command is reviewed separately.
+- Decision: NCEP monthly_mean production is not blocked globally by G8, but any product using the nominal June 2023 forecast window must flag the missing initialization date dataDate=20230522 and must not treat that month as a complete 31-date lagged window.
+- Decision: NCEP May/June 2023 must not be used blindly in derived products, multi-model products, climatology, anomaly construction, or verification without explicit missing-date handling.
+- Reason: committed smoke evidence shows that the corrected nominal June 2023 z500 monthly_mean retrieval has contains_20230522=false, messages_for_20230522=0, message_count=120, and observed_missing_message_count=4 instead of the expected 124 messages for a complete 31-date lagged window.
+- Consequence: the NCEP production inventory and QC outputs must include message_count, unique_data_date_count, contains_20230522, messages_for_20230522, expected_message_count, observed_missing_message_count, and completeness_status.
+- Consequence: production download may be designed after this policy is committed, but production execution remains a separate reviewed milestone.
+- Files affected: docs/DECISIONS.md, docs/SEASONAL_DOWNLOAD_POLICY.md, docs/SEASONAL_KNOWN_ISSUES.md, docs/STATUS.md, docs/HANDOFF.md.
+- Status: active policy.

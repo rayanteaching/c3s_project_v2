@@ -1,0 +1,21 @@
+{
+  "contains_20230522": false,
+  "dataset": "seasonal-monthly-pressure-levels",
+  "expected_full_window_message_count_if_31_dates": 124,
+  "forecast_system": "CFSv2-v20110310",
+  "interpretation": "Corrected nominal June 2023 NCEP z500 smoke test confirms that dataDate=20230522 is absent from the retrieved monthly_mean GRIB metadata. Production download remains blocked until final NCEP production policy is documented.",
+  "leadtime_month": "1",
+  "message_count": 120,
+  "messages_for_20230522": 0,
+  "month": "06",
+  "observed_missing_message_count": 4,
+  "originating_centre": "ncep",
+  "production_download_authorized": false,
+  "raw_smoke_root": "/mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ncep/system_2/smoke_g8_202306",
+  "source_metadata_json": "/mnt/e/last-aticol/data/raw/c3s/seasonal/monthly-pressure-levels/ncep/system_2/smoke_g8_202306/cds__c3s_seasonal__monthly-pressure-levels__ncep__s2__z500__500hPa__monthly_mean__2023__st06__lead1__NH0_90.grib.metadata.json",
+  "status": "passed",
+  "system": "2",
+  "unique_data_date_count": 30,
+  "variable_key": "z500",
+  "year": "2023"
+}

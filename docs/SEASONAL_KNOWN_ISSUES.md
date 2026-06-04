@@ -34,6 +34,7 @@ This register tracks official C3S seasonal data issues that affect repository do
 - Deferred centres must not be operationally downloaded until their issue registration is committed.
 
 ## NCEP CFSv2 activation review
+- G8 caution for current workflow: NCEP system=2 forecast data initialized on 2023-05-22 are unavailable because all four members for that date were not correctly transmitted. This is not treated as a blanket blocker for monthly_mean retrieval, but forecast May 2023 must receive explicit member/date-handling QC before any NCEP-derived product or multi-model analysis.
 - Status: candidate centre under review; production download is not yet authorized.
 - System: CFSv2-v20110310.
 - CDS system keyword: 2.
@@ -41,4 +42,4 @@ This register tracks official C3S seasonal data issues that affect repository do
 - E4.a1/E4.a2: fixed historical CDS availability issues for NCEP monthly statistics/anomalies. Repository action: allow after standard verification.
 - E7/E7b: fixed missing-member issues affecting NCEP daily/subdaily datasets. Repository action: warn if daily/subdaily NCEP data are later activated; not a direct blocker for current monthly pressure-level workflow.
 - E6: NCEP surface solar radiation variables were swapped for affected dates. Repository action: exclude from current workflow; re-review only if radiation variables are activated.
-- G8: NCEP system=2 forecast data for 2023-05-22 are unavailable. Repository action: warn; forecast May 2023 member counts must be checked explicitly in NCEP QC.
+- G8: NCEP system=2 forecast data for 2023-05-22 are unavailable because all four members initialized on that date were not correctly transmitted. Repository action: warn and flag. Corrected nominal June 2023 z500 monthly_mean smoke evidence confirms dataDate=20230522 is absent, messages_for_20230522=0, message_count=120, and observed_missing_message_count=4. This is not a blanket blocker for all NCEP monthly_mean retrievals, but affected nominal months must be handled explicitly in inventory, QC, and derived products.
