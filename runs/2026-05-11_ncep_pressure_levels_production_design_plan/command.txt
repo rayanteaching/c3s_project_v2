@@ -1,0 +1,2 @@
+This run directory was created as a design-only planning artifact.
+No NCEP production download was executed by this step.

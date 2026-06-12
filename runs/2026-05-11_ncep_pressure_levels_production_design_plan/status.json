@@ -1,0 +1,6 @@
+{
+  "status": "planned",
+  "production_download_authorized": false,
+  "purpose": "Design-only NCEP pressure-level production plan after G8 policy closure",
+  "next_step": "Review this plan before writing any production downloader or running any production download"
+}
