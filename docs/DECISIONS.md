@@ -1,7 +1,7 @@
 # Decisions
 
 ## Architecture v1 decision baseline
-Architecture v1 is the current shared design baseline on `task/architecture-v1-handoff` pending final human review and merge to `main`.
+Architecture v1 is the approved shared design baseline on `main`. Day-1 Architecture v1 and its stale-control correction are integrated into `main`; centre-specific scientific questions remain open until their relevant workstreams resolve them through evidence and human approval.
 
 Required control files:
 - `docs/ARCHITECTURE.md`
@@ -48,6 +48,7 @@ Known encoded incidents include:
 - WF-003 — wrong re-entry mode;
 - WF-004 — re-entry branch-diff blind spot and machine-specific generator path;
 - WF-005 — piecemeal assistant-error controls without a generalized safety layer.
+- WF-006 — GitHub write approval mismatch and action-specific approval control.
 
 A material new assistant-caused incident keeps the affected Architecture/milestone state open until root cause, generalized prevention, durable encoding, and post-fix audit are complete.
 
@@ -104,7 +105,7 @@ A new scientific-method or data-selection decision becomes current project polic
 Use `docs/SCIENTIFIC_DECISION_TRACEABILITY.md` for the decision record structure.
 
 ## Repository and workflow policy
-Track lightweight workflow-critical files needed for understanding, reproduction, verification, continuation, or audit, including docs, configs, scripts, run metadata, inventories, AI-assistant incident/control records, and environment definitions.
+Track lightweight workflow-critical files needed for understanding, reproduction, verification, continuation, or audit, including docs, configs, scripts, run metadata, inventories/QC, AI-assistant incident/control records, and environment definitions.
 
 Do not track raw/processed large datasets, large logs, secrets, or credentials.
 
