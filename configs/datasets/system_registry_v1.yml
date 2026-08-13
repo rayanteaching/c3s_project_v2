@@ -1,0 +1,46 @@
+schema_version: 1
+status: active_architecture_v1_registry
+
+policy:
+  no_cross_centre_assumption_propagation: true
+  no_universal_hindcast_forecast_split: true
+  matching_forecast_reforecast_system_cohort_required: true
+  unknown_required_mapping_fails_closed: true
+
+centres:
+  ecmwf:
+    status: OPEN_VERIFY_WHEN_REACHED
+  ukmo:
+    status: OPEN_VERIFY_WHEN_REACHED
+  dwd:
+    status: OPEN_VERIFY_WHEN_REACHED
+  cmcc:
+    status: OPEN_VERIFY_WHEN_REACHED
+  meteo_france:
+    status: OPEN_VERIFY_WHEN_REACHED
+  ncep:
+    status: OPEN_VERIFY_WHEN_REACHED
+
+required_system_cohort_fields:
+  - originating_centre
+  - c3s_system_id
+  - system_label
+  - forecast_valid_period
+  - matching_reforecast_identity
+  - reforecast_valid_period
+  - forecast_member_structure
+  - reforecast_member_structure
+  - lagged_or_burst_status
+  - nominal_initialization_semantics
+  - actual_member_initialization_semantics
+  - native_lead_semantics
+  - product_availability
+  - evidence_status
+  - retrieval_verification_status
+  - known_issue_status
+  - scientific_eligibility_status
+
+legacy_bootstrap_reference:
+  file: configs/datasets/c3s_seasonal_systems.yml
+  status: HISTORICAL_BOOTSTRAP_ONLY
+  reuse_rule: revalidate_before_reuse
