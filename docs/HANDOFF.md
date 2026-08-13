@@ -14,6 +14,8 @@ Required first reads for continuation:
 - `configs/datasets/variable_registry_v1.yml`
 - `docs/STATUS.md`
 - `docs/DECISIONS.md`
+- `docs/CHATGPT_REENTRY_PROTOCOL.md`
+- `docs/SEASONAL_DOWNLOAD_POLICY.md`
 
 ## Source of truth
 The repository is the durable system of record, with truth state:
@@ -59,13 +61,20 @@ Centre workstreams and later metric workstreams may proceed in parallel only fro
 Do not solve unresolved questions from memory or legacy code. Use `docs/OPEN_SCIENTIFIC_QUESTIONS.md`. Questions remain `OPEN — VERIFY WHEN REACHED` until the relevant centre/metric/method workstream has enough evidence and human approval.
 
 ## Re-entry workflow
-Use the Architecture v1 generator for all new project chats:
-- normal: `bash scripts/make_chatgpt_reentry_pack_v2.sh normal "CURRENT_OBJECTIVE"`
-- deep: `bash scripts/make_chatgpt_reentry_pack_v2.sh deep "CURRENT_OBJECTIVE"`
+Architecture v1 re-entry is GitHub-first and protocol-driven. Use `docs/CHATGPT_REENTRY_PROTOCOL.md`.
 
-The older `scripts/make_chatgpt_reentry_pack.sh` is legacy and should not be used for new Architecture v1 work.
+For every DEEP-AUDIT objective, the first evidence must come from the current remote GitHub repository and establish:
+- task-branch SHA;
+- `main` SHA;
+- merge base;
+- ahead/behind counts;
+- changed-file list and branch diff relative to `main`.
 
-Deep audit is required for production downloads, merges, QC pass/fail declarations, policy/scientific-method changes, destructive work, or confused/stale state.
+A local checkout, local remote-tracking branch, generated pack, or chat memory does not replace this fresh remote comparison.
+
+`scripts/make_chatgpt_reentry_pack_v2.sh` is retained only as historical tooling and is not an active Architecture v1 re-entry authority. Do not use it to gate merge, production, QC milestones, policy/guardrail changes, scientific-method decisions, destructive work, or other DEEP-AUDIT objectives.
+
+Deep audit is required for Architecture closure, production downloads, merges, QC pass/fail declarations, policy/guardrail or scientific-method changes, destructive work, and confused/stale/uncertain state.
 
 ## Human approval gates
 Human approval is required before:
@@ -77,26 +86,29 @@ Human approval is required before:
 - QC pass/fail milestone declarations.
 
 ## Current milestone
-- Architecture v1 control documents/configs/registries and re-entry v2 are implemented on this branch.
+- Architecture v1 control documents/configs/registries are implemented on this branch.
+- Re-entry authority is now protocol-driven and remote-GitHub-first; the v2 generator is historical/non-authoritative.
 - Base checkpoint before Architecture v1 work: `544a375c05d85331ff0e674a89494120d413794f`.
 - NCEP integration commit `b574f26702163c424a5b605e414c1d992435642b` is already in main history; old instructions to merge NCEP are stale history.
 - No new production download or calibration implementation is authorized by this milestone.
 
 ## Next safe action
-1. Audit the complete branch diff against `main`.
-2. Sync this branch to WSL and validate YAML plus the re-entry v2 generator.
-3. Fix any audit/validation defect before merge.
-4. Obtain explicit human approval before merging Architecture v1 to `main`.
-5. After integration, create centre-specific work packages for parallel verification.
+1. Audit the complete current remote branch diff against `main` after the re-entry safety corrections.
+2. Confirm there is no remaining current-control reference that treats re-entry v2 as authoritative.
+3. Sync this branch to WSL only after the remote audit is clean.
+4. Validate YAML and current scripts with short staged commands that leave the interactive shell open on failure.
+5. Fix any audit/validation defect before merge.
+6. Obtain explicit human approval before merging Architecture v1 to `main`.
+7. After integration, create centre-specific work packages for parallel verification.
 
 ## Standard session report
-Before high-impact continuation provide:
+Before high-impact continuation provide fresh remote GitHub evidence for the relevant branch/main comparison. After WSL synchronization, also provide as needed:
 - `git status --short --branch`
 - `git branch -vv`
 - `git log --oneline --decorate --graph -n 10`
-- targeted diff/status evidence relevant to the task.
+- targeted local runtime/diff/status evidence relevant to the task.
 
 For production/QC/runtime work, also provide relevant logs, run metadata, inventory/checksum evidence, and environment state as required by the re-entry protocol.
 
 ## Chat-quality safeguard
-If a chat becomes long/confused enough that evidence, decisions, centre-specific facts, or repository state may be mixed, stop before another high-impact decision, checkpoint in Git where appropriate, generate a fresh Architecture v1 re-entry pack, and migrate to a new chat.
+If a chat becomes long/confused enough that evidence, decisions, centre-specific facts, or repository state may be mixed, stop before another high-impact decision, checkpoint in Git where appropriate, and start a fresh remote-GitHub-first Architecture v1 re-entry in a new chat.
