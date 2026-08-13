@@ -22,7 +22,7 @@ For current project work, read Architecture v1 before legacy/bootstrap scripts o
 Legacy/bootstrap configs and scripts are preserved for audit/history but do not automatically define current scientific policy.
 
 ## Re-entry for ChatGPT/Codex work
-Architecture v1 re-entry is GitHub-first and protocol-driven. Before high-impact work, verify the current remote task-branch SHA, `main` SHA, merge base, ahead/behind counts, and changed-file diff directly from GitHub, then read `docs/CHATGPT_REENTRY_PROTOCOL.md`, `docs/AI_COLLABORATION_SAFETY.md`, and the current control files.
+Architecture v1 re-entry is GitHub-first and protocol-driven. Before high-impact work, verify the current remote task-branch SHA, `main` SHA, merge base, ahead/behind counts, and changed-file diff directly from GitHub, then read `docs/WORK_PROTOCOL.md`, `docs/CHATGPT_REENTRY_PROTOCOL.md`, `docs/AI_COLLABORATION_SAFETY.md`, and the current control files.
 
 Do not use generated local re-entry material as a substitute for fresh remote GitHub state.
 
