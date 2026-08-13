@@ -8,9 +8,11 @@ This document defines mandatory controls for ChatGPT/Codex-assisted work in this
 This layer does not assume that an AI assistant will be error-free. Instead, high-impact work must fail closed unless the required evidence and checks are present.
 
 ## Core rule
-The assistant is not a source of project truth. It is a fallible reasoning/execution agent operating against repository evidence, authoritative scientific evidence, and explicit user decisions.
+The assistant is not a source of project truth. It is a fallible reasoning/execution agent operating against repository evidence, authoritative scientific evidence, explicit runtime evidence, and explicit user decisions.
 
-No assistant statement, remembered chat fact, generated command output, inferred file path, inferred branch state, or claimed completion becomes project truth without the required evidence.
+No assistant statement, remembered chat fact, generated command output, inferred file path, inferred branch state, confidence statement, or claimed completion becomes project truth without the required external evidence.
+
+The assistant's self-assessment is never sufficient evidence for a high-impact milestone decision.
 
 ## Assistant failure classes
 The project explicitly guards against at least these classes:
@@ -55,6 +57,15 @@ The project explicitly guards against at least these classes:
 12. PREMATURE_SCIENTIFIC_DECISION
     - resolving an OPEN scientific question from memory, legacy code, convenience, or a single-centre fact without the required evidence and approval process.
 
+13. SELF_CONFIRMATION_BIAS
+    - treating a second statement by the same assistant as independent proof that its first action/reasoning was correct.
+
+14. NEGATIVE_CLAIM_WITHOUT_COVERAGE
+    - claiming that no contradiction, stale reference, missing requirement, unintended file, or active authority path exists without an explicit check capable of detecting it.
+
+15. TOOL_FAILURE_AMBIGUITY
+    - assuming a failed/blocked tool call definitely changed or definitely did not change state without re-reading the relevant system of record when the result is material.
+
 This list is extensible. A new assistant-caused failure mode must be added when discovered.
 
 ## Mandatory assistant control loop
@@ -87,6 +98,8 @@ At minimum preserve:
 - open questions that must remain unresolved.
 
 A constraint may not disappear silently during execution.
+
+For a multi-item high-impact request, completion requires item-by-item coverage or an explicit status for every material item.
 
 ### 4. Evidence discipline
 Every load-bearing claim must be one of:
@@ -122,7 +135,31 @@ For high-impact repository work, verify as applicable:
 
 An attempted write is not evidence of a successful write.
 
-### 7. Contradiction and omission scan
+If a state-changing tool call fails, is blocked, times out, or returns an ambiguous result, do not infer the resulting state when it matters. Re-read the relevant system of record before retrying, switching workflows, or declaring the state unchanged.
+
+### 7. Defense-in-depth verification
+High-impact completion must not rely only on the assistant reviewing its own prose or remembering its own actions.
+
+Use independently observable evidence appropriate to the claim, for example:
+- remote branch comparison for branch-state claims;
+- direct file re-read for content claims;
+- explicit absence lookup/tree evidence for file-removal claims;
+- runtime/test output for execution claims;
+- checksums/inventory for data-integrity claims;
+- authoritative documentation plus retrieved metadata for scientific archive-semantic claims.
+
+Where practical, combine more than one evidence type for load-bearing milestone claims.
+
+Human approval gates remain independent of assistant self-review.
+
+### 8. Negative-claim rule
+Claims such as "no contradictions found", "no stale authority path remains", "no unintended files changed", "all requested items were covered", or "the retired file is absent" require an explicit check with sufficient coverage.
+
+Absence of an error in a limited snippet/search is not proof of repository-wide absence unless that check actually covers the required scope.
+
+If available search/index tooling may be stale or incomplete, use direct fetch/list/compare evidence for critical negative claims.
+
+### 9. Contradiction and omission scan
 Before declaring completion, perform a second pass that asks:
 - Do any current control files now conflict?
 - Did any user requirement disappear from the result?
@@ -131,10 +168,11 @@ Before declaring completion, perform a second pass that asks:
 - Did I change more or less than intended?
 - Does legacy material still have an unintended authority path?
 - Could a future chat reasonably misread the current state?
+- Are any negative claims based on insufficient coverage?
 
 For high-impact work this second pass is mandatory and must be evidence-based, not merely a confidence statement.
 
-### 8. Completion gate
+### 10. Completion gate
 Do not use COMPLETE, PASS, READY, FIXED, VERIFIED, MERGE-READY, or equivalent milestone language unless the required post-action evidence supports it.
 
 If any required validation is still pending, say exactly what remains and keep the milestone open.
@@ -161,9 +199,9 @@ High-impact changes require two logically separate passes:
 
 Pass A — implementation/review against the task requirements.
 
-Pass B — adversarial audit from repository evidence, specifically looking for omissions, contradictions, unsupported claims, scope creep, stale references, wrong authority paths, and false completion.
+Pass B — adversarial audit from independently observable repository/runtime/source evidence, specifically looking for omissions, contradictions, unsupported claims, scope creep, stale references, wrong authority paths, insufficient negative-claim coverage, and false completion.
 
-Pass B must not assume Pass A was correct merely because the same assistant performed it.
+Pass B must not assume Pass A was correct merely because the same assistant performed it. A repeated opinion by the same assistant is not independent evidence.
 
 ## Control-file atomicity
 A governance or architecture change is incomplete if affected current control files materially disagree.
@@ -171,6 +209,7 @@ A governance or architecture change is incomplete if affected current control fi
 When a shared rule changes, inspect and update all control sources that could cause a future chat to follow the old rule, including as relevant:
 - `README.md`;
 - `docs/ARCHITECTURE.md`;
+- `docs/AI_COLLABORATION_SAFETY.md`;
 - `docs/CHATGPT_REENTRY_PROTOCOL.md`;
 - `docs/DECISIONS.md`;
 - `docs/STATUS.md`;
@@ -224,8 +263,8 @@ Status: ENCODED.
 ### WF-005 — Piecemeal assistant-error controls
 Failure: individual workflow incidents were fixed, but Architecture v1 did not yet contain a generalized assistant-safety layer covering hallucination, omission, hidden assumptions, false completion, artifact invention, partial control updates, and unknown future assistant failure modes.
 Root cause: governance focused on specific incidents rather than a reusable error-control framework.
-Prevention: this AI Collaboration Safety Layer, mandatory control loop, two-pass high-impact review, no-silent-omission rule, completion gate, and incident-to-guardrail promotion.
-Status: ENCODED BY THIS CONTROL LAYER; requires integration into all current control references before Architecture v1 closure.
+Prevention: this AI Collaboration Safety Layer, mandatory control loop, defense-in-depth verification, negative-claim rule, two-pass high-impact review, no-silent-omission rule, completion gate, and incident-to-guardrail promotion.
+Status: ENCODED AND INTEGRATED INTO CURRENT ARCHITECTURE CONTROLS; subject to the remaining normal Architecture v1 runtime validation and human merge gate.
 
 ## Unknown future failure modes
 The absence of a known incident does not imply safety.
@@ -233,6 +272,8 @@ The absence of a known incident does not imply safety.
 If a new assistant behavior appears capable of corrupting scientific truth, repository state, user data, reproducibility, or milestone decisions, the default is fail closed for the affected high-impact action until the behavior is understood and a preventive control is recorded.
 
 The project should prefer mechanisms that make an incorrect assistant action detectable before it becomes shared truth.
+
+No claim of "zero AI risk" is scientifically or operationally credible. The architecture objective is defense in depth: eliminate known failure paths where possible, make remaining errors detectable before promotion to shared truth, and fail closed when required evidence is missing.
 
 ## Human authority
 Human approval remains mandatory for the gates defined elsewhere in Architecture v1. The assistant may recommend, implement candidate changes on a task branch when authorized, and audit evidence, but it may not silently promote candidate state to approved project truth.
