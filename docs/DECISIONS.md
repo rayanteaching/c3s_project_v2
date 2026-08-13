@@ -105,8 +105,21 @@ A new scientific-method or data-selection decision becomes current project polic
 Use `docs/SCIENTIFIC_DECISION_TRACEABILITY.md` for the decision record structure.
 
 ## Work protocol decision
+Candidate workflow hardening adopts **Fast by default, strict when risky**.
 
-Every chat/task declares exactly one primary deliverable using `docs/WORK_PROTOCOL.md`. It begins in `INSPECT` mode unless an approved `CHANGE` is explicitly declared. `INSPECT` is read-only. A `CHANGE` requires verified preconditions, exact scope, proposed diff or equivalent precise change description, validation plan, and action-specific human approval.
+Every chat/task declares one concrete, bounded, verifiable primary deliverable using `docs/WORK_PROTOCOL.md`, together with `INSPECT`/`CHANGE` and a `LOW`/`MEDIUM`/`HIGH` risk classification.
+
+- LOW uses minimal fresh verification and proportional validation.
+- MEDIUM uses scope/preflight, task branch, validation/tests, remote diff, and PR/review.
+- HIGH invokes Deep Audit, required-TBD fail-closed behavior, stronger verification, and the adversarial second pass.
+
+One explicit approval may cover one predeclared bounded change-set while target, scope, method, and validation remain unchanged. Scope expansion or a materially different fallback requires fresh approval.
+
+Merge, deploy, delete/destructive operations, and production writes/downloads always require independent approval immediately before the sensitive operation.
+
+Architecture changes require an ADR before adoption. Ordinary typo/documentation maintenance and centre-specific evidence collection do not require ADRs. Scientific decisions continue to use `docs/SCIENTIFIC_DECISION_TRACEABILITY.md`.
+
+When tools are available, ChatGPT/Codex performs repository inspection, branch work, bounded edits, diffs, applicable validation/tests, and PR preparation/creation. Routine executable work is not transferred to the human merely for assistant convenience.
 
 Do not perform adjacent improvements. Do not refactor unrelated code. Do not create unrequested infrastructure.
 
@@ -116,13 +129,14 @@ Track lightweight workflow-critical files needed for understanding, reproduction
 Do not track raw/processed large datasets, large logs, secrets, or credentials.
 
 ## Human approval gates
-Human approval is required before:
-- milestone commits/closure intended as approved state;
+Independent human approval is required before:
 - merges;
-- production downloads;
-- destructive operations;
+- deploys;
+- production writes/downloads;
+- destructive/delete operations;
 - scientific policy/interpretation changes;
-- QC pass/fail milestone declarations.
+- QC pass/fail milestone declarations;
+- milestone adoption intended as approved shared state where applicable.
 
 ## Milestone closure
 A meaningful milestone must update the relevant current state, decisions, AI collaboration safety controls when affected, run metadata, inventories/QC, and reusable workflow documentation before merge. Continuation relies on repository state, not chat memory.
