@@ -12,6 +12,8 @@ This policy does not authorize any production download by itself.
 ## Architecture precedence
 Before any new production seasonal acquisition, read:
 - `docs/ARCHITECTURE.md`
+- `docs/AI_COLLABORATION_SAFETY.md`
+- `docs/CHATGPT_REENTRY_PROTOCOL.md`
 - `docs/OPEN_SCIENTIFIC_QUESTIONS.md`
 - `configs/datasets/study_v0_1.yml`
 - `configs/datasets/guardrails_v1.yml`
@@ -91,6 +93,8 @@ Each production acquisition plan/run must be traceable to, as applicable:
 
 ## Human approval gate
 Production execution requires separate explicit human approval after deep audit of the relevant policy, config, script/plan, paths, expected outputs, known issues, and QC criteria.
+
+AI-assisted production work must also satisfy `docs/AI_COLLABORATION_SAFETY.md` before readiness or completion is claimed.
 
 ## Legacy note
 Earlier policies that fixed ECMWF system 51, 2000-2016/2017-2025 blocks, z925 substitution, or NCEP-specific production rules are retained in Git history and related evidence. They may inform new work but do not override Architecture v1.
