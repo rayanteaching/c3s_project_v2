@@ -123,6 +123,16 @@ Use the GitHub task branch as the default repository write target. If a local-fi
 
 Do not silently modify shared scientific policy from a centre/metric workstream.
 
+### 5A. Work protocol and scope boundary
+
+Every task must declare exactly one primary deliverable before execution. Work outside that deliverable is out of scope unless the human explicitly approves it.
+
+Use `docs/WORK_PROTOCOL.md` for the task header. It distinguishes `INSPECT` (read-only) from `CHANGE` (state-changing) work.
+
+Do not perform adjacent improvements. Do not refactor unrelated code. Do not create infrastructure that the human did not request.
+
+A `CHANGE` task may begin only after verified preconditions, exact allowed file/system scope, a proposed diff or equivalent precise change description, a validation plan, and explicit human approval are recorded.
+
 ### 5A. GitHub write approval gate
 For this project, connected GitHub should be configured so read actions can proceed without interruption while write actions require approval (`Any changes` / `ask_before_writes` when that permission mode is available).
 
