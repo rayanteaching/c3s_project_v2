@@ -75,18 +75,18 @@ Human approval is required before approved milestone adoption, merges, productio
 - Architecture v1 controls and registries are implemented on this branch.
 - AI collaboration safety and generalized defense-in-depth assistant guardrails are active.
 - The remote GitHub control-layer DEEP AUDIT after AI-safety integration is complete.
-- WSL/runtime validation remains pending.
-- The branch is not yet merge-ready.
+- WSL/runtime validation completed against task SHA `c77f1709a66df1c8ecf195fe6eac359fa14a51d1` after synchronization; repository cleanliness, diff whitespace checks, active YAML parsing, Architecture/guardrail assertions, registry fail-closed state, required control-file presence, retired re-entry-v2 absence, AI-safety entry-point references, and `0 46` main-vs-task ancestry counts were covered.
+- Current gate is human merge review; the branch has not been approved for merge.
 - Base checkpoint before Architecture v1 work: `544a375c05d85331ff0e674a89494120d413794f`.
 - No new production download or calibration implementation is authorized by this milestone.
 
 ## Next safe action
-1. Synchronize the current remote task branch to WSL.
-2. Validate active YAML/config state and repository state with short staged checks that leave the interactive shell open on failure.
-3. Confirm the retired re-entry v2 generator is absent in the synchronized checkout.
-4. Resolve any runtime/config defect before merge review.
-5. Re-run fresh remote GitHub comparison after any validation-driven repository change.
-6. Obtain explicit human approval before merging Architecture v1 to `main`.
+1. Re-read the resulting remote `STATUS/HANDOFF` after this validation-state update.
+2. Re-run a fresh remote GitHub task-vs-main comparison.
+3. Perform the mandatory adversarial second pass for omissions, contradictions, stale authority paths, unintended files, unsupported claims, and scientific-policy drift.
+4. Present the Architecture v1 human merge review if the evidence supports proceeding to that gate.
+5. Obtain explicit human approval before merging Architecture v1 to `main`.
+6. After an approved merge, verify `main` remotely before closing Day-1.
 7. After integration, create centre-specific work packages for parallel verification.
 
 ## Chat-quality safeguard
