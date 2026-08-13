@@ -1,0 +1,42 @@
+schema_version: 1
+architecture_version: 1
+status: manuscript_v0_1
+study_window_semantics: target_verifying_years
+target_verifying_years:
+  start: 2000
+  end: 2025
+target_months:
+  - 12
+scientific_horizons:
+  H1: 1
+  H2: 2
+  H3: 3
+  H4: 4
+  H5: 5
+  H6: 6
+centres:
+  - ecmwf
+  - ukmo
+  - dwd
+  - cmcc
+  - meteo_france
+  - ncep
+domains:
+  - NH
+  - ROI
+  - ROI_X4
+variables:
+  - t2m
+  - tp
+  - ws10m
+  - z500
+  - t850
+  - z950
+analysis_modes:
+  - maximum_valid
+  - common_case
+native_lead_mapping: verify_per_centre_system_product
+legacy_global_split: prohibited
+global_z950_to_z925_substitution: prohibited
+future_all_months: inactive
+future_extreme_special_cases: inactive
