@@ -7,6 +7,7 @@
 
 ## Active Architecture v1 control files
 - `docs/ARCHITECTURE.md`
+- `docs/AI_COLLABORATION_SAFETY.md`
 - `docs/OPEN_SCIENTIFIC_QUESTIONS.md`
 - `docs/SCIENTIFIC_DECISION_TRACEABILITY.md`
 - `docs/DECISIONS.md`
@@ -40,6 +41,13 @@
 - Parallel centre/metric workstreams require pinned contracts and integration gates.
 - Legacy/bootstrap artifacts require revalidation before reuse.
 - Major scientific decisions require decision-level evidence/citations and human approval.
+- AI-assisted work must follow `docs/AI_COLLABORATION_SAFETY.md`.
+
+## AI collaboration safety state
+- Known workflow/assistant incidents WF-001 through WF-005 are recorded in `docs/AI_COLLABORATION_SAFETY.md`.
+- `guardrails_v1.yml` version 5 contains the generalized assistant-safety controls.
+- High-impact assistant work requires evidence-based post-action verification and a separate contradiction/omission review before completion.
+- A new material assistant-caused failure keeps the affected high-impact milestone open until a durable preventive control is encoded and audited.
 
 ## Open scientific work
 The controlled register is `docs/OPEN_SCIENTIFIC_QUESTIONS.md`. Items remain intentionally `OPEN — VERIFY WHEN REACHED` until the relevant centre/metric/method workstream reaches them.
@@ -48,9 +56,9 @@ The controlled register is `docs/OPEN_SCIENTIFIC_QUESTIONS.md`. Items remain int
 Earlier ERA5/ECMWF/NCEP bootstrap work remains preserved in Git history, runs, inventories, scripts, and literature notes. Legacy configs `c3s_seasonal_systems.yml` and `c3s_seasonal_variables.yml` are classified as historical/bootstrap by `configs/datasets/CURRENT_CONFIGS.md` and are not current Architecture v1 configuration.
 
 ## Re-entry state
-Architecture v1 re-entry is currently GitHub-first and protocol-driven through `docs/CHATGPT_REENTRY_PROTOCOL.md`.
+Architecture v1 re-entry is currently GitHub-first and protocol-driven through `docs/CHATGPT_REENTRY_PROTOCOL.md` and `docs/AI_COLLABORATION_SAFETY.md`.
 
-`scripts/make_chatgpt_reentry_pack_v2.sh` is retained as historical tooling but is not an active control file and is not authoritative for NORMAL or DEEP re-entry. It must not be used as the basis for merge, production, QC milestone, policy/guardrail, scientific-method, destructive, or uncertain-state decisions.
+The former `scripts/make_chatgpt_reentry_pack_v2.sh` generator is preserved in Git history only and is absent from the current Architecture v1 tree. It is not authoritative for NORMAL or DEEP re-entry.
 
 Before every DEEP AUDIT, fresh remote GitHub evidence must establish the task-branch SHA, `main` SHA, merge base, ahead/behind state, and changed-file diff. Local generated packs do not replace that evidence.
 
@@ -60,8 +68,8 @@ Before every DEEP AUDIT, fresh remote GitHub evidence must establish the task-br
 - No merge to `main` without explicit human review/approval.
 
 ## Next safe action
-1. Audit the complete current remote branch diff against `main` after the re-entry safety corrections.
-2. Confirm all active Architecture v1 control files are internally consistent and that v2 has no current-authority path.
+1. Audit the complete current remote branch diff against `main` after the AI collaboration safety integration.
+2. Perform the mandatory second contradiction/omission/unsupported-claim review across all active control files.
 3. Only after the remote audit is clean, sync the task branch to WSL and validate YAML/current scripts with short staged commands.
 4. Resolve any runtime validation defect before merge.
 5. Obtain explicit human approval before merging Architecture v1 into `main`.
