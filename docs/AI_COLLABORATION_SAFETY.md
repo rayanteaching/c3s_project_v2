@@ -133,7 +133,7 @@ Do not perform adjacent improvements. Do not refactor unrelated code. Do not cre
 
 A `CHANGE` task may begin only after verified preconditions, exact allowed file/system scope, a proposed diff or equivalent precise change description, a validation plan, and explicit human approval are recorded.
 
-### 5A. GitHub write approval gate
+### 5B. GitHub write approval gate
 For this project, connected GitHub should be configured so read actions can proceed without interruption while write actions require approval (`Any changes` / `ask_before_writes` when that permission mode is available).
 
 Immediately before a repository mutation, identify the exact target and scope of the write. The human approval presented for that write must be action-specific and contemporaneous with execution. Do not deliberately suppress the approval prompt by switching GitHub to a no-confirmation mode for convenience.
