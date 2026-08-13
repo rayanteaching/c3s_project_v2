@@ -60,9 +60,11 @@ Before any DEEP-AUDIT objective or other high-impact continuation, obtain fresh 
 
 A local checkout, local remote-tracking ref, generated pack, or remembered chat state does not substitute for this remote comparison. If the fresh remote comparison cannot be obtained, the high-impact action remains blocked.
 
-`scripts/make_chatgpt_reentry_pack_v2.sh` is retained only as historical tooling and is not an authoritative Architecture v1 re-entry mechanism. It must not be used to approve merge, production, QC milestones, policy/guardrail changes, scientific-method decisions, destructive work, or another DEEP-AUDIT objective because:
-- its Git section can show an empty working-tree diff while the task branch still contains committed changes relative to `main`;
-- it contains a machine-specific absolute project path.
+The former `scripts/make_chatgpt_reentry_pack_v2.sh` generator is preserved in Git history only and is absent from the current Architecture v1 tree. It is not an authoritative Architecture v1 re-entry mechanism and must not be used to approve a DEEP-AUDIT objective.
+
+It was retired because:
+- its Git section could show an empty working-tree diff while the task branch still contained committed changes relative to `main`;
+- it contained a machine-specific absolute project path.
 
 A future replacement generator may become active only after it is portable, distinguishes working-tree changes from committed branch changes, includes explicit branch-vs-main evidence, fails closed when the comparison base cannot be established, states that local evidence does not prove remote-ref freshness, and passes repository/runtime validation.
 
