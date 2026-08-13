@@ -2,7 +2,8 @@
 
 ## Current milestone
 - Day-1 Architecture v1 foundation and the AI collaboration safety layer are implemented on `task/architecture-v1-handoff`.
-- The remote GitHub control-layer DEEP AUDIT is complete; WSL/runtime validation remains pending before human merge review.
+- WSL/runtime validation completed against task SHA `c77f1709a66df1c8ecf195fe6eac359fa14a51d1` after synchronizing the task branch.
+- Current gate: human merge review. Merge remains blocked until explicit human approval.
 - Base checkpoint before Architecture v1 work: `544a375c05d85331ff0e674a89494120d413794f`.
 - NCEP integration commit `b574f26702163c424a5b605e414c1d992435642b` is already an ancestor of `main`; older instructions to merge NCEP next are historical.
 
@@ -52,9 +53,23 @@
 - A new material assistant-caused failure keeps the affected high-impact milestone open until a durable preventive control is encoded and audited.
 
 ## Remote audit result
-The current remote control layer has been re-read after the AI-safety integration. Architecture, AI safety, re-entry, decisions, status, handoff, guardrails, README entry guidance, and seasonal production policy are aligned on the AI collaboration safety requirements. The retired re-entry v2 generator is absent from the active branch tree and remains history only.
+The current remote control layer was re-read after the AI-safety integration. Architecture, AI safety, re-entry, decisions, status, handoff, guardrails, README entry guidance, and seasonal production policy are aligned on the AI collaboration safety requirements. The retired re-entry v2 generator is absent from the active branch tree and remains history only.
 
-This remote result does not replace WSL/runtime validation.
+## WSL validation result
+At task SHA `c77f1709a66df1c8ecf195fe6eac359fa14a51d1`, synchronized WSL validation recorded:
+- local `HEAD` equal to `origin/task/architecture-v1-handoff`;
+- clean working tree;
+- no defects from `git diff --check origin/main...HEAD`;
+- PyYAML 6.0.3 available and all four active YAML files parsed successfully;
+- Architecture scientific-scope assertions and guardrail-v6 required-control assertions satisfied;
+- all six centre registry entries remained fail-closed/open;
+- variable-registry and z950-policy assertions satisfied;
+- all 15 required Architecture v1 control files present;
+- retired `scripts/make_chatgpt_reentry_pack_v2.sh` absent from the synchronized active tree;
+- checked entry-point documents referenced `docs/AI_COLLABORATION_SAFETY.md`;
+- `git rev-list --left-right --count origin/main...HEAD` returned `0 46`.
+
+This runtime evidence is pinned to the exact remote task SHA above. Any later task-branch change requires fresh comparison and validation appropriate to that change.
 
 ## Open scientific work
 The controlled register is `docs/OPEN_SCIENTIFIC_QUESTIONS.md`. Items remain intentionally `OPEN — VERIFY WHEN REACHED` until the relevant centre/metric/method workstream reaches them.
@@ -75,10 +90,10 @@ Before every DEEP AUDIT, fresh remote GitHub evidence must establish the task-br
 - No merge to `main` without explicit human review/approval.
 
 ## Next safe action
-1. Sync the current remote task branch to WSL.
-2. Validate the active YAML files and repository state with short staged commands that cannot intentionally terminate the interactive shell on the first failed check.
-3. Verify the retired v2 generator is absent in the synchronized checkout.
-4. Resolve any runtime/syntax/config validation defect before merge review.
-5. Run one fresh remote GitHub comparison after any validation-driven fix.
-6. Obtain explicit human approval before merging Architecture v1 into `main`.
+1. Re-read the resulting remote `STATUS/HANDOFF` after this validation-state update.
+2. Re-run a fresh remote GitHub task-vs-main comparison.
+3. Perform the mandatory adversarial second pass for omissions, contradictions, stale authority paths, unintended files, unsupported claims, and scientific-policy drift.
+4. Present the Architecture v1 human merge review if the evidence supports proceeding to that gate.
+5. Obtain explicit human approval before merging Architecture v1 into `main`.
+6. After an approved merge, verify `main` remotely before closing Day-1.
 7. After integration, create centre-specific work packages and begin parallel centre verification.
