@@ -1,177 +1,102 @@
 # Decisions
 
-## Pre-read rule:
-Before any continuation step, always read the current project decision, policy, handoff, status, known-issues, and active dataset-config files from the repository. Continuation must rely on repository state, not chat memory.
+## Architecture v1 decision baseline
+Architecture v1 is the current shared design baseline on `task/architecture-v1-handoff` pending final human review and merge to `main`.
 
-## Repository tracking policy
-Track all lightweight, text-based, workflow-critical files that are needed to understand, reproduce, verify, continue, or audit the project.
+Required control files:
+- `docs/ARCHITECTURE.md`
+- `docs/OPEN_SCIENTIFIC_QUESTIONS.md`
+- `docs/SCIENTIFIC_DECISION_TRACEABILITY.md`
+- `configs/datasets/study_v0_1.yml`
+- `configs/datasets/guardrails_v1.yml`
 
-This includes:
-- README.md
-- all files under docs/
-- all files under configs/
-- all files under scripts/
-- all run metadata under runs/
-- all inventory snapshots under data/inventory/
-- all environment definition files under env/
-- other lightweight workflow files inside the repository, including:
-  - *.md
-  - *.txt
-  - *.json
-  - *.yml
-  - *.yaml
-  - *.csv
-when they are part of the official workflow.
+## Current approved architecture-level decisions
+- The repository is the durable project system of record; chat is temporary reasoning context.
+- `main` is approved current truth; task branches are candidate state; run metadata is execution evidence; historical/superseded material is not current policy.
+- Study window semantics are target/verifying years 2000-2025.
+- Manuscript v0.1 target month is December and must be configuration-driven.
+- Scientific horizons H1-H6 mean one through six calendar months before the target month.
+- The calendar horizon definition does not globally determine native C3S lead indices.
+- Native lead, nominal initialization, actual member initialization, and verifying-period mapping must be verified per centre/system/product.
+- No centre-specific assumption may be propagated to another centre without verification.
+- Six centres are in scope: ECMWF, UKMO, DWD, CMCC, Meteo-France, NCEP.
+- Current target variables are z500, t850, z950, t2m, total precipitation, and ws10m.
+- There is no global z950 -> z925 substitution.
+- Manuscript v0.1 domains are NH, ROI, ROI_X4; exact geometries/masks must be verified from current approved evidence/configuration.
+- Two result modes are required: maximum-valid centre/system analysis and fair common-case cross-centre analysis.
+- Common comparisons use actual intersections of eligible canonical cases, not only nominal year ranges.
+- Forecast calibration must use scientifically matching reforecast/hindcast system cohorts.
+- Availability is not equivalent to scientific eligibility.
+- Unknown/conflicting required scientific facts fail closed.
+- Raw and calibrated direct comparisons must use the same eligible evaluation cases and shared verification implementation.
+- Parallel centre and metric workstreams are allowed only under pinned work-package contracts and integration gates.
+- Major scientific decisions require traceable evidence, inline citations, alternatives, rationale, consequences, human approval, and Git adoption reference.
+- New guardrails may be added later when new failure modes are discovered; changes must be reviewed/versioned and may not rewrite prior execution history silently.
 
-Do not track:
-- data/raw/
-- data/processed/
-- logs/
-- large binary datasets
-- secrets and credentials
+## Intentionally open scientific decisions
+The following remain `OPEN — VERIFY WHEN REACHED` and must not be inferred from old code/configuration or chat memory:
+- centre/system/version cohorts and valid forecast/reforecast periods;
+- native lead and initialization semantics;
+- lagged-ensemble horizon attribution;
+- member-set policy and unequal ensemble handling;
+- exact variable semantic recipes;
+- z950 centre/system exceptions if needed;
+- below-orography mask handling;
+- grid/regridding/area weighting;
+- common calibration training-case policy;
+- calibration algorithm;
+- CV/leakage design;
+- climatology/event/reference definitions;
+- metric estimator/formulation details;
+- multi-model construction;
+- uncertainty/significance/sensitivity methods.
 
-## Platform
-- Primary download environment: WSL Ubuntu
-- The server will be used after verified transfer
+See `docs/OPEN_SCIENTIFIC_QUESTIONS.md` for the controlled register.
 
-## Branch policy
-- main: stable history
-- dev: active integration
-- task/*: focused work branches when needed
+## Legacy/superseded global assumptions
+The following earlier repository choices remain preserved in Git history as bootstrap/history but are superseded as GLOBAL Architecture v1 policy:
+- universal project hindcast 2000-2016 / forecast 2017-2025 split;
+- global seasonal z950 -> z925 substitution;
+- ECMWF system-51 bootstrap assumptions as six-centre study policy;
+- hard-coded native lead 1-6 interpreted as H1-H6;
+- any assumption that an old downloader/config defines current scientific truth merely because it exists.
 
-## Storage policy
-- The Git repository stays inside the WSL Linux filesystem.
-- Large raw and processed datasets are stored on /mnt/e/last-aticol due to limited space on the system drive.
+Historical ERA5 z925 downloads/QC and earlier ECMWF/NCEP runs remain valid evidence of what was executed. They are not deleted and may be reused only when a current approved decision makes them scientifically relevant.
 
-## Milestone closure rule
-- Every meaningful milestone must be formally closed in Git before moving on.
-- Closure includes, when applicable:
-  - run metadata under runs/
-  - updated docs/STATUS.md
-  - updated docs/HANDOFF.md
-  - updated docs/RUNBOOK.md if reusable commands or checks were added
-  - a precise commit message
-- Continuation must rely on repository state, not chat memory.
+## Evidence classification
+Important claims use:
+- VERIFIED — REPOSITORY
+- VERIFIED — AUTHORITATIVE SOURCE
+- INFERENCE
+- UNKNOWN / NEEDS VERIFICATION
 
-## ERA5 monthly total precipitation semantics
-- The current ERA5 monthly total precipitation workflow downloads the official raw monthly product as delivered by CDS.
-- For this monthly product, total_precipitation must be interpreted carefully during analysis.
-- A dedicated conversion rule may be required later when deriving analysis-ready monthly precipitation quantities.
-- The downloader itself is responsible only for retrieving and verifying the official raw files, not for scientific conversion.
+Scientific/data/method unknowns that affect eligibility fail closed.
 
+## Scientific decision adoption rule
+A new scientific-method or data-selection decision becomes current project policy only after:
+1. the question/scope is explicit;
+2. authoritative/repository evidence is recorded;
+3. alternatives and consequences are documented;
+4. unresolved uncertainty is stated;
+5. human approval is explicit;
+6. affected configs/registries/QC/docs are updated consistently;
+7. the adoption is version-controlled.
 
+Use `docs/SCIENTIFIC_DECISION_TRACEABILITY.md` for the decision record structure.
 
-## ERA5 monthly z500 semantics
-- The workflow label z500 refers to ERA5 monthly geopotential at the 500 hPa pressure level.
-- The downloader retrieves the official raw geopotential field from the ERA5 monthly pressure-level dataset.
-- If geopotential height is needed later, that conversion belongs to the analysis stage, not to the downloader.
+## Repository and workflow policy
+Track lightweight workflow-critical files needed for understanding, reproduction, verification, continuation, or audit, including docs, configs, scripts, run metadata, inventories, and environment definitions.
 
+Do not track raw/processed large datasets, large logs, secrets, or credentials.
 
-## ERA5 monthly pressure-level workflow semantics
-- The workflow labels t850, z500, z925, and z950 refer to official ERA5 monthly pressure-level products tracked in this repository.
-- The downloader retrieves the official raw ERA5 pressure-level fields exactly as delivered by CDS.
-- t850 refers to temperature at the 850 hPa pressure level.
-- z500 refers to geopotential at the 500 hPa pressure level.
-- z925 refers to geopotential at the 925 hPa pressure level.
-- z950 refers to geopotential at the 950 hPa pressure level.
-- The z925 collection is the seasonal-aligned ERA5 supplement introduced because the monthly C3S seasonal pressure-level archive does not provide 950 hPa.
-- The pre-existing z950 ERA5 collection is retained and not deleted.
-- If any later scientific conversion is needed, that conversion belongs to the analysis stage, not to the downloader.
+## Human approval gates
+Human approval is required before:
+- milestone commits/closure intended as approved state;
+- merges;
+- production downloads;
+- destructive operations;
+- scientific policy/interpretation changes;
+- QC pass/fail milestone declarations.
 
-## ERA5 monthly QC policy
-
-### QC layers
-- ERA5 monthly collection QC must be performed in two layers:
-  1. Structural QC
-  2. Scientific sanity QC
-
-### Structural QC pass criteria
-- Each completed ERA5 monthly dataset must contain exactly 312 `.grib` files for 2000-2025.
-- Each `.grib` file must have a matching `.request.json` sidecar.
-- Each `.grib` file must have a matching `.sha256` sidecar.
-- The tracked inventory snapshot must match the final file collection on disk.
-- No orphan sidecar files are allowed.
-- No missing months are allowed.
-
-### Scientific sanity QC pass criteria
-- Scientific sanity QC must be documented and tracked before merging the full ERA5 monthly collection milestone.
-- The sanity check must use the official raw files only.
-- The sanity check must not silently convert scientific units without documenting the rule.
-
-#### tp
-- `tp` must be treated as the official raw monthly product delivered by CDS.
-- No negative values are acceptable in the sanity summary.
-- Any later conversion into analysis-ready monthly precipitation quantities must be documented separately.
-
-#### t2m
-- `t2m` must be interpreted in Kelvin unless an explicit documented conversion is applied.
-- The monthly series and annual cycle must be physically plausible over the Northern Hemisphere.
-
-#### ws10m
-- `ws10m` must remain non-negative.
-- The monthly series and annual cycle must be physically plausible over the Northern Hemisphere.
-
-#### z500
-- `z500` in this workflow is the raw ERA5 geopotential field, not geopotential height.
-- Any conversion from geopotential to geopotential height must be documented explicitly.
-- The monthly series and annual cycle must be physically plausible over the Northern Hemisphere.
-
-#### t850
-- `t850` must be interpreted in Kelvin unless an explicit documented conversion is applied.
-- The monthly series and annual cycle must be physically plausible over the Northern Hemisphere.
-
-## ERA5 monthly z925 alignment rule
-- ERA5 monthly z925 has been added as a parallel aligned dataset for the seasonal pressure-level substitute.
-- Existing ERA5 monthly z950 data, metadata, inventory, and historical QC outputs remain intact and must not be deleted by this task.
-- ERA5 z925 is added for seasonal comparison alignment with the repository seasonal pressure-level substitute z925.
-- z925 is tracked as an ERA5 monthly pressure-level product in this repository
-- z925 is the seasonal-aligned ERA5 supplement
-- z950 baseline is retained and not deleted
-- the z925 download, inventory, QC extension, and main reintegration are complete
-- ERA5 monthly structural and scientific sanity QC now include z925 explicitly
-
-#### z950
-- `z950` in this workflow is the raw ERA5 geopotential field, not geopotential height.
-- Any conversion from geopotential to geopotential height must be documented explicitly.
-- The monthly series and annual cycle must be physically plausible over the Northern Hemisphere.
-
-### Merge rule
-- The ERA5 monthly collection must not be merged before QC outputs, QC report, tracked plots, and updated run metadata are committed.
-
-## Seasonal ECMWF bootstrap assumption
-- The seasonal bootstrap phase currently proceeds with ECMWF only.
-- The repository will request ECMWF monthly seasonal data using system=51 for both project hindcasts (2000-2016) and project forecasts (2017-2025).
-- For forecast years 2017-2025, this is a working repository assumption adopted for bootstrap execution and later validation; it is not yet a fully validated period-specific system manifest for scientific evaluation.
-- The assumption must be revisited after smoke tests and first production retrievals.
-
-## Seasonal pressure-level substitution
-- The supervisor wording includes z950, but the monthly C3S pressure-level archive spans 925 hPa to 10 hPa.
-- Therefore the repository seasonal pressure-level substitute is z925, not z950.
-- The matching ERA5 monthly z925 dataset has been downloaded, inventoried, QC-verified, and merged into main.
-- That z925 collection is the seasonal-aligned supplement and does not replace the already tracked ERA5 z950 baseline.
-- Seasonal pressure-level verification can now use the merged ERA5 monthly z925 baseline on main.
-
-## Seasonal known-issues register rule
-- Official C3S seasonal known issues must be copied into tracked repository documentation before a new centre or sensitive variable is activated.
-- Each affected case must be classified in the repository as allow, warn, mask, or exclude.
-- Non-ECMWF centres remain deferred until both period-specific system mapping and known-issues registration are committed.
-
-## C3S seasonal pressure-level QA interpretation
-- Seasonal monthly pressure-level products are monthly statistics derived from subdaily forecast data.
-- These products are probabilistic seasonal forecast products, not deterministic weather forecasts.
-- Monthly pressure-level fields may contain system-, region-, variable-, season-, and lead-dependent biases.
-- Hindcasts/reforecasts are required for bias estimation, anomaly construction, and forecast skill assessment.
-- Operational seasonal downloads must remain in native GRIB because complex NetCDF requests can have limited metadata and interpretation risk.
-- Download success, checksum success, and openability success do not imply scientific readiness.
-- NCEP CFSv2 production download is blocked until smoke tests verify system=2 coverage, member counts, nominal start handling, and leadtime metadata.
-
-## 2026-05-11 - NCEP CFSv2 pressure-level production policy
-- Decision: NCEP CFSv2 system=2 pressure-level production may be prepared only after the production downloader and QC plan explicitly record member/date completeness for every requested nominal start month, variable, year, and leadtime.
-- Decision: NCEP pressure-level production must remain blocked until this policy update is committed and the production command is reviewed separately.
-- Decision: NCEP monthly_mean production is not blocked globally by G8, but any product using the nominal June 2023 forecast window must flag the missing initialization date dataDate=20230522 and must not treat that month as a complete 31-date lagged window.
-- Decision: NCEP May/June 2023 must not be used blindly in derived products, multi-model products, climatology, anomaly construction, or verification without explicit missing-date handling.
-- Reason: committed smoke evidence shows that the corrected nominal June 2023 z500 monthly_mean retrieval has contains_20230522=false, messages_for_20230522=0, message_count=120, and observed_missing_message_count=4 instead of the expected 124 messages for a complete 31-date lagged window.
-- Consequence: the NCEP production inventory and QC outputs must include message_count, unique_data_date_count, contains_20230522, messages_for_20230522, expected_message_count, observed_missing_message_count, and completeness_status.
-- Consequence: production download may be designed after this policy is committed, but production execution remains a separate reviewed milestone.
-- Files affected: docs/DECISIONS.md, docs/SEASONAL_DOWNLOAD_POLICY.md, docs/SEASONAL_KNOWN_ISSUES.md, docs/STATUS.md, docs/HANDOFF.md.
-- Status: active policy.
+## Milestone closure
+A meaningful milestone must update the relevant current state, decisions, run metadata, inventories/QC, and reusable workflow documentation before merge. Continuation relies on repository state, not chat memory.
