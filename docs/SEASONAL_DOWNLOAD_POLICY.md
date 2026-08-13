@@ -1,117 +1,96 @@
 # Seasonal Download Policy
 
 ## Scope
-This policy governs seasonal forecast data collection from the Copernicus Climate Change Service (C3S) monthly seasonal archives.
+This policy governs future C3S seasonal data acquisition under Architecture v1.
 
-## Official source datasets
-- seasonal-monthly-single-levels
-- seasonal-monthly-pressure-levels
+Official source datasets may include:
+- `seasonal-monthly-single-levels`
+- `seasonal-monthly-pressure-levels`
 
-## Bootstrap phase order
-1. ECMWF-only bootstrap
-2. ECMWF monthly single-levels workflow verification
-3. ECMWF pressure-level introduction after documented level decision
-4. Other centres after period-specific system mapping and issue registration are validated and committed
+This policy does not authorize any production download by itself.
 
-## Project target period
-- Project hindcast target: 2000-2016
-- Project forecast target: 2017-2025
-- Year 2026 is out of scope for the current project target
+## Architecture precedence
+Before any new production seasonal acquisition, read:
+- `docs/ARCHITECTURE.md`
+- `docs/OPEN_SCIENTIFIC_QUESTIONS.md`
+- `configs/datasets/study_v0_1.yml`
+- `configs/datasets/guardrails_v1.yml`
+- relevant current centre/system evidence and known-issue records.
 
-## ECMWF bootstrap policy
-- originating_centre: ecmwf
-- system: 51
-- same system must be used when pairing hindcasts and forecasts
-- use of system=51 for forecast years 2017-2025 is currently a working repository assumption for bootstrap, not a final scientific manifest
+Older ECMWF/NCEP bootstrap acquisition choices remain in Git history, runs, inventories, and scripts as historical execution evidence. They do not automatically define current six-centre scientific policy.
 
-## Bootstrap variable policy
-### Active bootstrap variables
-- t2m -> 2m_temperature
-- ws10m -> 10m_wind_speed
-- tp -> total_precipitation
+## Required pre-acquisition verification
+For the requested centre/system/product/variable/level/horizon/time range, production remains blocked until the relevant items are resolved sufficiently for acquisition:
+- system/version cohort identity;
+- actual valid forecast and reforecast/hindcast availability;
+- scientifically matching forecast-reforecast cohort;
+- scientific-horizon to archive-native-lead mapping;
+- nominal initialization semantics;
+- actual member initialization semantics where relevant/observable;
+- verifying period;
+- member-set structure and completeness requirements;
+- variable/level availability and semantic recipe;
+- known issues and gaps;
+- output path and storage plan;
+- request metadata/sidecar plan;
+- inventory/QC plan.
 
-### Deferred pressure-level variables
-- z500 -> geopotential at 500 hPa
-- t850 -> temperature at 850 hPa
-- z925 -> geopotential at 925 hPa
-- the supervisor wording z950 is retained as an external requirement note, but the operational monthly C3S implementation in this repository uses z925 instead
+Unknown or conflicting required facts fail closed.
 
-## Request split policy
-For operational collection in this repository, hindcasts and forecasts must be requested separately.
+## No universal period split
+Architecture v1 study window is target/verifying years 2000-2025. There is no universal project-wide hindcast 2000-2016 / forecast 2017-2025 split. Each centre/system cohort must use its scientifically verified valid periods.
 
-### Hindcast request block
-- project years: 2000-2016
+Initialization dates required by a scientific horizon may fall outside the target/verifying-year window.
 
-### Forecast request block
-- project years: 2017-2025
+## Scientific horizons and native leads
+H1-H6 are calendar distances before the target month. No global native C3S lead formula is assumed. Mapping must be verified per centre/system/product using authoritative documentation and retrieved metadata.
 
-## Product policy
-- bootstrap product_type: monthly_mean
-- bootstrap data_format: grib
-- native GRIB is the operational format
-- netCDF conversion is not part of the operational download workflow
+## System-cohort matching
+Forecast and reforecast/hindcast acquisition must preserve the matching system/version relationship required for later calibration and verification. Centre name alone is insufficient.
 
-## Raw-data semantics
-- Raw seasonal files must be stored exactly as delivered by CDS.
-- Any scientific unit conversion or anomaly calculation belongs to later analysis stages.
-- tp must not be silently converted during download.
-- z500 and z925 are raw geopotential fields, not geopotential height.
+## Variable and pressure-level policy
+Current manuscript v0.1 targets:
+- t2m
+- total precipitation
+- ws10m
+- z500
+- t850
+- z950
 
-## Operational request policy
-- exact API payloads must be recorded in run metadata and raw sidecars
-- target valid month must be derived programmatically from start month and leadtime month
-- lagged-system handling must be implemented explicitly before any non-ECMWF centre is activated
-- form-generated API snippets are helper outputs, not repository source-of-truth configuration
+There is no global z950 -> z925 substitution. If a target variable/level is unavailable or scientifically unsuitable for a specific centre/system/product, production for that target remains blocked pending a centre/system-specific Scientific Exception Review.
 
-## Known-issues policy
-- official C3S seasonal known issues must be registered in tracked repository documentation before a new centre is activated
-- each issue must be classified as allow, warn, mask, or exclude
-- issues stating that archived wrong data will not be overwritten must be treated as hard warnings
+Any previously downloaded z925 data remain valid historical/technical assets and may be reused only if a later approved scientific decision calls for them.
 
-## ERA5 z925 dependency
-- before seasonal pressure-level verification begins, the matching ERA5 monthly z925 dataset must be downloaded, tracked, QC-verified, and merged into main
-- this dependency is now satisfied on main
+## Raw-data policy
+- Preserve raw seasonal files as delivered by the source archive.
+- Record exact request payloads/metadata and integrity sidecars according to the active run schema.
+- Do not perform silent scientific conversions during acquisition.
+- Download success, checksum success, and openability do not imply scientific eligibility.
+- Operational file format choices must be justified by current metadata/QC requirements; legacy GRIB choices are evidence, not an immutable architecture rule.
 
-## NCEP CFSv2 pressure-level production policy
-- NCEP CFSv2 uses originating_centre=ncep and system=2.
-- NCEP production download is not authorized until the committed policy, downloader design, inventory schema, and QC checks explicitly handle lagged initialization dates and missing-date completeness.
-- Initial NCEP pressure-level smoke tests passed for z500 and t850 for hindcast year 2000 and forecast year 2020.
-- Corrected G8-sensitive smoke evidence confirms that nominal June 2023 z500 monthly_mean retrieval is missing dataDate=20230522: contains_20230522=false, messages_for_20230522=0, message_count=120, expected complete 31-date window message_count=124.
-- G8 is not a blanket blocker for all NCEP monthly_mean retrievals, but affected nominal months must be flagged and handled explicitly.
-- NCEP production inventories and QC summaries must include member/date completeness fields before any NCEP-derived product or multi-model analysis.
-- Native GRIB remains required for NCEP production.
+## Lagged systems
+Lagged-system behavior must be represented explicitly. Nominal start, actual member initialization, member-set completeness, and horizon attribution may require centre/system-specific handling. No burst-system shortcut may be applied globally.
 
-## Tracking policy
-The following must be tracked in Git:
-- docs/
-- configs/
-- scripts/
-- runs/
-- data/inventory/
-- env/
-- workflow-critical text and metadata files
+## Known issues
+Known issues and retrieval-discovered gaps must be registered and connected to eligibility. Handling must be explicit: allow, warn, mask, exclude, or unresolved/block. Known issues are not passive notes.
 
-The following must not be tracked:
-- data/raw/
-- data/processed/
-- logs/
-- large binary datasets
-- secrets and credentials
+## Parallel centre acquisition design
+Centre workstreams may prepare acquisition plans in parallel after receiving pinned work packages. A centre workstream may not modify shared horizon, calibration, common-case, or other project-wide scientific policy. Shared conflicts return to CONTROL.
 
-## Milestone closure policy
-No seasonal milestone is considered complete until:
-- run metadata is updated
-- inventory snapshot is tracked if files were produced
-- docs/STATUS.md is updated
-- docs/HANDOFF.md is updated
-- any reusable operational command is added to docs/RUNBOOK.md when needed
-- a precise closing commit is created
+## Required acquisition provenance
+Each production acquisition plan/run must be traceable to, as applicable:
+- base Git SHA;
+- architecture/config/guardrail versions;
+- centre/system cohort record;
+- availability/known-issue evidence;
+- request payload;
+- output location;
+- checksums/inventory;
+- QC plan/results;
+- run manifest.
 
-## Seasonal pressure-level QA policy
-- Monthly pressure-level products are monthly statistics derived from subdaily seasonal forecast data.
-- Seasonal products must be interpreted probabilistically.
-- Bias correction or bias-aware interpretation is required for scientific applications and derived forecast products.
-- Hindcasts/reforecasts are required for model climatology, anomaly construction, and verification.
-- Native GRIB remains the operational format for complex seasonal requests.
-- Experimental NetCDF is not authorized for operational seasonal download workflows without a separate documented validation.
-- Differences between forecast systems in grid, ensemble generation, start-date handling, leadtime metadata, and hindcast availability must be checked before a new centre is activated.
+## Human approval gate
+Production execution requires separate explicit human approval after deep audit of the relevant policy, config, script/plan, paths, expected outputs, known issues, and QC criteria.
+
+## Legacy note
+Earlier policies that fixed ECMWF system 51, 2000-2016/2017-2025 blocks, z925 substitution, or NCEP-specific production rules are retained in Git history and related evidence. They may inform new work but do not override Architecture v1.
