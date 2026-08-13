@@ -23,7 +23,7 @@ Legacy/bootstrap configs and scripts are preserved for audit/history but do not 
 ## Re-entry for ChatGPT/Codex work
 Architecture v1 re-entry is GitHub-first and protocol-driven. Before high-impact work, verify the current remote task-branch SHA, `main` SHA, merge base, ahead/behind counts, and changed-file diff directly from GitHub, then read `docs/CHATGPT_REENTRY_PROTOCOL.md` and the current control files.
 
-`scripts/make_chatgpt_reentry_pack_v2.sh` is retained as historical tooling but is not authoritative for current Architecture v1 re-entry or DEEP AUDIT because it does not prove the committed branch diff relative to current remote `main` and contains a machine-specific project path.
+The former `scripts/make_chatgpt_reentry_pack_v2.sh` generator is preserved in Git history only. It is not present as an active Architecture v1 tool and is not authoritative for current re-entry or DEEP AUDIT.
 
 Do not use a generated local pack as a substitute for fresh remote GitHub state.
 
