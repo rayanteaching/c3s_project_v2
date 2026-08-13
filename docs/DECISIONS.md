@@ -5,6 +5,7 @@ Architecture v1 is the current shared design baseline on `task/architecture-v1-h
 
 Required control files:
 - `docs/ARCHITECTURE.md`
+- `docs/AI_COLLABORATION_SAFETY.md`
 - `docs/OPEN_SCIENTIFIC_QUESTIONS.md`
 - `docs/SCIENTIFIC_DECISION_TRACEABILITY.md`
 - `configs/datasets/study_v0_1.yml`
@@ -13,8 +14,11 @@ Required control files:
 ## Current approved architecture-level decisions
 - The repository is the durable project system of record; chat is temporary reasoning context.
 - `main` is approved current truth; task branches are candidate state; run metadata is execution evidence; historical/superseded material is not current policy.
+- AI assistants are fallible reasoning/execution agents, not sources of project truth; AI-assisted work is governed by `docs/AI_COLLABORATION_SAFETY.md`.
+- High-impact AI-assisted work requires risk classification, current authority loading, material constraint coverage, evidence classification, bounded execution, post-action verification, a separate adversarial contradiction/omission audit, and a completion gate.
+- Material assistant-caused failures must be promoted from incidents to generalized durable guardrails; conversational promises alone do not close a failure mode.
 - High-impact re-entry requires a fresh remote GitHub comparison of the task branch and `main`; local generated packs or local refs are supporting evidence only.
-- `scripts/make_chatgpt_reentry_pack_v2.sh` is historical/non-authoritative tooling and is not an Architecture v1 approval gate.
+- The former `scripts/make_chatgpt_reentry_pack_v2.sh` is preserved in Git history only and is not an Architecture v1 approval gate.
 - Study window semantics are target/verifying years 2000-2025.
 - Manuscript v0.1 target month is December and must be configuration-driven.
 - Scientific horizons H1-H6 mean one through six calendar months before the target month.
@@ -31,9 +35,21 @@ Required control files:
 - Availability is not equivalent to scientific eligibility.
 - Unknown/conflicting required scientific facts fail closed.
 - Raw and calibrated direct comparisons must use the same eligible evaluation cases and shared verification implementation.
-- Parallel centre and metric workstreams are allowed only under pinned work-package contracts and integration gates.
+- Parallel centre and metric workstreams are allowed only under pinned work-package contracts and integration gates and inherit the AI collaboration safety controls.
 - Major scientific decisions require traceable evidence, inline citations, alternatives, rationale, consequences, human approval, and Git adoption reference.
 - New guardrails may be added later when new failure modes are discovered; changes must be reviewed/versioned and may not rewrite prior execution history silently.
+
+## Assistant/workflow incident governance
+The current incident register and prevention rules are maintained in `docs/AI_COLLABORATION_SAFETY.md`.
+
+Known encoded incidents include:
+- WF-001 — wrong repository workflow;
+- WF-002 — interactive terminal closed by inappropriate fail-fast behavior;
+- WF-003 — wrong re-entry mode;
+- WF-004 — re-entry branch-diff blind spot and machine-specific generator path;
+- WF-005 — piecemeal assistant-error controls without a generalized safety layer.
+
+A material new assistant-caused incident keeps the affected Architecture/milestone state open until root cause, generalized prevention, durable encoding, and post-fix audit are complete.
 
 ## Intentionally open scientific decisions
 The following remain `OPEN — VERIFY WHEN REACHED` and must not be inferred from old code/configuration or chat memory:
@@ -69,10 +85,11 @@ Historical ERA5 z925 downloads/QC and earlier ECMWF/NCEP runs remain valid evide
 Important claims use:
 - VERIFIED — REPOSITORY
 - VERIFIED — AUTHORITATIVE SOURCE
+- VERIFIED — RUNTIME/EXECUTION EVIDENCE
 - INFERENCE
 - UNKNOWN / NEEDS VERIFICATION
 
-Scientific/data/method unknowns that affect eligibility fail closed.
+Scientific/data/method and high-impact workflow unknowns that affect eligibility or milestone truth fail closed.
 
 ## Scientific decision adoption rule
 A new scientific-method or data-selection decision becomes current project policy only after:
@@ -87,7 +104,7 @@ A new scientific-method or data-selection decision becomes current project polic
 Use `docs/SCIENTIFIC_DECISION_TRACEABILITY.md` for the decision record structure.
 
 ## Repository and workflow policy
-Track lightweight workflow-critical files needed for understanding, reproduction, verification, continuation, or audit, including docs, configs, scripts, run metadata, inventories, and environment definitions.
+Track lightweight workflow-critical files needed for understanding, reproduction, verification, continuation, or audit, including docs, configs, scripts, run metadata, inventories, AI-assistant incident/control records, and environment definitions.
 
 Do not track raw/processed large datasets, large logs, secrets, or credentials.
 
@@ -101,4 +118,4 @@ Human approval is required before:
 - QC pass/fail milestone declarations.
 
 ## Milestone closure
-A meaningful milestone must update the relevant current state, decisions, run metadata, inventories/QC, and reusable workflow documentation before merge. Continuation relies on repository state, not chat memory.
+A meaningful milestone must update the relevant current state, decisions, AI collaboration safety controls when affected, run metadata, inventories/QC, and reusable workflow documentation before merge. Continuation relies on repository state, not chat memory.
