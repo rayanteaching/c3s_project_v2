@@ -15,6 +15,7 @@
 - `docs/DECISIONS.md`
 - `docs/SEASONAL_DOWNLOAD_POLICY.md`
 - `docs/CHATGPT_REENTRY_PROTOCOL.md`
+- `docs/WORK_PROTOCOL.md`
 - `configs/datasets/CURRENT_CONFIGS.md`
 - `configs/datasets/study_v0_1.yml`
 - `configs/datasets/guardrails_v1.yml`
@@ -51,6 +52,7 @@
 - GitHub app permissions are configured to allow read actions while requiring approval before writes.
 - A blocked/failed write must be followed by a system-of-record reread before retrying or changing workflow.
 - High-impact assistant work still requires constraint coverage, evidence classification, post-action verification, explicit negative-claim coverage, and a separate adversarial review before completion.
+- Every chat/task now declares one primary deliverable and an INSPECT/CHANGE mode through `docs/WORK_PROTOCOL.md`.
 
 ## WSL validation result
 At task SHA `c77f1709a66df1c8ecf195fe6eac359fa14a51d1`, synchronized WSL validation recorded:
