@@ -14,6 +14,22 @@ The repository is the durable project system of record. ChatGPT/Codex are tempor
 
 If chat memory conflicts with repository evidence, repository evidence wins. If current repository files conflict internally, stop and resolve the conflict; do not guess.
 
+## Repository-change workflow safety
+For repository work performed with ChatGPT/Codex, use the shared GitHub task branch as the default collaboration write target. The WSL checkout is normally the synchronized runtime/validation workspace, not an independent project-truth source.
+
+Before a repository change:
+- read the current GitHub task-branch state;
+- confirm the intended branch and base SHA;
+- read Architecture v1 control files relevant to the change.
+
+After a repository change:
+- audit the remote branch state and changed-file diff before declaring the work complete;
+- then synchronize WSL from that GitHub branch for runtime or syntax validation when local execution is required.
+
+Local-first repository editing is an exception, not the default. It requires an explicit reason such as runtime-only tooling, local-only generated artifacts, or connector limitations. If local-first work is necessary, the reason and synchronization path must be stated before making the change.
+
+Interactive validation commands given to the user must not intentionally enable shell behavior that can terminate the user's interactive terminal on the first failed check. Validation should be short, staged, and failure-reporting rather than terminal-exiting.
+
 ## Mandatory Architecture v1 control files
 Every project re-entry must load these before using legacy bootstrap files as context:
 - `docs/ARCHITECTURE.md`
