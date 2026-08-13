@@ -35,13 +35,19 @@ Every project re-entry must load these before using legacy bootstrap files as co
 - `docs/ARCHITECTURE.md`
 - `docs/OPEN_SCIENTIFIC_QUESTIONS.md`
 - `docs/SCIENTIFIC_DECISION_TRACEABILITY.md`
-- `configs/datasets/study_v0_1.yml`
-- `configs/datasets/guardrails_v1.yml`
+- `docs/DECISIONS.md`
 - `docs/STATUS.md`
 - `docs/HANDOFF.md`
-- `docs/DECISIONS.md`
+- `docs/SEASONAL_DOWNLOAD_POLICY.md`
+- `docs/CHATGPT_REENTRY_PROTOCOL.md`
+- `configs/datasets/CURRENT_CONFIGS.md`
+- `configs/datasets/study_v0_1.yml`
+- `configs/datasets/guardrails_v1.yml`
+- `configs/datasets/system_registry_v1.yml`
+- `configs/datasets/variable_registry_v1.yml`
+- `scripts/make_chatgpt_reentry_pack_v2.sh`
 
-These files define current shared design, open questions, guardrails, study semantics, and state.
+These files define current shared design, open questions, guardrails, study semantics, registry state, workflow rules, and project state.
 
 ## Evidence priority
 Use evidence in this order:
@@ -73,19 +79,23 @@ Normal mode should include:
 Do not load unrelated literature, all inventories, long logs, or the full repository tree merely for completeness.
 
 ### Deep-audit mode
-Required for:
+Deep audit is mandatory for:
+- Architecture closure/foundation acceptance;
+- merge review or merge decisions;
 - production downloads;
-- merge decisions;
 - branch cleanup/recovery;
-- QC pass/fail declarations;
+- QC pass/fail declarations or QC milestone decisions;
 - scientific-method/data-selection decisions;
-- policy/guardrail changes;
+- policy or guardrail changes;
 - destructive operations;
 - confused or stale state;
 - any case where scientific interpretation or repository/data state is uncertain.
 
+Do not downgrade one of these objectives to normal mode merely because the task initially appears documentation-only.
+
 Deep audit adds, as relevant:
-- full branch graph and diffs;
+- branch-vs-main commit ancestry, ahead/behind state, changed-file list, and branch diff evidence;
+- full branch graph and recent all-branch history;
 - current policies/configs/scripts;
 - run metadata/inventories/checksums;
 - relevant logs;
