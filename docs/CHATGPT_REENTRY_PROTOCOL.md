@@ -41,6 +41,7 @@ Every project re-entry must load these before using legacy bootstrap files as co
 - `docs/HANDOFF.md`
 - `docs/SEASONAL_DOWNLOAD_POLICY.md`
 - `docs/CHATGPT_REENTRY_PROTOCOL.md`
+- `docs/WORK_PROTOCOL.md`
 - `configs/datasets/CURRENT_CONFIGS.md`
 - `configs/datasets/study_v0_1.yml`
 - `configs/datasets/guardrails_v1.yml`
@@ -145,20 +146,20 @@ Deep audit begins with the fresh remote GitHub branch-vs-main comparison defined
 - the mandatory AI collaboration second-pass audit.
 
 ## Mandatory opening behavior
-At a new chat or after migration, first summarize:
+Every new chat starts in `INSPECT` mode. Its first and only primary deliverable is a read-only Verification Report based on fresh remote GitHub evidence.
+
+Do not provide a narrative handoff, propose a change, infer project state, or perform any state-changing action before the Verification Report is complete.
+
+The report must state:
 1. current remote branch and SHA;
 2. current remote `main` SHA and ahead/behind state when relevant;
-3. current objective;
-4. current milestone;
-5. architecture/config/guardrail versions;
-6. completed work;
-7. blockers/open questions relevant to the objective;
-8. contradictions found;
-9. risks;
-10. next safe step;
-11. missing evidence.
+3. one primary deliverable for the chat;
+4. verified preconditions;
+5. blockers/TBD and contradictions relevant to that deliverable;
+6. declared mode, allowed scope, and forbidden adjacent work;
+7. next safe action.
 
-Do not issue production/download/merge/destructive commands or adopt a scientific decision before this re-entry summary is complete.
+Use `docs/WORK_PROTOCOL.md` for this header. Do not issue production/download/merge/destructive commands or adopt a scientific decision before the Verification Report is complete.
 
 ## Legacy quarantine on re-entry
 Legacy scripts, configs, runs, and historical decisions may be useful evidence, but they must not override Architecture v1 merely because they are older or already implemented.
