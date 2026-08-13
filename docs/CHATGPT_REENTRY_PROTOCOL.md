@@ -45,17 +45,35 @@ Every project re-entry must load these before using legacy bootstrap files as co
 - `configs/datasets/guardrails_v1.yml`
 - `configs/datasets/system_registry_v1.yml`
 - `configs/datasets/variable_registry_v1.yml`
-- `scripts/make_chatgpt_reentry_pack_v2.sh`
 
 These files define current shared design, open questions, guardrails, study semantics, registry state, workflow rules, and project state.
 
+## Authoritative re-entry path
+Architecture v1 re-entry is GitHub-first and protocol-driven.
+
+Before any DEEP-AUDIT objective or other high-impact continuation, obtain fresh evidence directly from the current remote GitHub repository for:
+1. task-branch SHA;
+2. `main` SHA;
+3. merge base;
+4. ahead/behind counts;
+5. changed-file list and branch diff relative to `main`.
+
+A local checkout, local remote-tracking ref, generated pack, or remembered chat state does not substitute for this remote comparison. If the fresh remote comparison cannot be obtained, the high-impact action remains blocked.
+
+`scripts/make_chatgpt_reentry_pack_v2.sh` is retained only as historical tooling and is not an authoritative Architecture v1 re-entry mechanism. It must not be used to approve merge, production, QC milestones, policy/guardrail changes, scientific-method decisions, destructive work, or another DEEP-AUDIT objective because:
+- its Git section can show an empty working-tree diff while the task branch still contains committed changes relative to `main`;
+- it contains a machine-specific absolute project path.
+
+A future replacement generator may become active only after it is portable, distinguishes working-tree changes from committed branch changes, includes explicit branch-vs-main evidence, fails closed when the comparison base cannot be established, states that local evidence does not prove remote-ref freshness, and passes repository/runtime validation.
+
 ## Evidence priority
 Use evidence in this order:
-1. current repository files and current command output;
-2. generated repository re-entry pack;
-3. user-provided current terminal/runtime output;
-4. user statements about intended decisions/scope;
-5. earlier chat memory only as weak context.
+1. fresh remote GitHub branch/main state and current repository control files;
+2. current command/runtime output and tracked run evidence;
+3. generated local re-entry material only as supporting context;
+4. user-provided current terminal/runtime output;
+5. user statements about intended decisions/scope;
+6. earlier chat memory only as weak context.
 
 Scientific evidence uses the project classes:
 - VERIFIED — REPOSITORY
@@ -71,9 +89,9 @@ Use for planning, discussion, documentation, low-risk review, and non-destructiv
 
 Normal mode should include:
 - objective;
-- branch/SHA/status;
+- current GitHub branch/SHA/status relevant to the task;
 - Architecture v1 control files;
-- recent branch commits;
+- recent branch context;
 - relevant configs/scripts/evidence only for the current objective.
 
 Do not load unrelated literature, all inventories, long logs, or the full repository tree merely for completeness.
@@ -93,8 +111,7 @@ Deep audit is mandatory for:
 
 Do not downgrade one of these objectives to normal mode merely because the task initially appears documentation-only.
 
-Deep audit adds, as relevant:
-- branch-vs-main commit ancestry, ahead/behind state, changed-file list, and branch diff evidence;
+Deep audit begins with the fresh remote GitHub branch-vs-main comparison defined above and then adds, as relevant:
 - full branch graph and recent all-branch history;
 - current policies/configs/scripts;
 - run metadata/inventories/checksums;
@@ -105,15 +122,17 @@ Deep audit adds, as relevant:
 
 ## Mandatory opening behavior
 At a new chat or after migration, first summarize:
-1. current branch and SHA;
-2. current objective;
-3. current milestone;
-4. architecture/config/guardrail versions;
-5. completed work;
-6. blockers/open questions relevant to the objective;
-7. risks;
-8. next safe step;
-9. missing evidence.
+1. current remote branch and SHA;
+2. current remote `main` SHA and ahead/behind state when relevant;
+3. current objective;
+4. current milestone;
+5. architecture/config/guardrail versions;
+6. completed work;
+7. blockers/open questions relevant to the objective;
+8. contradictions found;
+9. risks;
+10. next safe step;
+11. missing evidence.
 
 Do not issue production/download/merge/destructive commands or adopt a scientific decision before this re-entry summary is complete.
 
@@ -133,7 +152,7 @@ Do not automatically inherit:
 - target document;
 - Architecture v1 relevance;
 - current objective;
-- diff before milestone closure.
+- remote diff before milestone closure.
 
 ### Script/config change
 - branch/status/SHA;
@@ -142,10 +161,11 @@ Do not automatically inherit:
 - relevant scientific decision/evidence;
 - expected behavior;
 - validation/test command;
-- diff.
+- remote diff.
 
 ### Production acquisition
 - deep audit;
+- fresh remote GitHub comparison;
 - centre/system/product work package;
 - verified system cohort/availability;
 - horizon/native-lead/init semantics;
@@ -159,6 +179,8 @@ Do not automatically inherit:
 - explicit human approval.
 
 ### QC pass/fail declaration
+- deep audit;
+- fresh remote GitHub comparison;
 - QC layer/criteria;
 - QC implementation;
 - outputs/inventory/log evidence;
@@ -167,6 +189,8 @@ Do not automatically inherit:
 - explicit human approval for milestone declaration.
 
 ### Scientific decision
+- deep audit;
+- fresh remote GitHub comparison;
 - open-question ID/scope;
 - current architecture/guardrails/config;
 - relevant official documentation and peer-reviewed evidence;
@@ -217,12 +241,12 @@ Before closing a meaningful milestone:
 3. update `docs/DECISIONS.md` when a decision changed;
 4. update Architecture/open questions/guardrails/configs when relevant;
 5. update run metadata/inventories/QC evidence when runtime state changed;
-6. review Git diff and forbidden files;
+6. review the fresh remote GitHub branch-vs-main diff and forbidden files;
 7. validate config/script syntax/tests as relevant;
 8. obtain human approval before merge/milestone adoption.
 
 ## Chat migration quality rule
-If the active chat becomes long/confused enough that evidence, decisions, centre-specific facts, or repository state may be mixed or hallucinated, stop before making another high-impact decision. Close or checkpoint the current milestone in Git where appropriate, generate a fresh re-entry pack, and migrate to a new chat.
+If the active chat becomes long/confused enough that evidence, decisions, centre-specific facts, or repository state may be mixed or hallucinated, stop before making another high-impact decision. Close or checkpoint the current milestone in Git where appropriate and start a fresh GitHub-first Architecture v1 re-entry in a new chat.
 
 Do not continue a degraded chat merely to avoid migration.
 
