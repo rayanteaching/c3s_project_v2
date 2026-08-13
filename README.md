@@ -21,9 +21,11 @@ For current project work, read Architecture v1 before legacy/bootstrap scripts o
 Legacy/bootstrap configs and scripts are preserved for audit/history but do not automatically define current scientific policy.
 
 ## Re-entry for ChatGPT/Codex work
-Use the Architecture v1 re-entry generator:
-- normal: `bash scripts/make_chatgpt_reentry_pack_v2.sh normal "CURRENT_OBJECTIVE"`
-- deep audit: `bash scripts/make_chatgpt_reentry_pack_v2.sh deep "CURRENT_OBJECTIVE"`
+Architecture v1 re-entry is GitHub-first and protocol-driven. Before high-impact work, verify the current remote task-branch SHA, `main` SHA, merge base, ahead/behind counts, and changed-file diff directly from GitHub, then read `docs/CHATGPT_REENTRY_PROTOCOL.md` and the current control files.
+
+`scripts/make_chatgpt_reentry_pack_v2.sh` is retained as historical tooling but is not authoritative for current Architecture v1 re-entry or DEEP AUDIT because it does not prove the committed branch diff relative to current remote `main` and contains a machine-specific project path.
+
+Do not use a generated local pack as a substitute for fresh remote GitHub state.
 
 ## Core principles
 - Repository state is the durable system of record; chat memory is not project truth.
