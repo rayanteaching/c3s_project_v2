@@ -3,7 +3,7 @@
 ## Current milestone
 - Architecture v1 was approved by the human reviewer and fast-forward merged into `main`.
 - Remote post-merge verification confirmed `main` at `077ec141f3442e8ec5abce4e11e56ce804764a89` and identical to `task/architecture-v1-handoff` at the time of verification.
-- Day-1 Architecture v1 is functionally integrated; this `task/day1-closure` branch records the post-merge state correction and the newly discovered approval-workflow guardrail before final closure integration.
+- Day-1 Architecture v1 and its closure controls are integrated into `main` at `97ec49272524e05f6faea5e92068afd2273c6f75`.
 - Base checkpoint before Architecture v1 work: `544a375c05d85331ff0e674a89494120d413794f`.
 - WSL/runtime validation remains pinned to task SHA `c77f1709a66df1c8ecf195fe6eac359fa14a51d1`; after that validation, only reviewed documentation/control-state changes were made before the Architecture v1 merge.
 
@@ -46,8 +46,8 @@
 - AI-assisted work must follow `docs/AI_COLLABORATION_SAFETY.md`.
 
 ## AI collaboration safety state
-- Known workflow/assistant incidents WF-001 through WF-006 are recorded in `docs/AI_COLLABORATION_SAFETY.md` on the closure branch.
-- `guardrails_v1.yml` version 7 on the closure branch adds an explicit action-specific approval rule for GitHub writes.
+- Known workflow/assistant incidents WF-001 through WF-006 are recorded in `docs/AI_COLLABORATION_SAFETY.md` and integrated into `main`.
+- `guardrails_v1.yml` version 7 in `main` adds an explicit action-specific approval rule for GitHub writes.
 - GitHub app permissions are configured to allow read actions while requiring approval before writes.
 - A blocked/failed write must be followed by a system-of-record reread before retrying or changing workflow.
 - High-impact assistant work still requires constraint coverage, evidence classification, post-action verification, explicit negative-claim coverage, and a separate adversarial review before completion.
@@ -77,8 +77,6 @@ The controlled register is `docs/OPEN_SCIENTIFIC_QUESTIONS.md`. Items remain int
 - Human approval remains required for merges, production downloads, scientific-policy changes, and QC milestone decisions.
 
 ## Next safe action
-1. Finish and remotely audit this focused Day-1 closure patch.
-2. Integrate the closure patch into `main` only after explicit human approval for that merge.
-3. Then begin Day-2 centre-specific seasonal data evidence and availability audit.
-4. For each centre/system/product, verify authoritative archive semantics before building production download requests.
-5. Keep production downloads blocked until the required evidence and registry gates are approved.
+1. Begin Day-2 centre-specific seasonal data evidence and availability audit.
+2. For each centre/system/product, verify authoritative archive semantics before building production download requests.
+3. Keep production downloads blocked until the required evidence and registry gates are approved.
