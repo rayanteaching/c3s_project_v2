@@ -1,0 +1,46 @@
+schema_version: 1
+status: active_architecture_v1_registry
+
+target_variables:
+  t2m:
+    status: OPEN_SEMANTIC_RECIPE
+    target_concept: 2_m_temperature
+  tp:
+    status: OPEN_SEMANTIC_RECIPE
+    target_concept: total_precipitation
+  ws10m:
+    status: OPEN_SEMANTIC_RECIPE
+    target_concept: 10_m_wind_speed
+  z500:
+    status: OPEN_SEMANTIC_RECIPE
+    target_concept: geopotential_or_height_at_500_hpa
+    pressure_hpa: 500
+  t850:
+    status: OPEN_SEMANTIC_RECIPE
+    target_concept: temperature_at_850_hpa
+    pressure_hpa: 850
+  z950:
+    status: OPEN_VERIFY_AVAILABILITY_AND_SEMANTICS
+    target_concept: geopotential_or_height_at_950_hpa
+    pressure_hpa: 950
+    global_substitution_allowed: false
+
+required_semantic_recipe_fields:
+  - source_dataset
+  - source_variable
+  - physical_definition
+  - units
+  - temporal_aggregation
+  - transformations
+  - pressure_level_if_applicable
+  - era5_counterpart
+  - missing_value_behavior
+  - mask_orography_behavior
+  - centre_system_product_availability
+  - evidence_status
+  - scientific_eligibility_status
+
+legacy_bootstrap_reference:
+  file: configs/datasets/c3s_seasonal_variables.yml
+  status: HISTORICAL_BOOTSTRAP_ONLY
+  reuse_rule: revalidate_before_reuse
