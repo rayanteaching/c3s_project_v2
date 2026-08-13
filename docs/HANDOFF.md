@@ -16,6 +16,7 @@ Required first reads for continuation:
 - `docs/STATUS.md`
 - `docs/DECISIONS.md`
 - `docs/CHATGPT_REENTRY_PROTOCOL.md`
+- `docs/WORK_PROTOCOL.md`
 - `docs/SEASONAL_DOWNLOAD_POLICY.md`
 
 ## Source of truth
@@ -35,7 +36,7 @@ If current repository controls conflict, stop and resolve the conflict rather th
 - No scientific archive fact, production policy, calibration method, variable substitution, lead mapping, or centre-specific availability decision is being changed by this closure patch.
 
 ## AI collaboration safety
-All AI-assisted work is governed by `docs/AI_COLLABORATION_SAFETY.md`.
+All AI-assisted work is governed by `docs/AI_COLLABORATION_SAFETY.md` and starts with the single-deliverable INSPECT/CHANGE header in `docs/WORK_PROTOCOL.md`.
 
 High-impact work requires material-constraint coverage, evidence classification, post-action system-of-record verification, explicit coverage for critical negative claims, and a separate adversarial review before completion is claimed.
 
