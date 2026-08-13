@@ -1,17 +1,45 @@
 # c3s_project_v2
 
-Fresh WSL-based C3S and ERA5 download and verification project.
+C3S seasonal forecast verification and calibration project with ERA5 reference data.
 
-## Principles
-- Raw data is never tracked in Git.
-- Scripts, configs, docs, run metadata, and inventory snapshots are tracked.
-- WSL is the primary environment for download and validation.
-- The server is used later after verified transfer.
+## Start here
+For current project work, read Architecture v1 before legacy/bootstrap scripts or configs:
+- `docs/ARCHITECTURE.md`
+- `docs/OPEN_SCIENTIFIC_QUESTIONS.md`
+- `docs/SCIENTIFIC_DECISION_TRACEABILITY.md`
+- `docs/STATUS.md`
+- `docs/HANDOFF.md`
+- `docs/DECISIONS.md`
+- `configs/datasets/CURRENT_CONFIGS.md`
+
+## Current Architecture v1 configuration
+- `configs/datasets/study_v0_1.yml`
+- `configs/datasets/guardrails_v1.yml`
+- `configs/datasets/system_registry_v1.yml`
+- `configs/datasets/variable_registry_v1.yml`
+
+Legacy/bootstrap configs and scripts are preserved for audit/history but do not automatically define current scientific policy.
+
+## Re-entry for ChatGPT/Codex work
+Use the Architecture v1 re-entry generator:
+- normal: `bash scripts/make_chatgpt_reentry_pack_v2.sh normal "CURRENT_OBJECTIVE"`
+- deep audit: `bash scripts/make_chatgpt_reentry_pack_v2.sh deep "CURRENT_OBJECTIVE"`
+
+## Core principles
+- Repository state is the durable system of record; chat memory is not project truth.
+- `main` is approved current truth; task branches are candidate state.
+- Unknown/conflicting required scientific facts fail closed.
+- Do not propagate assumptions across centres without verification.
+- Availability is not equivalent to scientific eligibility.
+- Major scientific decisions require traceable evidence and human approval.
+- Independent centre/metric workstreams may proceed in parallel only under pinned contracts and integration gates.
+- Raw and processed large datasets are not tracked in Git.
 
 ## Main paths
-- Project root: ~/projects/c3s_project_v2
-- Raw data: data/raw
-- Scripts: scripts
-- Configs: configs
-- Inventory: data/inventory
-- Runs: runs
+- Project root: `~/projects/c3s_project_v2`
+- Raw/processed data: external/local storage according to current path configuration
+- Scripts: `scripts/`
+- Configs: `configs/`
+- Inventory: `data/inventory/`
+- Runs: `runs/`
+- Documentation: `docs/`
