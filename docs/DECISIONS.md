@@ -13,6 +13,8 @@ Required control files:
 ## Current approved architecture-level decisions
 - The repository is the durable project system of record; chat is temporary reasoning context.
 - `main` is approved current truth; task branches are candidate state; run metadata is execution evidence; historical/superseded material is not current policy.
+- High-impact re-entry requires a fresh remote GitHub comparison of the task branch and `main`; local generated packs or local refs are supporting evidence only.
+- `scripts/make_chatgpt_reentry_pack_v2.sh` is historical/non-authoritative tooling and is not an Architecture v1 approval gate.
 - Study window semantics are target/verifying years 2000-2025.
 - Manuscript v0.1 target month is December and must be configuration-driven.
 - Scientific horizons H1-H6 mean one through six calendar months before the target month.
