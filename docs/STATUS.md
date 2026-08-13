@@ -45,7 +45,7 @@
 
 ## AI collaboration safety state
 - Known workflow/assistant incidents WF-001 through WF-005 are recorded in `docs/AI_COLLABORATION_SAFETY.md`.
-- `guardrails_v1.yml` version 5 contains the generalized assistant-safety controls.
+- `guardrails_v1.yml` version 6 contains the generalized assistant-safety controls.
 - High-impact assistant work requires evidence-based post-action verification and a separate contradiction/omission review before completion.
 - A new material assistant-caused failure keeps the affected high-impact milestone open until a durable preventive control is encoded and audited.
 
