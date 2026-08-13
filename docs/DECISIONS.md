@@ -1,7 +1,7 @@
 # Decisions
 
 ## Architecture v1 decision baseline
-Architecture v1 is the current shared design baseline on `task/architecture-v1-handoff` pending final human review and merge to `main`.
+Architecture v1 and its Day-1 closure controls are the approved shared design baseline on `main`.
 
 Required control files:
 - `docs/ARCHITECTURE.md`
@@ -47,7 +47,8 @@ Known encoded incidents include:
 - WF-002 — interactive terminal closed by inappropriate fail-fast behavior;
 - WF-003 — wrong re-entry mode;
 - WF-004 — re-entry branch-diff blind spot and machine-specific generator path;
-- WF-005 — piecemeal assistant-error controls without a generalized safety layer.
+- WF-005 — piecemeal assistant-error controls without a generalized safety layer;
+- WF-006 — GitHub write approval mismatch.
 
 A material new assistant-caused incident keeps the affected Architecture/milestone state open until root cause, generalized prevention, durable encoding, and post-fix audit are complete.
 
@@ -102,6 +103,12 @@ A new scientific-method or data-selection decision becomes current project polic
 7. the adoption is version-controlled.
 
 Use `docs/SCIENTIFIC_DECISION_TRACEABILITY.md` for the decision record structure.
+
+## Work protocol decision
+
+Every chat/task declares exactly one primary deliverable using `docs/WORK_PROTOCOL.md`. It begins in `INSPECT` mode unless an approved `CHANGE` is explicitly declared. `INSPECT` is read-only. A `CHANGE` requires verified preconditions, exact scope, proposed diff or equivalent precise change description, validation plan, and action-specific human approval.
+
+Do not perform adjacent improvements. Do not refactor unrelated code. Do not create unrequested infrastructure.
 
 ## Repository and workflow policy
 Track lightweight workflow-critical files needed for understanding, reproduction, verification, continuation, or audit, including docs, configs, scripts, run metadata, inventories, AI-assistant incident/control records, and environment definitions.
