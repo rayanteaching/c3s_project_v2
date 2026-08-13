@@ -66,6 +66,9 @@ The project explicitly guards against at least these classes:
 15. TOOL_FAILURE_AMBIGUITY
     - assuming a failed/blocked tool call definitely changed or definitely did not change state without re-reading the relevant system of record when the result is material.
 
+16. APPROVAL_GATE_BYPASS_OR_MISMATCH
+    - attempting a GitHub repository mutation while the app is configured not to request write approval, or treating an earlier/general conversational approval as a substitute for the action-specific approval gate required by the project workflow.
+
 This list is extensible. A new assistant-caused failure mode must be added when discovered.
 
 ## Mandatory assistant control loop
@@ -119,6 +122,15 @@ Repository changes must remain within the declared task scope.
 Use the GitHub task branch as the default repository write target. If a local-first exception is necessary, state the technical reason and synchronization path before changing files.
 
 Do not silently modify shared scientific policy from a centre/metric workstream.
+
+### 5A. GitHub write approval gate
+For this project, connected GitHub should be configured so read actions can proceed without interruption while write actions require approval (`Any changes` / `ask_before_writes` when that permission mode is available).
+
+Immediately before a repository mutation, identify the exact target and scope of the write. The human approval presented for that write must be action-specific and contemporaneous with execution. Do not deliberately suppress the approval prompt by switching GitHub to a no-confirmation mode for convenience.
+
+A previous broad approval does not authorize a materially different write target, fallback workflow, merge method, destructive action, or expanded file scope.
+
+If a write is blocked or rejected even after the approval gate is satisfied, re-read the remote system of record before retrying. Use only the least-risk fallback consistent with project governance, and obtain fresh approval if the fallback materially changes the workflow or mutation scope.
 
 ### 6. Post-action verification
 After every repository-changing action that matters to milestone state, re-read or re-query the resulting remote state rather than relying on the assistant's memory of what it attempted to write.
@@ -264,7 +276,15 @@ Status: ENCODED.
 Failure: individual workflow incidents were fixed, but Architecture v1 did not yet contain a generalized assistant-safety layer covering hallucination, omission, hidden assumptions, false completion, artifact invention, partial control updates, and unknown future assistant failure modes.
 Root cause: governance focused on specific incidents rather than a reusable error-control framework.
 Prevention: this AI Collaboration Safety Layer, mandatory control loop, defense-in-depth verification, negative-claim rule, two-pass high-impact review, no-silent-omission rule, completion gate, and incident-to-guardrail promotion.
-Status: ENCODED AND INTEGRATED INTO CURRENT ARCHITECTURE CONTROLS; subject to the remaining normal Architecture v1 runtime validation and human merge gate.
+Status: ENCODED AND INTEGRATED INTO CURRENT ARCHITECTURE CONTROLS.
+
+### WF-006 — GitHub write approval mismatch
+Failure: a high-impact GitHub mutation was attempted while the GitHub app permission was configured to allow actions without presenting the expected write-approval card; subsequent sensitive writes were blocked by a higher safety gate, causing unnecessary fallback attempts and user time loss.
+Root cause: the assistant did not inspect and align the connected GitHub app's approval mode with the project's explicit human-approval workflow before attempting the write.
+Impact/risk: approval provenance was ambiguous, the tool workflow did not match user expectations, and repeated blocked attempts could encourage unsafe fallback behavior.
+Immediate correction: GitHub app permission was changed to `Any changes` / `ask_before_writes`, preserving automatic reads while requiring approval for writes.
+Prevention: keep GitHub on the write-approval mode for this project, state the exact mutation scope immediately before execution, use the resulting action-specific approval gate, and re-read remote state after any blocked/failed write before considering a fallback.
+Status: ENCODED ON `task/day1-closure`; requires post-fix remote audit and approved integration before becoming `main` truth.
 
 ## Unknown future failure modes
 The absence of a known incident does not imply safety.
