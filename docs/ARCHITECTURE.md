@@ -3,7 +3,7 @@
 Status: DAY-1 FOUNDATION BASELINE
 
 ## Purpose
-This document defines the shared architecture for the C3S seasonal forecast verification and calibration study. It separates scientific evidence, approved decisions, technical implementation, execution evidence, and legacy history so no chat, script, old configuration, or bootstrap assumption can silently redefine the study.
+This document defines the shared architecture for the C3S seasonal forecast verification and calibration study. It separates scientific evidence, approved decisions, technical implementation, execution evidence, legacy history, and AI-assistant controls so no chat, script, old configuration, bootstrap assumption, or unsupported assistant claim can silently redefine the study.
 
 Implementation should stay lightweight: Markdown, YAML/CSV/JSON registries, Python modules, tests, Git, and run manifests unless later scale justifies more tooling.
 
@@ -31,22 +31,41 @@ Years, months, centres, domains, variables, and horizons are configuration input
 - historical/superseded material: valid history, not current policy.
 - chat memory: temporary reasoning only.
 
+## AI collaboration safety layer
+AI assistants are fallible reasoning/execution agents, not sources of project truth. `docs/AI_COLLABORATION_SAFETY.md` is an active Architecture v1 control and is mandatory for ChatGPT/Codex-assisted project work.
+
+The architecture explicitly guards against hallucination/unsupported claims, stale context, silent omission of user constraints, hidden assumptions, wrong workflow/tool selection, false completion claims, scope contamination, unsafe interactive command sequences, invented artifacts/paths, partial control-file updates, diff/state blindness, and premature scientific decisions.
+
+High-impact assistant work must use a fail-closed control loop: risk classification -> authority loading -> constraint ledger -> evidence discipline -> bounded execution -> post-action verification -> contradiction/omission scan -> completion gate.
+
+For Architecture closure, merge review/decisions, production, QC milestones, scientific-method/data-selection decisions, policy/guardrail changes, destructive work, recovery/cleanup, or stale/confused/uncertain state:
+- DEEP AUDIT is mandatory;
+- fresh remote GitHub branch/main evidence is mandatory for repository state claims;
+- a second adversarial review pass is mandatory;
+- COMPLETE/PASS/READY/FIXED/VERIFIED/MERGE-READY language is prohibited until required evidence supports it.
+
+Every material assistant-caused failure must be promoted from a one-off incident to a durable repository control: incident -> root cause -> impact -> immediate correction -> generalized preventive rule -> guardrail/control update -> post-fix remote audit -> re-entry/handoff update where relevant.
+
+A new failure mode that can corrupt scientific truth, repository state, reproducibility, or milestone decisions fails closed for the affected high-impact action until understood and controlled.
+
 ## Evidence, decisions, implementation, history
 1. Evidence: literature, official documentation, retrieved metadata, QC and repository execution evidence.
 2. Scientific decisions: explicit, reviewed, cited, human-approved choices.
 3. Technical implementation: configs, registries, scripts, tests, manifests, pipelines.
 4. Legacy material: prior bootstrap code, runs, assumptions, decisions retained for audit.
+5. AI-assistant control evidence: constraint coverage, tool/workflow selection, post-write verification, contradiction scans, and incident/guardrail records required by `docs/AI_COLLABORATION_SAFETY.md`.
 
-Evidence is not a decision. A script is not a decision. Historical policy is not current policy.
+Evidence is not a decision. A script is not a decision. Historical policy is not current policy. An assistant statement is not project truth without the required evidence.
 
 ## Evidence classes
 Important claims use:
 - VERIFIED — REPOSITORY
 - VERIFIED — AUTHORITATIVE SOURCE
+- VERIFIED — RUNTIME/EXECUTION EVIDENCE
 - INFERENCE
 - UNKNOWN / NEEDS VERIFICATION
 
-Unknowns fail closed when they affect scientific eligibility, production, calibration, verification, common comparison, or multi-model work.
+Unknowns fail closed when they affect scientific eligibility, production, calibration, verification, common comparison, multi-model work, repository milestone state, or other high-impact decisions.
 
 ## Legacy quarantine
 Legacy artifacts are retained but never trusted automatically. Before reuse they must be revalidated against Architecture v1.
@@ -109,24 +128,27 @@ Confidence intervals, bootstrap/significance procedures, and sensitivity analyse
 ## Parallel workstream orchestration
 Independent work may proceed in parallel after shared contracts are pinned. Centre workstreams may run in parallel for all six centres. Metric workstreams may later run in parallel once shared prerequisites are satisfied. Each work package pins base Git SHA, architecture version, study-config snapshot, guardrail version, decision snapshot, relevant schema/registry versions, scope, forbidden shared-policy changes, required outputs, and QC. Workstreams may discover local evidence/problems but may not silently change shared policy; shared-policy conflicts return to CONTROL.
 
+Every parallel AI-assisted workstream also inherits `docs/AI_COLLABORATION_SAFETY.md`; local workstream convenience cannot weaken shared assistant-safety controls.
+
 ## Fan-out / fan-in integration
 Parallel work follows shared contract -> fan-out -> isolated work -> integration gate -> shared validation -> human-reviewed integration. Parallel outputs are not shared truth before integration.
 
 ## QC architecture
-Five layers:
+Six layers:
 1. DATA_QC — integrity, checksums, openability, expected objects.
 2. SEMANTIC_QC — dates, variables, units, leads, verifying time, members, aggregation semantics.
 3. METHOD_QC — case identity, leakage, references, estimator correctness, masks/weights.
 4. SCIENCE_QC — plausibility, known issues, exclusions, interpretation/sensitivity.
 5. REPRO_QC — Git/config/registry/input/environment/run provenance.
+6. ASSISTANT_QC — constraint coverage, evidence classification, post-action verification, contradiction/omission scan, false-completion prevention, and incident-to-guardrail promotion for AI-assisted high-impact work.
 
-Download success or file openability never implies scientific readiness.
+Download success, file openability, or assistant confidence never implies scientific or milestone readiness.
 
 ## Artifact lineage and invalidation
 Important artifacts/results trace Git SHA, architecture version, study config, decision/registry snapshots, case manifest, input checksums, environment, random seeds, QC as applicable. If a dependency capable of changing a result changes, affected downstream results become stale and must not be treated as current.
 
 ## Extensibility
-The architecture supports changes through config/registries rather than core rewrites where scientifically possible: adding 1999, variables, domains, target months, all months, and later extreme/special cases. Configurability never bypasses availability, semantic, QC, case, or lineage checks.
+The architecture supports changes through config/registries rather than core rewrites where scientifically possible: adding 1999, variables, domains, target months, all months, and later extreme/special cases. Configurability never bypasses availability, semantic, QC, case, lineage, or assistant-safety checks.
 
 ## Future scope
 Inactive for manuscript v0.1 but preserved as extension points: all target months; extreme/special cases requested by the supervisor; additional years/variables/domains after review.
@@ -135,7 +157,9 @@ Inactive for manuscript v0.1 but preserved as extension points: all target month
 Every major scientific decision must carry traceable evidence at the decision itself, including inline citations, official URLs, DOI where available, access dates for web sources, alternatives, rationale, consequences, approval state, and Git adoption commit. A separate English advisor-facing Scientific Method and Data Selection Decision Report will later be generated from approved records with inline references and a consolidated References section.
 
 ## Human approval gates
-Human approval is required before commits, merges, production downloads, destructive operations, scientific-policy/interpretation changes, and QC pass/fail milestone declarations.
+Human approval is required before commits intended as approved milestone state, merges, production downloads, destructive operations, scientific-policy/interpretation changes, and QC pass/fail milestone declarations. Assistant completion language does not substitute for human approval.
 
-## Open-question policy
-Architecture v1 intentionally leaves scientific questions open as `OPEN — VERIFY WHEN REACHED`. The project must know that a question is unresolved, when it becomes blocking, and what evidence is required. New guardrails may be added later when new failure modes are discovered, provided changes are reviewed/versioned and do not silently rewrite prior execution history.
+## Open-question and new-failure policy
+Architecture v1 intentionally leaves scientific questions open as `OPEN — VERIFY WHEN REACHED`. The project must know that a question is unresolved, when it becomes blocking, and what evidence is required.
+
+New guardrails may be added when new scientific, workflow, or assistant failure modes are discovered. A material new assistant-caused incident must follow the incident-to-guardrail promotion process in `docs/AI_COLLABORATION_SAFETY.md`; it may not be closed by conversational reassurance alone. Changes must be reviewed/versioned and must not silently rewrite prior execution history.
