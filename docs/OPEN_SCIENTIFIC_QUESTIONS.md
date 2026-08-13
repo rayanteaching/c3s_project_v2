@@ -1,7 +1,7 @@
 # Open Scientific Questions
 
-Status: ACTIVE REGISTER  
-Rule: OPEN questions remain unresolved until the relevant workstream reaches them.  
+Status: ACTIVE REGISTER
+Rule: OPEN questions remain unresolved until the relevant workstream reaches them.
 Default behavior: if an unresolved item affects scientific eligibility or a downstream
 method, the relevant gate fails closed.
 
