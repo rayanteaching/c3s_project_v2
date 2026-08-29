@@ -19,7 +19,6 @@ Then read the official state and policy files that exist in the project:
 
 cat docs/DECISIONS.md
 cat docs/STATUS.md
-cat docs/HANDOFF.md
 cat docs/RUNBOOK.md
 cat docs/KNOWN_ISSUES.md
 cat docs/GIT_WORKFLOW.md
@@ -39,7 +38,6 @@ README.md
 .gitignore
 docs/DECISIONS.md
 docs/STATUS.md
-docs/HANDOFF.md
 docs/RUNBOOK.md
 docs/KNOWN_ISSUES.md
 configs/project.yml
@@ -52,7 +50,6 @@ README.md
 docs/
   DECISIONS.md
   STATUS.md
-  HANDOFF.md
   RUNBOOK.md
   KNOWN_ISSUES.md
   GIT_WORKFLOW.md
@@ -181,7 +178,6 @@ changing run strategy
 After every milestone:
 
 Update docs/STATUS.md.
-Update docs/HANDOFF.md.
 Update docs/DECISIONS.md if a new decision was made.
 Update docs/KNOWN_ISSUES.md if an issue was found, fixed, accepted, or deferred.
 Update docs/RUNBOOK.md if execution instructions changed.
@@ -204,7 +200,6 @@ runs/download: mark production run as started
 data/inventory): add raw data inventory snapshot
 scripts(qc): add checksum verification workflow
 docs(status): refresh status after QC
-docs(handoff): refresh continuation point
 merge(data): integrate completed dataset branch
 
 Avoid vague messages such as:
@@ -227,14 +222,13 @@ task/add-download-script
 task/run-era5-inventory
 task/qc-monthly-data
 task/fix-z925-policy
-docs/refresh-handoff
+docs/refresh-status
 configs/update-paths
 
 Before merging:
 
 git status must be clean unless the merge itself is being prepared.
 docs/STATUS.md must be updated.
-docs/HANDOFF.md must be updated.
 docs/DECISIONS.md must be updated if the branch introduced a decision.
 docs/KNOWN_ISSUES.md must be updated if the branch introduced, fixed, or documented an issue.
 Relevant inventory and run metadata must be committed if the branch executed a run.
@@ -415,7 +409,6 @@ runs/YYYY-MM-DD_descriptive_run_name/status.txt
 runs/YYYY-MM-DD_descriptive_run_name/notes.md
 runs/YYYY-MM-DD_descriptive_run_name/run_metadata.json
 docs/KNOWN_ISSUES.md
-docs/HANDOFF.md
 
 Environment policy:
 Track environment definitions, not installed environments.
@@ -555,7 +548,6 @@ checksum verification
 inventory creation
 QC results
 docs/STATUS.md
-docs/HANDOFF.md
 docs/KNOWN_ISSUES.md if needed
 git status
 tracked lightweight files only
@@ -624,8 +616,7 @@ Recommended template for docs/STATUS.md:
 ## Required files to read before continuation
 - docs/DECISIONS.md
 - docs/STATUS.md
-- docs/HANDOFF.md
-- docs/RUNBOOK.md
+- - docs/RUNBOOK.md
 - docs/KNOWN_ISSUES.md
 - relevant configs
 
@@ -683,8 +674,7 @@ tree -L 4
 ## Expected milestone closure
 After the next action succeeds, update:
 - docs/STATUS.md
-- docs/HANDOFF.md
-- docs/DECISIONS.md if a decision changed
+- - docs/DECISIONS.md if a decision changed
 - docs/KNOWN_ISSUES.md if an issue changed
 - docs/RUNBOOK.md if execution instructions changed
 - runs/ metadata if a run was executed
@@ -724,7 +714,7 @@ docs/RUNBOOK.md contains operational instructions. It should explain how to run,
 
 ChatGPT working rules:
 Before technical decisions, inspect repository state or ask for the standard Git report.
-Use docs/STATUS.md and docs/HANDOFF.md as the basis for continuation.
+Use AGENTS.md and docs/STATUS.md as the basis for continuation.
 Avoid guessing about files, branches, scripts, paths, variables, configs, data status, QC status, or merge status.
 Suggest documentation updates and commits after every meaningful milestone.
 Never suggest committing raw data, processed data, logs, large binaries, or credentials.
