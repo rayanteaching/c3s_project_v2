@@ -1,7 +1,7 @@
 # Decisions
 
 ## Architecture v1 decision baseline
-Architecture v1 is the current shared design baseline on `task/architecture-v1-handoff` pending final human review and merge to `main`.
+Architecture v1 is the approved shared design baseline on `main`.
 
 Required control files:
 - `docs/ARCHITECTURE.md`
