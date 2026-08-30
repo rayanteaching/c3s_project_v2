@@ -3,9 +3,9 @@
 ## Current milestone
 Architecture v1 and its Day-1 closure controls are integrated into `main`.
 
-Current repository baseline for this recovery audit:
-- `main`: `a399db9550d085a30a9e5cbb34aedcc04993b0fa`
-- Harness Patch 1 was merged via PR #3.
+Current repository state must be read directly from Git; live branch SHAs are not copied into this document.
+
+- Harness Patch 1 was merged via PR #3, with its status-closure follow-up merged via PR #4.
 - Architecture v1 merge history and prior validation evidence remain preserved in Git and tracked run/control records.
 
 ## Current task
@@ -33,4 +33,4 @@ Harness Patch 1 repository review is complete: the task branch was merged to `ma
 - Human approval remains required for scientific-policy changes, production actions, destructive operations, milestone adoption, and merges.
 
 ## Next action
-Proceed to Harness Patch 2: identify the smallest set of high-value prose rules that should become tests, validators, or CI gates before the pilot.
+Implement and deliberately challenge the first small Harness validator on `task/harness-patch-2`. Add CI only after the validator demonstrably fails on intentionally broken fixtures and passes on the approved current configuration.
