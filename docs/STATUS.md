@@ -27,10 +27,12 @@ Historical WSL/runtime validation is pinned to commit `c77f1709a66df1c8ecf195fe6
 
 Harness Patch 1 repository review is complete: the task branch was merged to `main` via PR #3. Runtime/scientific validation was not applicable because Patch 1 changed only documentation/control-layer files.
 
+Harness Patch 2 validator logic has been challenged with isolated fixtures: the approved baseline passed, while an enabled global z950-to-z925 substitution, a missing centre registry entry, reintroduction of `docs/HANDOFF.md`, and a copied live `main` SHA in `docs/STATUS.md` each failed as intended. A minimal CI workflow is present on the task branch; GitHub has not yet reported a workflow run for the current head, so CI execution remains pending.
+
 ## Production state
 - No new production seasonal download is authorized by the current recovery audit.
 - No calibration implementation is authorized before the relevant scientific decisions and case contracts are approved.
 - Human approval remains required for scientific-policy changes, production actions, destructive operations, milestone adoption, and merges.
 
 ## Next action
-Implement and deliberately challenge the first small Harness validator on `task/harness-patch-2`. Add CI only after the validator demonstrably fails on intentionally broken fixtures and passes on the approved current configuration.
+Review PR #5 and obtain actual GitHub CI execution evidence for `python scripts/validate_project.py` and `python -m unittest tests/test_validate_project.py`. Do not merge Patch 2 until that evidence is available.
