@@ -3,39 +3,17 @@
 C3S seasonal forecast verification and calibration project with ERA5 reference data.
 
 ## Start here
-For current project work, read Architecture v1 before legacy/bootstrap scripts or configs:
-- `docs/ARCHITECTURE.md`
-- `docs/AI_COLLABORATION_SAFETY.md`
-- `docs/OPEN_SCIENTIFIC_QUESTIONS.md`
-- `docs/SCIENTIFIC_DECISION_TRACEABILITY.md`
-- `docs/STATUS.md`
-- `docs/HANDOFF.md`
-- `docs/DECISIONS.md`
-- `configs/datasets/CURRENT_CONFIGS.md`
+- Current project state and next action: `docs/STATUS.md`
+- AI-assisted project work: `AGENTS.md`
+- Scientific architecture: `docs/ARCHITECTURE.md`
+- Open scientific questions: `docs/OPEN_SCIENTIFIC_QUESTIONS.md`
+- Approved decisions: `docs/DECISIONS.md`
+- Active dataset/config index: `configs/datasets/CURRENT_CONFIGS.md`
 
-## Current Architecture v1 configuration
-- `configs/datasets/study_v0_1.yml`
-- `configs/datasets/guardrails_v1.yml`
-- `configs/datasets/system_registry_v1.yml`
-- `configs/datasets/variable_registry_v1.yml`
+Legacy/bootstrap configs, scripts, runs, and historical decisions are preserved for audit/history but do not automatically define current scientific policy.
 
-Legacy/bootstrap configs and scripts are preserved for audit/history but do not automatically define current scientific policy.
-
-## Re-entry for ChatGPT/Codex work
-Architecture v1 re-entry is GitHub-first and protocol-driven. Before high-impact work, verify the current remote task-branch SHA, `main` SHA, merge base, ahead/behind counts, and changed-file diff directly from GitHub, then read `docs/CHATGPT_REENTRY_PROTOCOL.md`, `docs/AI_COLLABORATION_SAFETY.md`, and the current control files.
-
-Do not use generated local re-entry material as a substitute for fresh remote GitHub state.
-
-## Core principles
-- Repository state is the durable system of record; chat memory is not project truth.
-- `main` is approved current truth; task branches are candidate state.
-- AI-assisted work must follow `docs/AI_COLLABORATION_SAFETY.md`; assistant claims require evidence and high-impact work requires a second contradiction/omission audit before completion.
-- Unknown/conflicting required scientific facts fail closed.
-- Do not propagate assumptions across centres without verification.
-- Availability is not equivalent to scientific eligibility.
-- Major scientific decisions require traceable evidence and human approval.
-- Independent centre/metric workstreams may proceed in parallel only under pinned contracts and integration gates.
-- Raw and processed large datasets are not tracked in Git.
+## Core principle
+Repository evidence is the durable project record. Chat memory is temporary reasoning context. Major scientific decisions require traceable evidence and human approval.
 
 ## Main paths
 - Project root: `~/projects/c3s_project_v2`
@@ -45,3 +23,5 @@ Do not use generated local re-entry material as a substitute for fresh remote Gi
 - Inventory: `data/inventory/`
 - Runs: `runs/`
 - Documentation: `docs/`
+
+For high-impact ChatGPT/Codex repository work, follow `docs/CHATGPT_REENTRY_PROTOCOL.md`.

@@ -38,7 +38,7 @@ This source supports the repository's hybrid ChatGPT re-entry architecture:
 - Evidence checklists by task type.
 - Repository files as durable external memory.
 - `docs/literature/` as cold scientific and workflow evidence.
-- `docs/STATUS.md` and `docs/HANDOFF.md` as hot operational state.
+- `docs/STATUS.md` as the single hot operational state artifact; prior use of a separate handoff file is historical.
 - Avoiding full repository dumps in normal ChatGPT sessions.
 - Escalating to deep audit only when risk or uncertainty requires it.
 

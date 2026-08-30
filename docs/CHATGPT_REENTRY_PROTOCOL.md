@@ -1,288 +1,73 @@
-# ChatGPT Re-entry Protocol
+# High-Impact Re-entry Protocol
 
 ## Purpose
-This protocol starts or restarts ChatGPT/Codex-assisted work without relying on stale chat memory.
+Use this document only for high-impact ChatGPT/Codex work. Normal work should start from `AGENTS.md` and `docs/STATUS.md` and load additional material only as needed.
 
-The repository is the durable project system of record. ChatGPT/Codex are temporary reasoning/execution assistants, not the project-state database.
+High-impact work includes:
+- merge review or milestone adoption;
+- production downloads;
+- QC pass/fail milestone declarations;
+- scientific-method or data-selection decisions;
+- policy/guardrail changes;
+- destructive operations;
+- recovery/cleanup when repository or scientific state is uncertain.
 
-## Truth-state model
-- `main` = approved current project truth.
-- `task/*` = candidate/proposed state under review.
-- tracked `runs/*` = evidence of what actually ran.
-- historical/superseded material = valid history, not current policy.
-- chat memory = temporary reasoning only.
-
-If chat memory conflicts with repository evidence, repository evidence wins. If current repository files conflict internally, stop and resolve the conflict; do not guess.
-
-## Repository-change workflow safety
-For repository work performed with ChatGPT/Codex, use the shared GitHub task branch as the default collaboration write target. The WSL checkout is normally the synchronized runtime/validation workspace, not an independent project-truth source.
-
-Before a repository change:
-- read the current GitHub task-branch state;
-- confirm the intended branch and base SHA;
-- read Architecture v1 control files relevant to the change.
-
-After a repository change:
-- audit the remote branch state and changed-file diff before declaring the work complete;
-- then synchronize WSL from that GitHub branch for runtime or syntax validation when local execution is required.
-
-Local-first repository editing is an exception, not the default. It requires an explicit reason such as runtime-only tooling, local-only generated artifacts, or connector limitations. If local-first work is necessary, the reason and synchronization path must be stated before making the change.
-
-Interactive validation commands given to the user must not intentionally enable shell behavior that can terminate the user's interactive terminal on the first failed check. Validation should be short, staged, and failure-reporting rather than terminal-exiting.
-
-## Mandatory Architecture v1 control files
-Every project re-entry must load these before using legacy bootstrap files as context:
-- `docs/ARCHITECTURE.md`
-- `docs/AI_COLLABORATION_SAFETY.md`
-- `docs/OPEN_SCIENTIFIC_QUESTIONS.md`
-- `docs/SCIENTIFIC_DECISION_TRACEABILITY.md`
-- `docs/DECISIONS.md`
-- `docs/STATUS.md`
-- `docs/HANDOFF.md`
-- `docs/SEASONAL_DOWNLOAD_POLICY.md`
-- `docs/CHATGPT_REENTRY_PROTOCOL.md`
-- `configs/datasets/CURRENT_CONFIGS.md`
-- `configs/datasets/study_v0_1.yml`
-- `configs/datasets/guardrails_v1.yml`
-- `configs/datasets/system_registry_v1.yml`
-- `configs/datasets/variable_registry_v1.yml`
-
-These files define current shared design, AI-assistant controls, open questions, guardrails, study semantics, registry state, workflow rules, and project state.
-
-## Authoritative re-entry path
-Architecture v1 re-entry is GitHub-first and protocol-driven.
-
-Before any DEEP-AUDIT objective or other high-impact continuation, obtain fresh evidence directly from the current remote GitHub repository for:
+## Fresh repository-state check
+Before a high-impact repository decision, obtain fresh remote evidence for the relevant task branch and `main`:
 1. task-branch SHA;
 2. `main` SHA;
 3. merge base;
 4. ahead/behind counts;
-5. changed-file list and branch diff relative to `main`.
+5. changed-file list/diff.
 
-A local checkout, local remote-tracking ref, generated pack, or remembered chat state does not substitute for this remote comparison. If the fresh remote comparison cannot be obtained, the high-impact action remains blocked.
+Do not substitute remembered chat state, stale local refs, or generated re-entry packs for current repository evidence.
 
-The former `scripts/make_chatgpt_reentry_pack_v2.sh` generator is preserved in Git history only and is absent from the current Architecture v1 tree. It is not an authoritative Architecture v1 re-entry mechanism and must not be used to approve a DEEP-AUDIT objective.
+## Evidence discipline
+Load only the authority needed for the task:
+- current repository state for repository claims;
+- runtime/run evidence for execution claims;
+- current configs/registries for machine-readable project state;
+- authoritative scientific sources plus approved decision records for scientific claims.
 
-It was retired because:
-- its Git section could show an empty working-tree diff while the task branch still contained committed changes relative to `main`;
-- it contained a machine-specific absolute project path.
+If required evidence is missing or conflicting, mark the point UNKNOWN / NEEDS VERIFICATION and block the affected high-impact decision.
 
-A future replacement generator may become active only after it is portable, distinguishes working-tree changes from committed branch changes, includes explicit branch-vs-main evidence, fails closed when the comparison base cannot be established, states that local evidence does not prove remote-ref freshness, and passes repository/runtime validation.
+## Repository-change workflow
+Before a material write:
+- identify the exact target branch and file scope;
+- confirm the intended base;
+- obtain the required human approval.
 
-## Evidence priority
-Use evidence in this order:
-1. fresh remote GitHub branch/main state and current repository control files;
-2. current command/runtime output and tracked run evidence;
-3. generated local re-entry material only as supporting context;
-4. user-provided current terminal/runtime output;
-5. user statements about intended decisions/scope;
-6. earlier chat memory only as weak context.
+After the write:
+- re-read the resulting remote state;
+- inspect the changed-file diff;
+- confirm no unintended files changed;
+- run the relevant validation/tests where available.
 
-Important claims use the project classes:
-- VERIFIED — REPOSITORY
-- VERIFIED — AUTHORITATIVE SOURCE
-- VERIFIED — RUNTIME/EXECUTION EVIDENCE
-- INFERENCE
-- UNKNOWN / NEEDS VERIFICATION
+An attempted write is not proof of a successful write.
 
-Required unknowns fail closed.
-
-## AI collaboration safety requirements
-`docs/AI_COLLABORATION_SAFETY.md` is mandatory for all AI-assisted work.
-
-For high-impact work, before completion the assistant must execute the control loop:
-1. classify task risk;
-2. load current authority;
-3. preserve a constraint ledger covering all material user requirements and forbidden actions;
-4. classify load-bearing claims by evidence state;
-5. execute only within declared scope;
-6. verify resulting remote/runtime state after important actions;
-7. perform a separate contradiction/omission/unsupported-claim/scope/authority-path audit;
-8. pass the completion gate before using COMPLETE/PASS/READY/FIXED/VERIFIED/MERGE-READY language.
-
-No material user requirement may disappear silently. Uncompleted items must be explicitly marked BLOCKED, PENDING, NOT APPLICABLE, or NEEDS VERIFICATION.
-
-An attempted tool action is not evidence that the action succeeded. File, path, branch, commit, run, deployment, result, or artifact existence must be verified from the relevant system of record before being claimed.
-
-Every material assistant-caused incident must follow the incident-to-guardrail promotion process. Conversational reassurance alone does not close an architectural failure mode.
-
-## Re-entry modes
-### Normal mode
-Use for planning, discussion, documentation, low-risk review, and non-destructive diagnosis.
-
-Normal mode should include:
-- objective;
-- current GitHub branch/SHA/status relevant to the task;
-- Architecture v1 control files;
-- recent branch context;
-- relevant configs/scripts/evidence only for the current objective.
-
-Do not load unrelated literature, all inventories, long logs, or the full repository tree merely for completeness.
-
-### Deep-audit mode
-Deep audit is mandatory for:
-- Architecture closure/foundation acceptance;
-- merge review or merge decisions;
-- production downloads;
-- branch cleanup/recovery;
-- QC pass/fail declarations or QC milestone decisions;
-- scientific-method/data-selection decisions;
-- policy or guardrail changes;
-- destructive operations;
-- confused or stale state;
-- any case where scientific interpretation or repository/data state is uncertain.
-
-Do not downgrade one of these objectives to normal mode merely because the task initially appears documentation-only.
-
-Deep audit begins with the fresh remote GitHub branch-vs-main comparison defined above and then adds, as relevant:
-- full branch graph and recent all-branch history;
-- current policies/configs/scripts;
-- run metadata/inventories/checksums;
-- relevant logs;
-- authoritative scientific references;
-- centre/system/product registry/case evidence;
-- artifact-lineage/staleness evidence;
-- the mandatory AI collaboration second-pass audit.
-
-## Mandatory opening behavior
-At a new chat or after migration, first summarize:
-1. current remote branch and SHA;
-2. current remote `main` SHA and ahead/behind state when relevant;
-3. current objective;
-4. current milestone;
-5. architecture/config/guardrail versions;
-6. completed work;
-7. blockers/open questions relevant to the objective;
-8. contradictions found;
-9. risks;
-10. next safe step;
-11. missing evidence.
-
-Do not issue production/download/merge/destructive commands or adopt a scientific decision before this re-entry summary is complete.
-
-## Legacy quarantine on re-entry
-Legacy scripts, configs, runs, and historical decisions may be useful evidence, but they must not override Architecture v1 merely because they are older or already implemented.
-
-Do not automatically inherit:
-- universal 2000-2016 hindcast / 2017-2025 forecast split;
-- global z950 -> z925 substitution;
-- fixed native lead 1-6 as H1-H6;
-- ECMWF assumptions for other centres;
-- any centre-specific assumption for another centre.
-
-## Task-specific evidence checklists
-### Documentation-only change
-- branch/status/SHA;
-- target document;
-- Architecture v1 relevance;
-- current objective;
-- material user-constraint coverage;
-- remote diff before milestone closure.
+## Task-specific checks
 
 ### Script/config change
-- branch/status/SHA;
-- Architecture v1/guardrails/AI collaboration safety;
-- target script/config;
-- relevant scientific decision/evidence;
-- expected behavior;
-- validation/test command;
-- material user-constraint coverage;
-- post-write remote reread;
-- remote diff;
-- second contradiction/omission audit when high-impact.
+Check the target script/config, relevant scientific decision/evidence, expected behavior, validation command, remote diff, and post-write state.
 
 ### Production acquisition
-- deep audit;
-- fresh remote GitHub comparison;
-- AI collaboration safety control loop;
-- centre/system/product work package;
-- verified system cohort/availability;
-- horizon/native-lead/init semantics;
-- variable/level semantic eligibility;
-- known issues;
-- target script/plan;
-- paths/storage;
-- request/run metadata;
-- expected outputs;
-- inventory/QC plan;
-- explicit human approval.
+Require verified centre/system/product semantics, availability/eligibility evidence, horizon/init mapping, variable/level semantics, known issues, expected outputs, inventory/QC plan, and explicit human approval.
 
-### QC pass/fail declaration
-- deep audit;
-- fresh remote GitHub comparison;
-- AI collaboration safety control loop;
-- QC layer/criteria;
-- QC implementation;
-- outputs/inventory/log evidence;
-- exact pass/fail thresholds;
-- known issues/exclusions;
-- explicit human approval for milestone declaration.
+### QC milestone
+Require explicit criteria, QC implementation, output/inventory/runtime evidence, known issues/exclusions, and human approval before declaring PASS/FAIL as a milestone.
 
 ### Scientific decision
-- deep audit;
-- fresh remote GitHub comparison;
-- AI collaboration safety control loop;
-- open-question ID/scope;
-- current architecture/guardrails/config;
-- relevant official documentation and peer-reviewed evidence;
-- repository/retrieval evidence where applicable;
-- alternatives;
-- consequences;
-- uncertainty/limitations;
-- decision-level citations;
-- human approval;
-- consistent updates to decisions/configs/registries/QC.
+Use the relevant open-question ID and `docs/SCIENTIFIC_DECISION_TRACEABILITY.md`. Require authoritative evidence, alternatives, consequences, uncertainty, explicit human approval, and consistent updates to affected configs/registries/docs.
 
-Use `docs/SCIENTIFIC_DECISION_TRACEABILITY.md`.
+## Completion gate
+For high-impact work, do not claim COMPLETE / PASS / READY / FIXED / VERIFIED / MERGE-READY until:
+- required evidence is present;
+- relevant tests/validators have run where available;
+- changed repository state has been re-read;
+- contradictions and omissions have been checked;
+- required human approval has been obtained.
 
-## Parallel workstream rule
-Centre and metric chats/workstreams may run in parallel only from pinned work packages. They may discover local evidence but may not silently alter shared Architecture/guardrails/method policy. Shared conflicts return to CONTROL for review and integration.
+## Chat migration
+If the active chat becomes stale or confused enough that project state, evidence, scientific facts, or user constraints may be mixed, stop high-impact decisions and restart from fresh repository evidence.
 
-Every AI-assisted workstream inherits `docs/AI_COLLABORATION_SAFETY.md`.
-
-A work package should identify:
-- base Git SHA;
-- architecture/config/guardrail/decision versions;
-- scope;
-- required evidence/outputs;
-- forbidden shared-policy changes;
-- integration/QC requirements.
-
-## Scientific evidence layer
-Scientific papers and official documentation are evidence, not decisions. Store/retrieve relevant evidence under `docs/literature/` and cite authoritative online sources where appropriate.
-
-A scientific decision becomes current policy only after the adoption process defined in `docs/DECISIONS.md` and `docs/SCIENTIFIC_DECISION_TRACEABILITY.md`.
-
-## Human approval gates
-Human approval is required before:
-- milestone commits intended to establish approved state;
-- merges;
-- production downloads;
-- destructive operations;
-- scientific policy/interpretation changes;
-- QC pass/fail milestone declarations.
-
-## Tracking policy
-Track lightweight workflow-critical docs, configs, scripts, run metadata, inventories, environment definitions, registries, case manifests, AI-assistant incident/control records, and other text metadata required for audit/reproduction.
-
-Do not track large raw/processed data, bulky logs, primary GRIB/NetCDF datasets, secrets, or credentials.
-
-## Milestone closure
-Before closing a meaningful milestone:
-1. update `docs/STATUS.md`;
-2. update `docs/HANDOFF.md`;
-3. update `docs/DECISIONS.md` when a decision changed;
-4. update Architecture/open questions/AI collaboration safety/guardrails/configs when relevant;
-5. update run metadata/inventories/QC evidence when runtime state changed;
-6. review the fresh remote GitHub branch-vs-main diff and forbidden files;
-7. validate config/script syntax/tests as relevant;
-8. perform the mandatory high-impact contradiction/omission/unsupported-claim/authority-path second pass;
-9. obtain human approval before merge/milestone adoption.
-
-## Chat migration quality rule
-If the active chat becomes long/confused enough that evidence, decisions, centre-specific facts, user constraints, or repository state may be mixed or hallucinated, stop before making another high-impact decision. Close or checkpoint the current milestone in Git where appropriate and start a fresh GitHub-first Architecture v1 re-entry in a new chat.
-
-Do not continue a degraded chat merely to avoid migration.
-
-## Output rule
-Keep repository artifacts, paths, filenames, commands, configs, and technical identifiers in English. Discussion/review with the user may be in Persian.
+Repository artifacts and technical identifiers remain in English; discussion with the user may be in Persian.

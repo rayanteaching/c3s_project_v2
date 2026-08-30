@@ -225,7 +225,6 @@ When a shared rule changes, inspect and update all control sources that could ca
 - `docs/CHATGPT_REENTRY_PROTOCOL.md`;
 - `docs/DECISIONS.md`;
 - `docs/STATUS.md`;
-- `docs/HANDOFF.md`;
 - `configs/datasets/guardrails_v1.yml`;
 - other directly affected current registries/policies.
 
@@ -240,7 +239,7 @@ Every material assistant-caused workflow/governance failure must produce:
 5. generalized preventive rule;
 6. durable repository encoding of that rule;
 7. post-fix remote audit;
-8. re-entry/handoff update if future chats could repeat the failure.
+8. re-entry/current-status update if future chats could repeat the failure.
 
 A one-off conversational promise is not an acceptable preventive control.
 
@@ -284,7 +283,7 @@ Root cause: the assistant did not inspect and align the connected GitHub app's a
 Impact/risk: approval provenance was ambiguous, the tool workflow did not match user expectations, and repeated blocked attempts could encourage unsafe fallback behavior.
 Immediate correction: GitHub app permission was changed to `Any changes` / `ask_before_writes`, preserving automatic reads while requiring approval for writes.
 Prevention: keep GitHub on the write-approval mode for this project, state the exact mutation scope immediately before execution, use the resulting action-specific approval gate, and re-read remote state after any blocked/failed write before considering a fallback.
-Status: ENCODED ON `task/day1-closure`; requires post-fix remote audit and approved integration before becoming `main` truth.
+Status: ENCODED AND INTEGRATED INTO `main`.
 
 ## Unknown future failure modes
 The absence of a known incident does not imply safety.

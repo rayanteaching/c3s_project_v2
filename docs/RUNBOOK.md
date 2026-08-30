@@ -16,7 +16,6 @@ cat docs/SEASONAL_DOWNLOAD_POLICY.md
 cat docs/SEASONAL_KNOWN_ISSUES.md
 cat docs/GIT_WORKFLOW.md
 cat docs/STATUS.md
-cat docs/HANDOFF.md
 cat configs/datasets/c3s_seasonal_systems.yml
 cat configs/datasets/c3s_seasonal_variables.yml
 ```
@@ -299,7 +298,6 @@ Before moving to the next meaningful step, do all applicable items below:
 - Confirm the run finished successfully or failed definitively.
 - Update `runs/<run_name>/status.json`.
 - Update `docs/STATUS.md`.
-- Update `docs/HANDOFF.md`.
 - Update `docs/RUNBOOK.md` if reusable commands or checks were added.
 - Commit the changes with a precise message.
 - Produce the standard session report.
