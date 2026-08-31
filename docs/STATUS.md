@@ -35,4 +35,4 @@ Harness Patch 2 validator logic has been challenged with isolated fixtures: the 
 - Human approval remains required for scientific-policy changes, production actions, destructive operations, milestone adoption, and merges.
 
 ## Next action
-Review PR #5 for merge. Patch 2 has repository-level CI evidence; merge still requires explicit human approval.
+After Harness Patch 2 is adopted, define and run the bounded Harness pilot. Do not expand the Harness unless the pilot exposes a concrete failure that requires another control.
