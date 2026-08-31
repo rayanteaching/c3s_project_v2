@@ -10,7 +10,7 @@ This repository, not chat history, is the durable project state.
 5. For scientific decisions, use `docs/OPEN_SCIENTIFIC_QUESTIONS.md`, `docs/DECISIONS.md`, and `docs/SCIENTIFIC_DECISION_TRACEABILITY.md`.
 
 ## Core rules
-- Never invent project state, scientific facts, files, results, validation outcomes, or tool success.
+- Never invent project state, scientific facts, files, results, validation outcomes, or tool success. Read live branch/SHA state from Git; do not copy live SHAs into `docs/STATUS.md`.
 - If required evidence is missing or conflicting, mark it UNKNOWN / NEEDS VERIFICATION and stop the affected downstream decision.
 - Major scientific decisions require traceable evidence and explicit human approval.
 - Do not propagate assumptions across centres, systems, or products without verification.

@@ -3,9 +3,9 @@
 ## Current milestone
 Architecture v1 and its Day-1 closure controls are integrated into `main`.
 
-Current repository baseline for this recovery audit:
-- `main`: `a399db9550d085a30a9e5cbb34aedcc04993b0fa`
-- Harness Patch 1 was merged via PR #3.
+Current repository state must be read directly from Git; live branch SHAs are not copied into this document.
+
+- Harness Patch 1 was merged via PR #3, with its status-closure follow-up merged via PR #4.
 - Architecture v1 merge history and prior validation evidence remain preserved in Git and tracked run/control records.
 
 ## Current task
@@ -27,10 +27,12 @@ Historical WSL/runtime validation is pinned to commit `c77f1709a66df1c8ecf195fe6
 
 Harness Patch 1 repository review is complete: the task branch was merged to `main` via PR #3. Runtime/scientific validation was not applicable because Patch 1 changed only documentation/control-layer files.
 
+Harness Patch 2 validator logic has been challenged with isolated fixtures: the approved baseline passed, while an enabled global z950-to-z925 substitution, a missing centre registry entry, reintroduction of `docs/HANDOFF.md`, and a copied live `main` SHA in `docs/STATUS.md` each failed as intended. GitHub Actions run 33339911258 completed successfully for PR #5. The `validate` job passed `python scripts/validate_project.py` and `python -m unittest tests/test_validate_project.py` on Python 3.12.
+
 ## Production state
 - No new production seasonal download is authorized by the current recovery audit.
 - No calibration implementation is authorized before the relevant scientific decisions and case contracts are approved.
 - Human approval remains required for scientific-policy changes, production actions, destructive operations, milestone adoption, and merges.
 
 ## Next action
-Proceed to Harness Patch 2: identify the smallest set of high-value prose rules that should become tests, validators, or CI gates before the pilot.
+After Harness Patch 2 is adopted, define and run the bounded Harness pilot. Do not expand the Harness unless the pilot exposes a concrete failure that requires another control.
