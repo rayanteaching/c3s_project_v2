@@ -9,13 +9,14 @@ Current repository state must be read directly from Git; live branch SHAs are no
 - Architecture v1 merge history and prior validation evidence remain preserved in Git and tracked run/control records.
 
 ## Current task
-Audit and reduce the project Harness before resuming full scientific production.
+Prepare and execute the first bounded real Harness pilot before resuming full scientific production.
 
-Immediate objective:
-- remove duplicated/stale current-state authority;
-- introduce a short AI entry point;
-- keep scientific decisions human-led and evidence-based;
-- prepare for a small machine-enforced Harness pilot.
+Active work package:
+- `docs/work_packages/WP-HARNESS-PILOT-001.md`
+
+The pilot is intentionally narrow: it tests the current Harness against a real scoped instance of OQ-001. Its contract defines the exact scope, pinned baseline, required evidence, forbidden actions, acceptance criteria, and exit states.
+
+Do not expand the Harness before the pilot unless a concrete material failure demonstrates that an additional control is required.
 
 ## Current blockers / open scientific work
 The authoritative register is `docs/OPEN_SCIENTIFIC_QUESTIONS.md`.
@@ -35,4 +36,4 @@ Harness Patch 2 validator logic has been challenged with isolated fixtures: the 
 - Human approval remains required for scientific-policy changes, production actions, destructive operations, milestone adoption, and merges.
 
 ## Next action
-After Harness Patch 2 is adopted, define and run the bounded Harness pilot. Do not expand the Harness unless the pilot exposes a concrete failure that requires another control.
+Adopt the bounded pilot contract, then execute `WP-HARNESS-PILOT-001` from fresh repository authority and collect only the evidence required by that work package. Scientific unknowns must fail closed, and no production download or scientific-policy adoption is authorized by the pilot contract itself.
