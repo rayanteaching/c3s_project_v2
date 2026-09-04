@@ -1,6 +1,6 @@
 # WP-HARNESS-PILOT-001 — Bounded OQ-001 Evidence Audit
 
-Status: CANDIDATE WORK PACKAGE — NOT YET SCIENTIFIC ADOPTION
+Status: BOUNDED WORK PACKAGE — NOT SCIENTIFIC ADOPTION
 
 ## Purpose
 
@@ -8,9 +8,9 @@ Run the first real bounded Harness pilot against an actual open scientific quest
 
 The pilot tests whether a fresh agent can follow repository authority, preserve scope, classify evidence correctly, fail closed on missing/conflicting evidence, and avoid promoting legacy execution assumptions into current scientific policy.
 
-## Pinned baseline
+## Pinned contract baseline
 
-- Base Git commit: `7728c45f5d324a56e265313533c09b4b638d4031`
+- Inherited project baseline Git commit: `7728c45f5d324a56e265313533c09b4b638d4031`
 - Architecture version: v1
 - Guardrail version: 7
 - `configs/datasets/guardrails_v1.yml` blob: `3b14fb863ef39bdf6010d93e628656b7bd0bffaf`
@@ -20,7 +20,11 @@ The pilot tests whether a fresh agent can follow repository authority, preserve 
 - `docs/DECISIONS.md` blob: `e2e8cfefb88867bdbffaac76ef6e154ca6241867`
 - `docs/OPEN_SCIENTIFIC_QUESTIONS.md` blob: `3bd2ba2cea0f05c0fe6de689e930aaac6d022582`
 
-If a pinned dependency changes before the pilot is executed, stop and review whether this contract must be refreshed before continuing.
+The inherited project baseline commit records the project state from which this contract was constructed. It is not the live execution SHA and is not expected to remain equal to `main` after this contract is adopted.
+
+At execution start, read the live repository state from Git and record the execution Git base separately in the pilot output. Merging this contract into `main`, by itself, does not invalidate the contract.
+
+If any pinned config, registry, decision, open-question, architecture, or guardrail dependency changes before execution, stop and review whether this contract must be refreshed before continuing. A change to `main` caused only by adoption of this contract does not require a refresh when the pinned dependencies above remain unchanged.
 
 ## Scientific question under test
 
