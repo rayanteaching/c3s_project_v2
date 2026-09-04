@@ -36,4 +36,4 @@ Harness Patch 2 validator logic has been challenged with isolated fixtures: the 
 - Human approval remains required for scientific-policy changes, production actions, destructive operations, milestone adoption, and merges.
 
 ## Next action
-Adopt the bounded pilot contract, then execute `WP-HARNESS-PILOT-001` from fresh repository authority and collect only the evidence required by that work package. Scientific unknowns must fail closed, and no production download or scientific-policy adoption is authorized by the pilot contract itself.
+Execute `WP-HARNESS-PILOT-001` from fresh repository authority and collect only the evidence required by that work package. Record the live execution Git base separately from the contract's inherited baseline. Scientific unknowns must fail closed, and no production download or scientific-policy adoption is authorized by the pilot contract itself.
